@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>CQRS - Parent - Project Dependencies</title>
+    <title>CQRS - Infrastructure - Project Dependencies</title>
     <style type="text/css" media="all">
       @import url("./css/maven-base.css");
       @import url("./css/maven-theme.css");
@@ -17,7 +17,7 @@
   <body class="composite">
     <div id="banner">
                     <div id="bannerLeft">
-                CQRS - Parent
+                CQRS - Infrastructure
                 </div>
                     <div class="clear">
         <hr/>
@@ -30,7 +30,7 @@
         <span id="publishDate">Last Published: 2015-05-18</span>
                   &nbsp;| <span id="projectVersion">Version: 1.0-SNAPSHOT</span>
                       </div>
-            <div class="xright">                    <a href="./" title="CQRS - Parent">CQRS - Parent</a>
+            <div class="xright">                    <a href="./" title="CQRS - Infrastructure">CQRS - Infrastructure</a>
               
                     
       </div>
@@ -42,18 +42,15 @@
       <div id="navcolumn">
              
                     
-                                          <h5>Modules</h5>
+                                <h5>Parent Project</h5>
                   <ul>
                   <li class="none">
-                          <a href="infrastructure/index.html" title="CQRS - Infrastructure">CQRS - Infrastructure</a>
-            </li>
-                  <li class="none">
-                          <a href="domain/index.html" title="CQRS - Domain">CQRS - Domain</a>
+                          <a href="../index.html" title="CQRS - Parent">CQRS - Parent</a>
             </li>
           </ul>
                        <h5>Project Documentation</h5>
                   <ul>
-                                                                                                                                                                                                                                                                                                                        <li class="expanded">
+                                                                                                                                                                                                                                                                                                      <li class="expanded">
                           <a href="project-info.html" title="Project Information">Project Information</a>
                     <ul>
                       <li class="none">
@@ -90,9 +87,6 @@
                           <a href="license.html" title="Project License">Project License</a>
             </li>
                       <li class="none">
-                          <a href="modules.html" title="Project Modules">Project Modules</a>
-            </li>
-                      <li class="none">
                           <a href="team-list.html" title="Project Team">Project Team</a>
             </li>
                       <li class="none">
@@ -100,7 +94,7 @@
             </li>
               </ul>
         </li>
-                                                                                                        <li class="collapsed">
+                                                                                                                          <li class="collapsed">
                           <a href="project-reports.html" title="Project Reports">Project Reports</a>
                   </li>
           </ul>
@@ -115,8 +109,229 @@
       <div id="contentBox">
         <a name="Project_Dependencies"></a>
 <div class="section">
-<h2>Project Dependencies<a name="Project_Dependencies"></a></h2>
-<p>There are no dependencies for this project. It is a standalone application that does not depend on any other project.</p></div>
+<h2>Project Dependencies<a name="Project_Dependencies"></a></h2><a name="Project_Dependencies_compile"></a>
+<div class="section">
+<h3>compile<a name="compile"></a></h3>
+<p>The following is a list of compile dependencies for this project. These dependencies are required to compile and run the application:</p>
+<table border="0" class="bodyTable">
+<tr class="a">
+<th>GroupId</th>
+<th>ArtifactId</th>
+<th>Version</th>
+<th>Type</th></tr>
+<tr class="b">
+<td>net.jodah</td>
+<td><a class="externalLink" href="http://github.com/jhalterman/typetools/">typetools</a></td>
+<td>0.4.1</td>
+<td>jar</td></tr></table></div><a name="Project_Dependencies_test"></a>
+<div class="section">
+<h3>test<a name="test"></a></h3>
+<p>The following is a list of test dependencies for this project. These dependencies are only required to compile and run unit tests for the application:</p>
+<table border="0" class="bodyTable">
+<tr class="a">
+<th>GroupId</th>
+<th>ArtifactId</th>
+<th>Version</th>
+<th>Type</th></tr>
+<tr class="b">
+<td>junit</td>
+<td><a class="externalLink" href="http://junit.org">junit</a></td>
+<td>4.12</td>
+<td>jar</td></tr></table></div></div><a name="Project_Transitive_Dependencies"></a>
+<div class="section">
+<h2>Project Transitive Dependencies<a name="Project_Transitive_Dependencies"></a></h2>
+<p>The following is a list of transitive dependencies for this project. Transitive dependencies are the dependencies of the project dependencies.</p><a name="Project_Transitive_Dependencies_test"></a>
+<div class="section">
+<h3>test<a name="test"></a></h3>
+<p>The following is a list of test dependencies for this project. These dependencies are only required to compile and run unit tests for the application:</p>
+<table border="0" class="bodyTable">
+<tr class="a">
+<th>GroupId</th>
+<th>ArtifactId</th>
+<th>Version</th>
+<th>Type</th></tr>
+<tr class="b">
+<td>org.hamcrest</td>
+<td><a class="externalLink" href="https://github.com/hamcrest/JavaHamcrest/hamcrest-core">hamcrest-core</a></td>
+<td>1.3</td>
+<td>jar</td></tr></table></div></div><a name="Project_Dependency_Graph"></a>
+<div class="section">
+<h2>Project Dependency Graph<a name="Project_Dependency_Graph"></a></h2><script language="javascript" type="text/javascript">
+      function toggleDependencyDetail( divId, imgId )
+      {
+        var div = document.getElementById( divId );
+        var img = document.getElementById( imgId );
+        if( div.style.display == '' )
+        {
+          div.style.display = 'none';
+          img.src='./images/icon_info_sml.gif';
+        }
+        else
+        {
+          div.style.display = '';
+          img.src='./images/close.gif';
+        }
+      }
+</script>
+<a name="Dependency_Tree"></a>
+<div class="section">
+<h3>Dependency Tree<a name="Dependency_Tree"></a></h3>
+<ul>
+<li>de.sven_torben.cqrs:infrastructure:jar:1.0-SNAPSHOT <img id="_1100700298" src="./images/icon_info_sml.gif" alt="Information" onclick="toggleDependencyDetail( '_2003589055', '_1100700298' );" style="cursor: pointer;vertical-align:text-bottom;"></img><div id="_2003589055" style="display:none">
+<table border="0" class="bodyTable">
+<tr class="a">
+<th>CQRS - Infrastructure</th></tr>
+<tr class="b">
+<td>
+<p><b>Description: </b>There is currently no description associated with this project.</p>
+<p><b>URL: </b><a class="externalLink" href="https://github.com/sventorben/cqrs/infrastructure">https://github.com/sventorben/cqrs/infrastructure</a></p>
+<p><b>Project License: </b><a class="externalLink" href="http://www.opensource.org/licenses/mit-license.php">MIT License</a></p></td></tr></table></div>
+<ul>
+<li>net.jodah:typetools:jar:0.4.1 (compile) <img id="_1020453852" src="./images/icon_info_sml.gif" alt="Information" onclick="toggleDependencyDetail( '_1997250966', '_1020453852' );" style="cursor: pointer;vertical-align:text-bottom;"></img><div id="_1997250966" style="display:none">
+<table border="0" class="bodyTable">
+<tr class="a">
+<th>TypeTools</th></tr>
+<tr class="b">
+<td>
+<p><b>Description: </b>Sonatype helps open source projects to set up Maven repositories on https://oss.sonatype.org/</p>
+<p><b>URL: </b><a class="externalLink" href="http://github.com/jhalterman/typetools/">http://github.com/jhalterman/typetools/</a></p>
+<p><b>Project License: </b><a class="externalLink" href="http://apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a></p></td></tr></table></div></li>
+<li>junit:junit:jar:4.12 (test) <img id="_1775726243" src="./images/icon_info_sml.gif" alt="Information" onclick="toggleDependencyDetail( '_733167629', '_1775726243' );" style="cursor: pointer;vertical-align:text-bottom;"></img><div id="_733167629" style="display:none">
+<table border="0" class="bodyTable">
+<tr class="a">
+<th>JUnit</th></tr>
+<tr class="b">
+<td>
+<p><b>Description: </b>JUnit is a unit testing framework for Java, created by Erich Gamma and Kent Beck.</p>
+<p><b>URL: </b><a class="externalLink" href="http://junit.org">http://junit.org</a></p>
+<p><b>Project License: </b><a class="externalLink" href="http://www.eclipse.org/legal/epl-v10.html">Eclipse Public License 1.0</a></p></td></tr></table></div>
+<ul>
+<li>org.hamcrest:hamcrest-core:jar:1.3 (test) <img id="_1971958902" src="./images/icon_info_sml.gif" alt="Information" onclick="toggleDependencyDetail( '_26340721', '_1971958902' );" style="cursor: pointer;vertical-align:text-bottom;"></img><div id="_26340721" style="display:none">
+<table border="0" class="bodyTable">
+<tr class="a">
+<th>Hamcrest Core</th></tr>
+<tr class="b">
+<td>
+<p><b>Description: </b>This is the core API of hamcrest matcher framework to be used by third-party framework providers. This includes the a foundation set of matcher implementations for common operations.</p>
+<p><b>URL: </b><a class="externalLink" href="https://github.com/hamcrest/JavaHamcrest/hamcrest-core">https://github.com/hamcrest/JavaHamcrest/hamcrest-core</a></p>
+<p><b>Project License: </b><a class="externalLink" href="http://www.opensource.org/licenses/bsd-license.php">New BSD License</a></p></td></tr></table></div></li></ul></li></ul></li></ul></div></div><a name="Licenses"></a>
+<div class="section">
+<h2>Licenses<a name="Licenses"></a></h2>
+<p><b>Eclipse Public License 1.0: </b>JUnit</p>
+<p><b>MIT License: </b>CQRS - Infrastructure</p>
+<p><b>Apache License, Version 2.0: </b>TypeTools</p>
+<p><b>New BSD License: </b>Hamcrest Core</p></div><a name="Dependency_File_Details"></a>
+<div class="section">
+<h2>Dependency File Details<a name="Dependency_File_Details"></a></h2>
+<table border="0" class="bodyTable">
+<tr class="a">
+<th>Filename</th>
+<th>Size</th>
+<th>Entries</th>
+<th>Classes</th>
+<th>Packages</th>
+<th>JDK Rev</th>
+<th>Debug</th></tr>
+<tr class="b">
+<td>junit-4.12.jar</td>
+<td>307.55 kB</td>
+<td>323</td>
+<td>286</td>
+<td>30</td>
+<td>1.5</td>
+<td>debug</td></tr>
+<tr class="a">
+<td>typetools-0.4.1.jar</td>
+<td>11.71 kB</td>
+<td>13</td>
+<td>3</td>
+<td>1</td>
+<td>1.6</td>
+<td>debug</td></tr>
+<tr class="b">
+<td>hamcrest-core-1.3.jar</td>
+<td>43.97 kB</td>
+<td>52</td>
+<td>45</td>
+<td>3</td>
+<td>1.5</td>
+<td>debug</td></tr>
+<tr class="a">
+<th>Total</th>
+<th>Size</th>
+<th>Entries</th>
+<th>Classes</th>
+<th>Packages</th>
+<th>JDK Rev</th>
+<th>Debug</th></tr>
+<tr class="b">
+<td>3</td>
+<td>363.23 kB</td>
+<td>388</td>
+<td>334</td>
+<td>34</td>
+<td>1.6</td>
+<td>3</td></tr>
+<tr class="a">
+<td>compile: 1</td>
+<td>compile: 11.71 kB</td>
+<td>compile: 13</td>
+<td>compile: 3</td>
+<td>compile: 1</td>
+<td>-</td>
+<td>compile: 1</td></tr>
+<tr class="b">
+<td>test: 2</td>
+<td>test: 351.52 kB</td>
+<td>test: 375</td>
+<td>test: 331</td>
+<td>test: 33</td>
+<td>-</td>
+<td>test: 2</td></tr></table></div><a name="Dependency_Repository_Locations"></a>
+<div class="section">
+<h2>Dependency Repository Locations<a name="Dependency_Repository_Locations"></a></h2>
+<table border="0" class="bodyTable">
+<tr class="a">
+<th>Repo ID</th>
+<th>URL</th>
+<th>Release</th>
+<th>Snapshot</th></tr>
+<tr class="b">
+<td>central</td>
+<td><a class="externalLink" href="http://repo.maven.apache.org/maven2">http://repo.maven.apache.org/maven2</a></td>
+<td>Yes</td>
+<td>-</td></tr>
+<tr class="a">
+<td>sonatype-nexus-snapshots</td>
+<td><a class="externalLink" href="https://oss.sonatype.org/content/repositories/snapshots">https://oss.sonatype.org/content/repositories/snapshots</a></td>
+<td>-</td>
+<td>Yes</td></tr></table>
+<p>Repository locations for each of the Dependencies.</p>
+<table border="0" class="bodyTable">
+<tr class="a">
+<th>Artifact</th>
+<th>central</th>
+<th>sonatype-nexus-snapshots</th></tr>
+<tr class="b">
+<td>junit:junit:jar:4.12</td>
+<td><a class="externalLink" href="http://repo.maven.apache.org/maven2/junit/junit/4.12/junit-4.12.jar"><img alt="Found at http://repo.maven.apache.org/maven2" src="images/icon_success_sml.gif" /></a></td>
+<td>-</td></tr>
+<tr class="a">
+<td>net.jodah:typetools:jar:0.4.1</td>
+<td><a class="externalLink" href="http://repo.maven.apache.org/maven2/net/jodah/typetools/0.4.1/typetools-0.4.1.jar"><img alt="Found at http://repo.maven.apache.org/maven2" src="images/icon_success_sml.gif" /></a></td>
+<td>-</td></tr>
+<tr class="b">
+<td>org.hamcrest:hamcrest-core:jar:1.3</td>
+<td><a class="externalLink" href="http://repo.maven.apache.org/maven2/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar"><img alt="Found at http://repo.maven.apache.org/maven2" src="images/icon_success_sml.gif" /></a></td>
+<td>-</td></tr>
+<tr class="a">
+<th>Total</th>
+<th>central</th>
+<th>sonatype-nexus-snapshots</th></tr>
+<tr class="b">
+<td>3 (compile: 1, test: 2)</td>
+<td>3</td>
+<td>0</td></tr></table></div>
       </div>
     </div>
     <div class="clear">
