@@ -1,0 +1,24 @@
+-classpath
+'C:/local/janus/repos/CQRS/repo/target/classes;C:/local/janus/repos/CQRS/repo/target/test-classes;C:/local/janus/repos/CQRS/repo/infrastructure/target/classes;C:/local/janus/repos/CQRS/repo/infrastructure/target/test-classes;C:/local/janus/repos/CQRS/repo/domain/target/classes;C:/local/janus/repos/CQRS/repo/domain/target/test-classes;C:/local/janus/repos/CQRS/repo/infrastructure/target/classes;C:/Users/janus/.m2/repository/org/mockito/mockito-core/1.10.19/mockito-core-1.10.19.jar;C:/Users/janus/.m2/repository/net/jodah/typetools/0.4.1/typetools-0.4.1.jar;C:/Users/janus/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar;C:/Users/janus/.m2/repository/junit/junit/4.12/junit-4.12.jar;C:/Users/janus/.m2/repository/org/objenesis/objenesis/2.1/objenesis-2.1.jar'
+-encoding
+'UTF-8'
+-protected
+-sourcepath
+'C:/local/janus/repos/CQRS/repo/infrastructure/src/test/java;C:/local/janus/repos/CQRS/repo/domain/src/test/java'
+-author
+-bottom
+'Copyright &#169; 2015 <a href="http://www.sven-torben.de">Sven-Torben Janus</a>. All Rights Reserved.'
+-charset
+'UTF-8'
+-d
+'C:/local/janus/repos/CQRS/repo/target/site/testapidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'CQRS - Parent 1.0-SNAPSHOT Test API'
+-link
+'http://java.sun.com/javase/6/docs/api'
+-use
+-version
+-windowtitle
+'CQRS - Parent 1.0-SNAPSHOT Test API'
