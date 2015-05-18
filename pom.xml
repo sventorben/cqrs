@@ -48,6 +48,14 @@
 		<system>GitHub Issues</system>
 	</issueManagement>
 
+	<distributionManagement>
+	  <site>
+		<id>github-pages-site</id>
+		<name>Deployment through GitHub's site deployment plugin</name>
+		<url>${project.version}</url>
+	  </site>
+	</distributionManagement>
+	
 	<scm>
 		<url>https://github.com/sventorben/cqrs</url>
 		<connection>scm:git:git://github.com/sventorben/cqrs.git</connection>
@@ -119,9 +127,12 @@
 					<configuration>
 						<message>Building site for ${project.version}</message>
 						<server>github</server>
+						<path>${project.distributionManagement.site.url}</path>
+						<merge>true</merge>
 					</configuration>
 					<executions>
 						<execution>
+							<id>github-site</id>
 							<goals>
 								<goal>site</goal>
 							</goals>
@@ -134,6 +145,7 @@
 					<artifactId>maven-site-plugin</artifactId>
 					<version>3.3</version>
 					<configuration>
+						<skipDeploy>true</skipDeploy>
 						<reportPlugins>
 							<plugin>
 								<groupId>org.apache.maven.plugins</groupId>
