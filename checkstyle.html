@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>CQRS - Infrastructure - Checkstyle Results</title>
+    <title>CQRS - Domain - Checkstyle Results</title>
     <style type="text/css" media="all">
       @import url("./css/maven-base.css");
       @import url("./css/maven-theme.css");
@@ -17,7 +17,7 @@
   <body class="composite">
     <div id="banner">
                     <div id="bannerLeft">
-                CQRS - Infrastructure
+                CQRS - Domain
                 </div>
                     <div class="clear">
         <hr/>
@@ -30,7 +30,7 @@
         <span id="publishDate">Last Published: 2015-05-18</span>
                   &nbsp;| <span id="projectVersion">Version: 1.0-SNAPSHOT</span>
                       </div>
-            <div class="xright">                    <a href="./" title="CQRS - Infrastructure">CQRS - Infrastructure</a>
+            <div class="xright">                    <a href="./" title="CQRS - Domain">CQRS - Domain</a>
               
                     
       </div>
@@ -92,10 +92,10 @@
 <th>Warnings&#160;<img alt="Warnings" src="images/icon_warning_sml.gif" /></th>
 <th>Errors&#160;<img alt="Errors" src="images/icon_error_sml.gif" /></th></tr>
 <tr class="b">
-<td>15</td>
+<td>6</td>
 <td>0</td>
 <td>0</td>
-<td>283</td></tr></table></div>
+<td>225</td></tr></table></div>
 <div class="section">
 <h2>Files<a name="Files"></a></h2>
 <table border="0" class="bodyTable">
@@ -105,545 +105,413 @@
 <th>W&#160;<img alt="Warnings" src="images/icon_warning_sml.gif" /></th>
 <th>E&#160;<img alt="Errors" src="images/icon_error_sml.gif" /></th></tr>
 <tr class="b">
-<td><a href="#de.sven_torben.cqrs.infrastructure.ConcurrencyException.java">de/sven_torben/cqrs/infrastructure/ConcurrencyException.java</a></td>
+<td><a href="#de.sven_torben.cqrs.domain.AggregateRepository.java">de/sven_torben/cqrs/domain/AggregateRepository.java</a></td>
 <td>0</td>
 <td>0</td>
-<td>14</td></tr>
+<td>69</td></tr>
 <tr class="a">
-<td><a href="#de.sven_torben.cqrs.infrastructure.Event.java">de/sven_torben/cqrs/infrastructure/Event.java</a></td>
+<td><a href="#de.sven_torben.cqrs.domain.AggregateRoot.java">de/sven_torben/cqrs/domain/AggregateRoot.java</a></td>
 <td>0</td>
 <td>0</td>
-<td>46</td></tr>
+<td>107</td></tr>
 <tr class="b">
-<td><a href="#de.sven_torben.cqrs.infrastructure.EventDescriptor.java">de/sven_torben/cqrs/infrastructure/EventDescriptor.java</a></td>
+<td><a href="#de.sven_torben.cqrs.domain.EventApplier.java">de/sven_torben/cqrs/domain/EventApplier.java</a></td>
 <td>0</td>
 <td>0</td>
-<td>22</td></tr>
+<td>28</td></tr>
 <tr class="a">
-<td><a href="#de.sven_torben.cqrs.infrastructure.EventDescriptorList.java">de/sven_torben/cqrs/infrastructure/EventDescriptorList.java</a></td>
-<td>0</td>
-<td>0</td>
-<td>45</td></tr>
-<tr class="b">
-<td><a href="#de.sven_torben.cqrs.infrastructure.IAmACommand.java">de/sven_torben/cqrs/infrastructure/IAmACommand.java</a></td>
-<td>0</td>
-<td>0</td>
-<td>1</td></tr>
-<tr class="a">
-<td><a href="#de.sven_torben.cqrs.infrastructure.IAmAMessage.java">de/sven_torben/cqrs/infrastructure/IAmAMessage.java</a></td>
-<td>0</td>
-<td>0</td>
-<td>3</td></tr>
-<tr class="b">
-<td><a href="#de.sven_torben.cqrs.infrastructure.IAmAnEvent.java">de/sven_torben/cqrs/infrastructure/IAmAnEvent.java</a></td>
+<td><a href="#de.sven_torben.cqrs.domain.IAmAnAggregateRoot.java">de/sven_torben/cqrs/domain/IAmAnAggregateRoot.java</a></td>
 <td>0</td>
 <td>0</td>
 <td>9</td></tr>
-<tr class="a">
-<td><a href="#de.sven_torben.cqrs.infrastructure.IStoreEvents.java">de/sven_torben/cqrs/infrastructure/IStoreEvents.java</a></td>
-<td>0</td>
-<td>0</td>
-<td>8</td></tr>
 <tr class="b">
-<td><a href="#de.sven_torben.cqrs.infrastructure.ITransferCommands.java">de/sven_torben/cqrs/infrastructure/ITransferCommands.java</a></td>
+<td><a href="#de.sven_torben.cqrs.domain.ICanBeIdentified.java">de/sven_torben/cqrs/domain/ICanBeIdentified.java</a></td>
 <td>0</td>
 <td>0</td>
-<td>1</td></tr>
+<td>5</td></tr>
 <tr class="a">
-<td><a href="#de.sven_torben.cqrs.infrastructure.ITransferEvents.java">de/sven_torben/cqrs/infrastructure/ITransferEvents.java</a></td>
+<td><a href="#de.sven_torben.cqrs.domain.IStoreAggregates.java">de/sven_torben/cqrs/domain/IStoreAggregates.java</a></td>
 <td>0</td>
 <td>0</td>
-<td>1</td></tr>
-<tr class="b">
-<td><a href="#de.sven_torben.cqrs.infrastructure.ITransferMessages.java">de/sven_torben/cqrs/infrastructure/ITransferMessages.java</a></td>
-<td>0</td>
-<td>0</td>
-<td>7</td></tr>
-<tr class="a">
-<td><a href="#de.sven_torben.cqrs.infrastructure.InMemoryBus.java">de/sven_torben/cqrs/infrastructure/InMemoryBus.java</a></td>
-<td>0</td>
-<td>0</td>
-<td>57</td></tr>
-<tr class="b">
-<td><a href="#de.sven_torben.cqrs.infrastructure.InMemoryCommandBus.java">de/sven_torben/cqrs/infrastructure/InMemoryCommandBus.java</a></td>
-<td>0</td>
-<td>0</td>
-<td>14</td></tr>
-<tr class="a">
-<td><a href="#de.sven_torben.cqrs.infrastructure.InMemoryEventBus.java">de/sven_torben/cqrs/infrastructure/InMemoryEventBus.java</a></td>
-<td>0</td>
-<td>0</td>
-<td>7</td></tr>
-<tr class="b">
-<td><a href="#de.sven_torben.cqrs.infrastructure.InMemoryEventStore.java">de/sven_torben/cqrs/infrastructure/InMemoryEventStore.java</a></td>
-<td>0</td>
-<td>0</td>
-<td>48</td></tr></table></div>
+<td>7</td></tr></table></div>
 <div class="section">
 <h2>Rules<a name="Rules"></a></h2>
 <table border="0" class="bodyTable">
-<tr class="a">
+<tr class="b">
 <th>Rules</th>
 <th>Violations</th>
 <th>Severity</th></tr>
-<tr class="b">
+<tr class="a">
 <td>JavadocPackage
 <ul>
 <li><b>allowLegacy</b>: <tt>&quot;true&quot;</tt></li></ul></td>
 <td>1</td>
 <td><img alt="Errors" src="images/icon_error_sml.gif" />&#160;Error</td></tr>
-<tr class="a">
-<td>NewlineAtEndOfFile</td>
-<td>0</td>
-<td><img alt="Errors" src="images/icon_error_sml.gif" />&#160;Error</td></tr>
 <tr class="b">
+<td>NewlineAtEndOfFile</td>
+<td>1</td>
+<td><img alt="Errors" src="images/icon_error_sml.gif" />&#160;Error</td></tr>
+<tr class="a">
 <td>Translation</td>
 <td>0</td>
 <td><img alt="Errors" src="images/icon_error_sml.gif" />&#160;Error</td></tr>
-<tr class="a">
+<tr class="b">
 <td>FileLength</td>
 <td>0</td>
 <td><img alt="Errors" src="images/icon_error_sml.gif" />&#160;Error</td></tr>
-<tr class="b">
+<tr class="a">
 <td>FileTabCharacter
 <ul>
 <li><b>eachLine</b>: <tt>&quot;true&quot;</tt></li></ul></td>
-<td>193</td>
+<td>141</td>
 <td><img alt="Errors" src="images/icon_error_sml.gif" />&#160;Error</td></tr>
-<tr class="a">
+<tr class="b">
 <td>RegexpSingleline
 <ul>
 <li><b>format</b>: <tt>&quot;\s+$&quot;</tt></li>
 <li><b>message</b>: <tt>&quot;Line has trailing spaces.&quot;</tt></li></ul></td>
-<td>16</td>
+<td>12</td>
 <td><img alt="Errors" src="images/icon_error_sml.gif" />&#160;Error</td></tr>
-<tr class="b">
+<tr class="a">
 <td>JavadocMethod</td>
-<td>22</td>
-<td><img alt="Errors" src="images/icon_error_sml.gif" />&#160;Error</td></tr>
-<tr class="a">
-<td>JavadocType</td>
-<td>13</td>
+<td>20</td>
 <td><img alt="Errors" src="images/icon_error_sml.gif" />&#160;Error</td></tr>
 <tr class="b">
-<td>JavadocVariable</td>
-<td>9</td>
+<td>JavadocType</td>
+<td>7</td>
 <td><img alt="Errors" src="images/icon_error_sml.gif" />&#160;Error</td></tr>
 <tr class="a">
+<td>JavadocVariable</td>
+<td>8</td>
+<td><img alt="Errors" src="images/icon_error_sml.gif" />&#160;Error</td></tr>
+<tr class="b">
 <td>JavadocStyle</td>
 <td>0</td>
 <td><img alt="Errors" src="images/icon_error_sml.gif" />&#160;Error</td></tr>
-<tr class="b">
+<tr class="a">
 <td>ConstantName</td>
 <td>0</td>
 <td><img alt="Errors" src="images/icon_error_sml.gif" />&#160;Error</td></tr>
-<tr class="a">
+<tr class="b">
 <td>LocalFinalVariableName</td>
 <td>0</td>
 <td><img alt="Errors" src="images/icon_error_sml.gif" />&#160;Error</td></tr>
-<tr class="b">
+<tr class="a">
 <td>LocalVariableName</td>
 <td>0</td>
 <td><img alt="Errors" src="images/icon_error_sml.gif" />&#160;Error</td></tr>
-<tr class="a">
+<tr class="b">
 <td>MemberName</td>
 <td>0</td>
 <td><img alt="Errors" src="images/icon_error_sml.gif" />&#160;Error</td></tr>
-<tr class="b">
+<tr class="a">
 <td>MethodName</td>
 <td>0</td>
 <td><img alt="Errors" src="images/icon_error_sml.gif" />&#160;Error</td></tr>
-<tr class="a">
+<tr class="b">
 <td>PackageName</td>
 <td>0</td>
 <td><img alt="Errors" src="images/icon_error_sml.gif" />&#160;Error</td></tr>
-<tr class="b">
+<tr class="a">
 <td>ParameterName</td>
 <td>0</td>
 <td><img alt="Errors" src="images/icon_error_sml.gif" />&#160;Error</td></tr>
-<tr class="a">
+<tr class="b">
 <td>StaticVariableName</td>
 <td>0</td>
 <td><img alt="Errors" src="images/icon_error_sml.gif" />&#160;Error</td></tr>
-<tr class="b">
+<tr class="a">
 <td>TypeName</td>
 <td>0</td>
 <td><img alt="Errors" src="images/icon_error_sml.gif" />&#160;Error</td></tr>
-<tr class="a">
+<tr class="b">
 <td>AvoidStarImport</td>
 <td>0</td>
 <td><img alt="Errors" src="images/icon_error_sml.gif" />&#160;Error</td></tr>
-<tr class="b">
+<tr class="a">
 <td>IllegalImport</td>
 <td>0</td>
 <td><img alt="Errors" src="images/icon_error_sml.gif" />&#160;Error</td></tr>
-<tr class="a">
+<tr class="b">
 <td>RedundantImport</td>
 <td>0</td>
 <td><img alt="Errors" src="images/icon_error_sml.gif" />&#160;Error</td></tr>
-<tr class="b">
+<tr class="a">
 <td>UnusedImports</td>
 <td>0</td>
 <td><img alt="Errors" src="images/icon_error_sml.gif" />&#160;Error</td></tr>
-<tr class="a">
-<td>LineLength</td>
-<td>14</td>
-<td><img alt="Errors" src="images/icon_error_sml.gif" />&#160;Error</td></tr>
 <tr class="b">
+<td>LineLength</td>
+<td>11</td>
+<td><img alt="Errors" src="images/icon_error_sml.gif" />&#160;Error</td></tr>
+<tr class="a">
 <td>MethodLength</td>
 <td>0</td>
 <td><img alt="Errors" src="images/icon_error_sml.gif" />&#160;Error</td></tr>
-<tr class="a">
+<tr class="b">
 <td>ParameterNumber</td>
 <td>0</td>
 <td><img alt="Errors" src="images/icon_error_sml.gif" />&#160;Error</td></tr>
-<tr class="b">
+<tr class="a">
 <td>EmptyForIteratorPad</td>
 <td>0</td>
 <td><img alt="Errors" src="images/icon_error_sml.gif" />&#160;Error</td></tr>
-<tr class="a">
+<tr class="b">
 <td>MethodParamPad</td>
 <td>0</td>
 <td><img alt="Errors" src="images/icon_error_sml.gif" />&#160;Error</td></tr>
-<tr class="b">
+<tr class="a">
 <td>NoWhitespaceAfter</td>
 <td>0</td>
 <td><img alt="Errors" src="images/icon_error_sml.gif" />&#160;Error</td></tr>
-<tr class="a">
+<tr class="b">
 <td>NoWhitespaceBefore</td>
 <td>0</td>
 <td><img alt="Errors" src="images/icon_error_sml.gif" />&#160;Error</td></tr>
-<tr class="b">
+<tr class="a">
 <td>OperatorWrap</td>
 <td>0</td>
 <td><img alt="Errors" src="images/icon_error_sml.gif" />&#160;Error</td></tr>
-<tr class="a">
+<tr class="b">
 <td>ParenPad</td>
 <td>0</td>
 <td><img alt="Errors" src="images/icon_error_sml.gif" />&#160;Error</td></tr>
-<tr class="b">
+<tr class="a">
 <td>TypecastParenPad</td>
 <td>0</td>
 <td><img alt="Errors" src="images/icon_error_sml.gif" />&#160;Error</td></tr>
-<tr class="a">
-<td>WhitespaceAfter</td>
-<td>1</td>
-<td><img alt="Errors" src="images/icon_error_sml.gif" />&#160;Error</td></tr>
 <tr class="b">
+<td>WhitespaceAfter</td>
+<td>0</td>
+<td><img alt="Errors" src="images/icon_error_sml.gif" />&#160;Error</td></tr>
+<tr class="a">
 <td>WhitespaceAround</td>
 <td>0</td>
 <td><img alt="Errors" src="images/icon_error_sml.gif" />&#160;Error</td></tr>
-<tr class="a">
+<tr class="b">
 <td>ModifierOrder</td>
 <td>0</td>
 <td><img alt="Errors" src="images/icon_error_sml.gif" />&#160;Error</td></tr>
-<tr class="b">
+<tr class="a">
 <td>RedundantModifier</td>
 <td>0</td>
 <td><img alt="Errors" src="images/icon_error_sml.gif" />&#160;Error</td></tr>
-<tr class="a">
+<tr class="b">
 <td>AvoidNestedBlocks</td>
 <td>0</td>
 <td><img alt="Errors" src="images/icon_error_sml.gif" />&#160;Error</td></tr>
-<tr class="b">
+<tr class="a">
 <td>EmptyBlock</td>
 <td>0</td>
 <td><img alt="Errors" src="images/icon_error_sml.gif" />&#160;Error</td></tr>
-<tr class="a">
-<td>LeftCurly</td>
-<td>2</td>
-<td><img alt="Errors" src="images/icon_error_sml.gif" />&#160;Error</td></tr>
 <tr class="b">
-<td>NeedBraces</td>
-<td>1</td>
+<td>LeftCurly</td>
+<td>12</td>
 <td><img alt="Errors" src="images/icon_error_sml.gif" />&#160;Error</td></tr>
 <tr class="a">
-<td>RightCurly</td>
+<td>NeedBraces</td>
 <td>0</td>
 <td><img alt="Errors" src="images/icon_error_sml.gif" />&#160;Error</td></tr>
 <tr class="b">
+<td>RightCurly</td>
+<td>1</td>
+<td><img alt="Errors" src="images/icon_error_sml.gif" />&#160;Error</td></tr>
+<tr class="a">
 <td>AvoidInlineConditionals</td>
 <td>0</td>
 <td><img alt="Errors" src="images/icon_error_sml.gif" />&#160;Error</td></tr>
-<tr class="a">
+<tr class="b">
 <td>DoubleCheckedLocking</td>
 <td>0</td>
 <td><img alt="Errors" src="images/icon_error_sml.gif" />&#160;Error</td></tr>
-<tr class="b">
+<tr class="a">
 <td>EmptyStatement</td>
 <td>0</td>
 <td><img alt="Errors" src="images/icon_error_sml.gif" />&#160;Error</td></tr>
-<tr class="a">
+<tr class="b">
 <td>EqualsHashCode</td>
 <td>0</td>
 <td><img alt="Errors" src="images/icon_error_sml.gif" />&#160;Error</td></tr>
-<tr class="b">
-<td>HiddenField</td>
-<td>4</td>
-<td><img alt="Errors" src="images/icon_error_sml.gif" />&#160;Error</td></tr>
 <tr class="a">
+<td>HiddenField</td>
+<td>7</td>
+<td><img alt="Errors" src="images/icon_error_sml.gif" />&#160;Error</td></tr>
+<tr class="b">
 <td>IllegalInstantiation</td>
 <td>0</td>
 <td><img alt="Errors" src="images/icon_error_sml.gif" />&#160;Error</td></tr>
-<tr class="b">
+<tr class="a">
 <td>InnerAssignment</td>
 <td>0</td>
 <td><img alt="Errors" src="images/icon_error_sml.gif" />&#160;Error</td></tr>
-<tr class="a">
+<tr class="b">
 <td>MagicNumber</td>
 <td>0</td>
 <td><img alt="Errors" src="images/icon_error_sml.gif" />&#160;Error</td></tr>
-<tr class="b">
+<tr class="a">
 <td>MissingSwitchDefault</td>
 <td>0</td>
 <td><img alt="Errors" src="images/icon_error_sml.gif" />&#160;Error</td></tr>
-<tr class="a">
+<tr class="b">
 <td>RedundantThrows</td>
 <td>0</td>
 <td><img alt="Errors" src="images/icon_error_sml.gif" />&#160;Error</td></tr>
-<tr class="b">
+<tr class="a">
 <td>SimplifyBooleanExpression</td>
 <td>0</td>
 <td><img alt="Errors" src="images/icon_error_sml.gif" />&#160;Error</td></tr>
-<tr class="a">
+<tr class="b">
 <td>SimplifyBooleanReturn</td>
 <td>0</td>
 <td><img alt="Errors" src="images/icon_error_sml.gif" />&#160;Error</td></tr>
-<tr class="b">
-<td>DesignForExtension</td>
-<td>4</td>
-<td><img alt="Errors" src="images/icon_error_sml.gif" />&#160;Error</td></tr>
 <tr class="a">
+<td>DesignForExtension</td>
+<td>1</td>
+<td><img alt="Errors" src="images/icon_error_sml.gif" />&#160;Error</td></tr>
+<tr class="b">
 <td>FinalClass</td>
 <td>0</td>
 <td><img alt="Errors" src="images/icon_error_sml.gif" />&#160;Error</td></tr>
-<tr class="b">
+<tr class="a">
 <td>HideUtilityClassConstructor</td>
 <td>0</td>
 <td><img alt="Errors" src="images/icon_error_sml.gif" />&#160;Error</td></tr>
-<tr class="a">
+<tr class="b">
 <td>InterfaceIsType</td>
 <td>0</td>
 <td><img alt="Errors" src="images/icon_error_sml.gif" />&#160;Error</td></tr>
-<tr class="b">
+<tr class="a">
 <td>VisibilityModifier</td>
 <td>0</td>
 <td><img alt="Errors" src="images/icon_error_sml.gif" />&#160;Error</td></tr>
-<tr class="a">
+<tr class="b">
 <td>ArrayTypeStyle</td>
 <td>0</td>
 <td><img alt="Errors" src="images/icon_error_sml.gif" />&#160;Error</td></tr>
-<tr class="b">
-<td>FinalParameters</td>
-<td>1</td>
-<td><img alt="Errors" src="images/icon_error_sml.gif" />&#160;Error</td></tr>
 <tr class="a">
+<td>FinalParameters</td>
+<td>3</td>
+<td><img alt="Errors" src="images/icon_error_sml.gif" />&#160;Error</td></tr>
+<tr class="b">
 <td>TodoComment</td>
 <td>0</td>
 <td><img alt="Errors" src="images/icon_error_sml.gif" />&#160;Error</td></tr>
-<tr class="b">
+<tr class="a">
 <td>UpperEll</td>
 <td>0</td>
 <td><img alt="Errors" src="images/icon_error_sml.gif" />&#160;Error</td></tr></table></div>
 <div class="section">
 <h2>Details<a name="Details"></a></h2>
 <div class="section">
-<h3>de/sven_torben/cqrs/infrastructure/ConcurrencyException.java<a name="desven_torbencqrsinfrastructureConcurrencyException.java"></a></h3><a name="de.sven_torben.cqrs.infrastructure.ConcurrencyException.java"></a>
+<h3>de/sven_torben/cqrs/domain/AggregateRepository.java<a name="desven_torbencqrsdomainAggregateRepository.java"></a></h3><a name="de.sven_torben.cqrs.domain.AggregateRepository.java"></a>
 <table border="0" class="bodyTable">
-<tr class="a">
+<tr class="b">
 <th>Violation</th>
 <th>Message</th>
 <th>Line</th></tr>
-<tr class="b">
+<tr class="a">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
 <td>Missing package-info.java file.</td>
 <td>0</td></tr>
+<tr class="b">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line is longer than 80 characters.</td>
+<td>9</td></tr>
 <tr class="a">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
 <td>Missing a Javadoc comment.</td>
-<td>3</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>5</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Missing a Javadoc comment.</td>
-<td>5</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>7</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Missing a Javadoc comment.</td>
-<td>7</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>8</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
 <td>9</td></tr>
 <tr class="b">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
 <td>Line contains a tab character.</td>
-<td>10</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line is longer than 80 characters.</td>
-<td>11</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
 <td>11</td></tr>
 <tr class="a">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line is longer than 80 characters.</td>
-<td>12</td></tr>
+<td>Missing a Javadoc comment.</td>
+<td>11</td></tr>
 <tr class="b">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
 <td>Line contains a tab character.</td>
 <td>12</td></tr>
 <tr class="a">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>13</td></tr></table></div>
-<div class="section">
-<h3>de/sven_torben/cqrs/infrastructure/Event.java<a name="desven_torbencqrsinfrastructureEvent.java"></a></h3><a name="de.sven_torben.cqrs.infrastructure.Event.java"></a>
-<table border="0" class="bodyTable">
-<tr class="b">
-<th>Violation</th>
-<th>Message</th>
-<th>Line</th></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
 <td>Missing a Javadoc comment.</td>
-<td>5</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>7</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Missing a Javadoc comment.</td>
-<td>7</td></tr>
+<td>12</td></tr>
 <tr class="b">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
 <td>Line has trailing spaces.</td>
-<td>8</td></tr>
+<td>13</td></tr>
 <tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>8</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>9</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Missing a Javadoc comment.</td>
-<td>9</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>10</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Missing a Javadoc comment.</td>
-<td>10</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line has trailing spaces.</td>
-<td>11</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>11</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>12</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Missing a Javadoc comment.</td>
-<td>12</td></tr>
-<tr class="b">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
 <td>Line contains a tab character.</td>
 <td>13</td></tr>
+<tr class="b">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line is longer than 80 characters.</td>
+<td>14</td></tr>
 <tr class="a">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
 <td>Line contains a tab character.</td>
 <td>14</td></tr>
 <tr class="b">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line has trailing spaces.</td>
-<td>15</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>15</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>16</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
 <td>Missing a Javadoc comment.</td>
-<td>16</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>'id' hides a field.</td>
-<td>16</td></tr>
+<td>14</td></tr>
 <tr class="a">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>'version' hides a field.</td>
-<td>16</td></tr>
+<td>'eventStore' hides a field.</td>
+<td>14</td></tr>
 <tr class="b">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
 <td>Line contains a tab character.</td>
-<td>17</td></tr>
+<td>15</td></tr>
 <tr class="a">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
 <td>Line is longer than 80 characters.</td>
-<td>18</td></tr>
+<td>16</td></tr>
+<tr class="b">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line contains a tab character.</td>
+<td>16</td></tr>
+<tr class="a">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line contains a tab character.</td>
+<td>17</td></tr>
 <tr class="b">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
 <td>Line contains a tab character.</td>
 <td>18</td></tr>
 <tr class="a">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
+<td>Line is longer than 80 characters.</td>
 <td>19</td></tr>
 <tr class="b">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
 <td>Line contains a tab character.</td>
-<td>20</td></tr>
+<td>19</td></tr>
 <tr class="a">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line contains a tab character.</td>
+<td>20</td></tr>
+<tr class="b">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
 <td>Line contains a tab character.</td>
 <td>21</td></tr>
-<tr class="b">
+<tr class="a">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
 <td>Line contains a tab character.</td>
 <td>22</td></tr>
+<tr class="b">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line contains a tab character.</td>
+<td>23</td></tr>
 <tr class="a">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
 <td>Line has trailing spaces.</td>
-<td>23</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>23</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
 <td>24</td></tr>
 <tr class="b">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Method 'getId' is not designed for extension - needs to be abstract, final or empty.</td>
+<td>Line contains a tab character.</td>
 <td>24</td></tr>
 <tr class="a">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
@@ -660,249 +528,27 @@
 <tr class="b">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
 <td>Line contains a tab character.</td>
-<td>29</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Method 'getVersion' is not designed for extension - needs to be abstract, final or empty.</td>
-<td>29</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>30</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>31</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>32</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>34</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Method 'setVersion' is not designed for extension - needs to be abstract, final or empty.</td>
-<td>34</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>35</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>'version' hides a field.</td>
-<td>35</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>36</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>37</td></tr></table></div>
-<div class="section">
-<h3>de/sven_torben/cqrs/infrastructure/EventDescriptor.java<a name="desven_torbencqrsinfrastructureEventDescriptor.java"></a></h3><a name="de.sven_torben.cqrs.infrastructure.EventDescriptor.java"></a>
-<table border="0" class="bodyTable">
-<tr class="a">
-<th>Violation</th>
-<th>Message</th>
-<th>Line</th></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Missing a Javadoc comment.</td>
-<td>5</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>7</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Missing a Javadoc comment.</td>
-<td>7</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>8</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Missing a Javadoc comment.</td>
-<td>8</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>10</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Missing a Javadoc comment.</td>
-<td>10</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>11</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>12</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>14</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Missing a Javadoc comment.</td>
-<td>14</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>15</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>16</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>18</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Missing a Javadoc comment.</td>
-<td>18</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>19</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>20</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>22</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Missing a Javadoc comment.</td>
-<td>22</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>23</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>24</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>25</td></tr></table></div>
-<div class="section">
-<h3>de/sven_torben/cqrs/infrastructure/EventDescriptorList.java<a name="desven_torbencqrsinfrastructureEventDescriptorList.java"></a></h3><a name="de.sven_torben.cqrs.infrastructure.EventDescriptorList.java"></a>
-<table border="0" class="bodyTable">
-<tr class="b">
-<th>Violation</th>
-<th>Message</th>
-<th>Line</th></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Missing a Javadoc comment.</td>
-<td>6</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>8</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Missing a Javadoc comment.</td>
-<td>8</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>10</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Missing a Javadoc comment.</td>
-<td>10</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>12</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Missing a Javadoc comment.</td>
-<td>12</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>'streamId' hides a field.</td>
-<td>12</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>13</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>14</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>16</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Missing a Javadoc comment.</td>
-<td>16</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>17</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>18</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>20</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Missing a Javadoc comment.</td>
-<td>20</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>21</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>'if' construct must use '{}'s.</td>
-<td>23</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>23</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>24</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>26</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
 <td>28</td></tr>
 <tr class="a">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line is longer than 80 characters.</td>
-<td>29</td></tr>
+<td>'{' should be on the previous line.</td>
+<td>28</td></tr>
 <tr class="b">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
+<td>Line is longer than 80 characters.</td>
 <td>29</td></tr>
 <tr class="a">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
 <td>Line contains a tab character.</td>
+<td>29</td></tr>
+<tr class="b">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line contains a tab character.</td>
 <td>30</td></tr>
+<tr class="a">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line is longer than 80 characters.</td>
+<td>31</td></tr>
 <tr class="b">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
 <td>Line contains a tab character.</td>
@@ -910,38 +556,38 @@
 <tr class="a">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
 <td>Line contains a tab character.</td>
-<td>33</td></tr>
+<td>32</td></tr>
 <tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Missing a Javadoc comment.</td>
-<td>33</td></tr>
-<tr class="a">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
 <td>Line contains a tab character.</td>
-<td>34</td></tr>
-<tr class="b">
+<td>33</td></tr>
+<tr class="a">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
 <td>Line contains a tab character.</td>
 <td>35</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>36</td></tr>
 <tr class="b">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
 <td>Line contains a tab character.</td>
-<td>37</td></tr>
+<td>36</td></tr>
 <tr class="a">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
+<td>Line is longer than 80 characters.</td>
 <td>38</td></tr>
 <tr class="b">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
 <td>Line contains a tab character.</td>
-<td>39</td></tr>
+<td>38</td></tr>
 <tr class="a">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
 <td>Line contains a tab character.</td>
+<td>39</td></tr>
+<tr class="b">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line contains a tab character.</td>
+<td>40</td></tr>
+<tr class="a">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>'{' should be on the previous line.</td>
 <td>40</td></tr>
 <tr class="b">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
@@ -949,11 +595,19 @@
 <td>41</td></tr>
 <tr class="a">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line is longer than 80 characters.</td>
+<td>42</td></tr>
+<tr class="b">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
 <td>Line contains a tab character.</td>
+<td>42</td></tr>
+<tr class="a">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line has trailing spaces.</td>
 <td>43</td></tr>
 <tr class="b">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Missing a Javadoc comment.</td>
+<td>Line contains a tab character.</td>
 <td>43</td></tr>
 <tr class="a">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
@@ -965,470 +619,110 @@
 <td>45</td></tr>
 <tr class="a">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
+<td>Line has trailing spaces.</td>
 <td>46</td></tr>
 <tr class="b">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
 <td>Line contains a tab character.</td>
+<td>46</td></tr>
+<tr class="a">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line contains a tab character.</td>
 <td>47</td></tr>
+<tr class="b">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line has trailing spaces.</td>
+<td>48</td></tr>
 <tr class="a">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
 <td>Line contains a tab character.</td>
 <td>48</td></tr>
 <tr class="b">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
+<td>Missing a Javadoc comment.</td>
 <td>49</td></tr>
 <tr class="a">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>50</td></tr></table></div>
-<div class="section">
-<h3>de/sven_torben/cqrs/infrastructure/IAmACommand.java<a name="desven_torbencqrsinfrastructureIAmACommand.java"></a></h3><a name="de.sven_torben.cqrs.infrastructure.IAmACommand.java"></a>
-<table border="0" class="bodyTable">
-<tr class="b">
-<th>Violation</th>
-<th>Message</th>
-<th>Line</th></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Missing a Javadoc comment.</td>
-<td>3</td></tr></table></div>
-<div class="section">
-<h3>de/sven_torben/cqrs/infrastructure/IAmAMessage.java<a name="desven_torbencqrsinfrastructureIAmAMessage.java"></a></h3><a name="de.sven_torben.cqrs.infrastructure.IAmAMessage.java"></a>
-<table border="0" class="bodyTable">
-<tr class="b">
-<th>Violation</th>
-<th>Message</th>
-<th>Line</th></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Missing a Javadoc comment.</td>
-<td>3</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line has trailing spaces.</td>
-<td>4</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>4</td></tr></table></div>
-<div class="section">
-<h3>de/sven_torben/cqrs/infrastructure/IAmAnEvent.java<a name="desven_torbencqrsinfrastructureIAmAnEvent.java"></a></h3><a name="de.sven_torben.cqrs.infrastructure.IAmAnEvent.java"></a>
-<table border="0" class="bodyTable">
-<tr class="b">
-<th>Violation</th>
-<th>Message</th>
-<th>Line</th></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Missing a Javadoc comment.</td>
-<td>5</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line has trailing spaces.</td>
-<td>6</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>6</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>7</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Missing a Javadoc comment.</td>
-<td>7</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>8</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Missing a Javadoc comment.</td>
-<td>8</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>9</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Missing a Javadoc comment.</td>
-<td>9</td></tr></table></div>
-<div class="section">
-<h3>de/sven_torben/cqrs/infrastructure/IStoreEvents.java<a name="desven_torbencqrsinfrastructureIStoreEvents.java"></a></h3><a name="de.sven_torben.cqrs.infrastructure.IStoreEvents.java"></a>
-<table border="0" class="bodyTable">
-<tr class="b">
-<th>Violation</th>
-<th>Message</th>
-<th>Line</th></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Missing a Javadoc comment.</td>
-<td>5</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line is longer than 80 characters.</td>
-<td>7</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>7</td></tr>
+<td>'{' should be on the previous line.</td>
+<td>50</td></tr>
 <tr class="b">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
 <td>Missing a Javadoc comment.</td>
-<td>7</td></tr>
+<td>52</td></tr>
 <tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>8</td></tr>
-<tr class="b">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
 <td>Missing a Javadoc comment.</td>
-<td>8</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line has trailing spaces.</td>
-<td>9</td></tr>
+<td>54</td></tr>
 <tr class="b">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>9</td></tr></table></div>
-<div class="section">
-<h3>de/sven_torben/cqrs/infrastructure/ITransferCommands.java<a name="desven_torbencqrsinfrastructureITransferCommands.java"></a></h3><a name="de.sven_torben.cqrs.infrastructure.ITransferCommands.java"></a>
-<table border="0" class="bodyTable">
+<td>'clazz' hides a field.</td>
+<td>54</td></tr>
 <tr class="a">
-<th>Violation</th>
-<th>Message</th>
-<th>Line</th></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Missing a Javadoc comment.</td>
-<td>3</td></tr></table></div>
-<div class="section">
-<h3>de/sven_torben/cqrs/infrastructure/ITransferEvents.java<a name="desven_torbencqrsinfrastructureITransferEvents.java"></a></h3><a name="de.sven_torben.cqrs.infrastructure.ITransferEvents.java"></a>
-<table border="0" class="bodyTable">
-<tr class="a">
-<th>Violation</th>
-<th>Message</th>
-<th>Line</th></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Missing a Javadoc comment.</td>
-<td>3</td></tr></table></div>
-<div class="section">
-<h3>de/sven_torben/cqrs/infrastructure/ITransferMessages.java<a name="desven_torbencqrsinfrastructureITransferMessages.java"></a></h3><a name="de.sven_torben.cqrs.infrastructure.ITransferMessages.java"></a>
-<table border="0" class="bodyTable">
-<tr class="a">
-<th>Violation</th>
-<th>Message</th>
-<th>Line</th></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Missing a Javadoc comment.</td>
-<td>3</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line has trailing spaces.</td>
-<td>4</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>4</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>5</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Missing a Javadoc comment.</td>
-<td>5</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line has trailing spaces.</td>
-<td>6</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>6</td></tr></table></div>
-<div class="section">
-<h3>de/sven_torben/cqrs/infrastructure/InMemoryBus.java<a name="desven_torbencqrsinfrastructureInMemoryBus.java"></a></h3><a name="de.sven_torben.cqrs.infrastructure.InMemoryBus.java"></a>
-<table border="0" class="bodyTable">
-<tr class="a">
-<th>Violation</th>
-<th>Message</th>
-<th>Line</th></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Missing a Javadoc comment.</td>
-<td>11</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>12</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line is longer than 80 characters.</td>
-<td>14</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>14</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Missing a Javadoc comment.</td>
-<td>14</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line has trailing spaces.</td>
-<td>15</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>15</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>16</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Missing a Javadoc comment.</td>
-<td>16</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>17</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line has trailing spaces.</td>
-<td>18</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>18</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>19</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Method 'send' is not designed for extension - needs to be abstract, final or empty.</td>
-<td>19</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>20</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Parameter msg should be final.</td>
-<td>20</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line is longer than 80 characters.</td>
-<td>21</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>21</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>22</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>23</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line is longer than 80 characters.</td>
-<td>25</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>25</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Missing a Javadoc comment.</td>
-<td>25</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>27</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Missing a Javadoc comment.</td>
-<td>27</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line is longer than 80 characters.</td>
-<td>28</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>28</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line has trailing spaces.</td>
-<td>29</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>29</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line is longer than 80 characters.</td>
-<td>30</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>30</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>31</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>32</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>33</td></tr>
-<tr class="b">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
 <td>'{' should be on the previous line.</td>
-<td>33</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line is longer than 80 characters.</td>
-<td>34</td></tr>
+<td>55</td></tr>
 <tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>34</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>35</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>36</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>'cast' is not followed by whitespace.</td>
-<td>36</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>37</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line has trailing spaces.</td>
-<td>38</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>38</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line is longer than 80 characters.</td>
-<td>39</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>39</td></tr>
-<tr class="a">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
 <td>Missing a Javadoc comment.</td>
-<td>39</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line is longer than 80 characters.</td>
-<td>40</td></tr>
+<td>59</td></tr>
 <tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>40</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>41</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>42</td></tr>
-<tr class="b">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
 <td>'{' should be on the previous line.</td>
-<td>42</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>43</td></tr>
+<td>60</td></tr>
 <tr class="b">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
 <td>Line contains a tab character.</td>
-<td>44</td></tr>
+<td>61</td></tr>
 <tr class="a">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>45</td></tr>
+<td>'{' should be on the previous line.</td>
+<td>63</td></tr>
 <tr class="b">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>46</td></tr>
+<td>'}' should be on the same line.</td>
+<td>65</td></tr>
 <tr class="a">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line has trailing spaces.</td>
-<td>47</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>47</td></tr></table></div>
+<td>'{' should be on the previous line.</td>
+<td>67</td></tr></table></div>
 <div class="section">
-<h3>de/sven_torben/cqrs/infrastructure/InMemoryCommandBus.java<a name="desven_torbencqrsinfrastructureInMemoryCommandBus.java"></a></h3><a name="de.sven_torben.cqrs.infrastructure.InMemoryCommandBus.java"></a>
+<h3>de/sven_torben/cqrs/domain/AggregateRoot.java<a name="desven_torbencqrsdomainAggregateRoot.java"></a></h3><a name="de.sven_torben.cqrs.domain.AggregateRoot.java"></a>
 <table border="0" class="bodyTable">
-<tr class="a">
+<tr class="b">
 <th>Violation</th>
 <th>Message</th>
 <th>Line</th></tr>
+<tr class="a">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>File does not end with a newline.</td>
+<td>0</td></tr>
 <tr class="b">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
 <td>Missing a Javadoc comment.</td>
-<td>6</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>7</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>9</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
 <td>10</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>11</td></tr>
 <tr class="a">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
 <td>Line contains a tab character.</td>
 <td>12</td></tr>
 <tr class="b">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Missing a Javadoc comment.</td>
+<td>12</td></tr>
+<tr class="a">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
 <td>Line contains a tab character.</td>
 <td>13</td></tr>
-<tr class="a">
+<tr class="b">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
 <td>Line contains a tab character.</td>
 <td>14</td></tr>
+<tr class="a">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Missing a Javadoc comment.</td>
+<td>14</td></tr>
 <tr class="b">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line is longer than 80 characters.</td>
+<td>Line has trailing spaces.</td>
 <td>15</td></tr>
 <tr class="a">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
@@ -1440,7 +734,15 @@
 <td>16</td></tr>
 <tr class="a">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Missing a Javadoc comment.</td>
+<td>16</td></tr>
+<tr class="b">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
 <td>Line contains a tab character.</td>
+<td>17</td></tr>
+<tr class="a">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Missing a Javadoc comment.</td>
 <td>17</td></tr>
 <tr class="b">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
@@ -1448,86 +750,24 @@
 <td>18</td></tr>
 <tr class="a">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>19</td></tr></table></div>
-<div class="section">
-<h3>de/sven_torben/cqrs/infrastructure/InMemoryEventBus.java<a name="desven_torbencqrsinfrastructureInMemoryEventBus.java"></a></h3><a name="de.sven_torben.cqrs.infrastructure.InMemoryEventBus.java"></a>
-<table border="0" class="bodyTable">
-<tr class="b">
-<th>Violation</th>
-<th>Message</th>
-<th>Line</th></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>7</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>9</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>10</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line has trailing spaces.</td>
-<td>11</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>11</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>12</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Got an exception - expecting EOF, found '}'</td>
-<td>12</td></tr></table></div>
-<div class="section">
-<h3>de/sven_torben/cqrs/infrastructure/InMemoryEventStore.java<a name="desven_torbencqrsinfrastructureInMemoryEventStore.java"></a></h3><a name="de.sven_torben.cqrs.infrastructure.InMemoryEventStore.java"></a>
-<table border="0" class="bodyTable">
-<tr class="b">
-<th>Violation</th>
-<th>Message</th>
-<th>Line</th></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>11</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>12</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>14</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>15</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>16</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
+<td>Missing a Javadoc comment.</td>
 <td>18</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>19</td></tr>
 <tr class="b">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
 <td>Line contains a tab character.</td>
 <td>20</td></tr>
 <tr class="a">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Missing a Javadoc comment.</td>
+<td>20</td></tr>
+<tr class="b">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
 <td>Line contains a tab character.</td>
 <td>21</td></tr>
+<tr class="a">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line has trailing spaces.</td>
+<td>22</td></tr>
 <tr class="b">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
 <td>Line contains a tab character.</td>
@@ -1539,14 +779,22 @@
 <tr class="b">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
 <td>Line contains a tab character.</td>
-<td>24</td></tr>
+<td>25</td></tr>
 <tr class="a">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
+<td>Missing a Javadoc comment.</td>
 <td>25</td></tr>
 <tr class="b">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>'id' hides a field.</td>
+<td>25</td></tr>
+<tr class="a">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
 <td>Line contains a tab character.</td>
+<td>26</td></tr>
+<tr class="b">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>'{' should be on the previous line.</td>
 <td>26</td></tr>
 <tr class="a">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
@@ -1558,11 +806,35 @@
 <td>28</td></tr>
 <tr class="a">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line has trailing spaces.</td>
+<td>29</td></tr>
+<tr class="b">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line contains a tab character.</td>
+<td>29</td></tr>
+<tr class="a">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
 <td>Line contains a tab character.</td>
 <td>30</td></tr>
 <tr class="b">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Missing a Javadoc comment.</td>
+<td>30</td></tr>
+<tr class="a">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>'id' hides a field.</td>
+<td>30</td></tr>
+<tr class="b">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>'version' hides a field.</td>
+<td>30</td></tr>
+<tr class="a">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
 <td>Line contains a tab character.</td>
+<td>31</td></tr>
+<tr class="b">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>'{' should be on the previous line.</td>
 <td>31</td></tr>
 <tr class="a">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
@@ -1571,34 +843,50 @@
 <tr class="b">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
 <td>Line contains a tab character.</td>
-<td>34</td></tr>
+<td>33</td></tr>
 <tr class="a">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line contains a tab character.</td>
+<td>34</td></tr>
+<tr class="b">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
 <td>Line contains a tab character.</td>
 <td>35</td></tr>
+<tr class="a">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line has trailing spaces.</td>
+<td>36</td></tr>
 <tr class="b">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line contains a tab character.</td>
+<td>36</td></tr>
+<tr class="a">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
 <td>Line contains a tab character.</td>
 <td>37</td></tr>
-<tr class="a">
+<tr class="b">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
 <td>Line contains a tab character.</td>
 <td>38</td></tr>
-<tr class="b">
+<tr class="a">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
 <td>Line contains a tab character.</td>
 <td>39</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>40</td></tr>
 <tr class="b">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
 <td>Line contains a tab character.</td>
-<td>41</td></tr>
+<td>40</td></tr>
 <tr class="a">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
 <td>Line contains a tab character.</td>
+<td>42</td></tr>
+<tr class="b">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line contains a tab character.</td>
+<td>43</td></tr>
+<tr class="a">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>'id' hides a field.</td>
 <td>43</td></tr>
 <tr class="b">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
@@ -1606,12 +894,20 @@
 <td>44</td></tr>
 <tr class="a">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>45</td></tr>
+<td>'{' should be on the previous line.</td>
+<td>44</td></tr>
 <tr class="b">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
 <td>Line contains a tab character.</td>
+<td>45</td></tr>
+<tr class="a">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line contains a tab character.</td>
 <td>46</td></tr>
+<tr class="b">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line has trailing spaces.</td>
+<td>47</td></tr>
 <tr class="a">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
 <td>Line contains a tab character.</td>
@@ -1634,48 +930,64 @@
 <td>51</td></tr>
 <tr class="b">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
+<td>Line has trailing spaces.</td>
 <td>52</td></tr>
 <tr class="a">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
 <td>Line contains a tab character.</td>
+<td>52</td></tr>
+<tr class="b">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line contains a tab character.</td>
+<td>53</td></tr>
+<tr class="a">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Method 'setVersion' is not designed for extension - needs to be abstract, final or empty.</td>
 <td>53</td></tr>
 <tr class="b">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Missing a Javadoc comment.</td>
+<td>53</td></tr>
+<tr class="a">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Parameter version should be final.</td>
+<td>53</td></tr>
+<tr class="b">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>'version' hides a field.</td>
+<td>53</td></tr>
+<tr class="a">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line contains a tab character.</td>
+<td>54</td></tr>
+<tr class="b">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>'{' should be on the previous line.</td>
+<td>54</td></tr>
+<tr class="a">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
 <td>Line contains a tab character.</td>
 <td>55</td></tr>
-<tr class="a">
+<tr class="b">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
 <td>Line contains a tab character.</td>
 <td>56</td></tr>
-<tr class="b">
+<tr class="a">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
 <td>Line contains a tab character.</td>
 <td>58</td></tr>
-<tr class="a">
+<tr class="b">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
 <td>Line contains a tab character.</td>
 <td>59</td></tr>
-<tr class="b">
+<tr class="a">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
 <td>Line contains a tab character.</td>
 <td>60</td></tr>
-<tr class="a">
+<tr class="b">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
 <td>Line contains a tab character.</td>
 <td>61</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line has trailing spaces.</td>
-<td>62</td></tr>
-<tr class="a">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Line contains a tab character.</td>
-<td>62</td></tr>
-<tr class="b">
-<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
-<td>Got an exception - expecting EOF, found '}'</td>
-<td>62</td></tr>
 <tr class="a">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
 <td>Line contains a tab character.</td>
@@ -1683,7 +995,355 @@
 <tr class="b">
 <td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
 <td>Line contains a tab character.</td>
-<td>64</td></tr></table></div></div>
+<td>64</td></tr>
+<tr class="a">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line contains a tab character.</td>
+<td>65</td></tr>
+<tr class="b">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line contains a tab character.</td>
+<td>66</td></tr>
+<tr class="a">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line contains a tab character.</td>
+<td>68</td></tr>
+<tr class="b">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line contains a tab character.</td>
+<td>69</td></tr>
+<tr class="a">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line contains a tab character.</td>
+<td>70</td></tr>
+<tr class="b">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line contains a tab character.</td>
+<td>71</td></tr>
+<tr class="a">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line contains a tab character.</td>
+<td>72</td></tr>
+<tr class="b">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line contains a tab character.</td>
+<td>73</td></tr>
+<tr class="a">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line contains a tab character.</td>
+<td>74</td></tr>
+<tr class="b">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line contains a tab character.</td>
+<td>75</td></tr>
+<tr class="a">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line contains a tab character.</td>
+<td>77</td></tr>
+<tr class="b">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Missing a Javadoc comment.</td>
+<td>77</td></tr>
+<tr class="a">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line contains a tab character.</td>
+<td>78</td></tr>
+<tr class="b">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line contains a tab character.</td>
+<td>79</td></tr>
+<tr class="a">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line is longer than 80 characters.</td>
+<td>81</td></tr>
+<tr class="b">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line contains a tab character.</td>
+<td>81</td></tr>
+<tr class="a">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Missing a Javadoc comment.</td>
+<td>81</td></tr>
+<tr class="b">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line contains a tab character.</td>
+<td>83</td></tr>
+<tr class="a">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line contains a tab character.</td>
+<td>84</td></tr>
+<tr class="b">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line contains a tab character.</td>
+<td>85</td></tr>
+<tr class="a">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>'{' should be on the previous line.</td>
+<td>85</td></tr>
+<tr class="b">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line contains a tab character.</td>
+<td>86</td></tr>
+<tr class="a">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line contains a tab character.</td>
+<td>87</td></tr>
+<tr class="b">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line is longer than 80 characters.</td>
+<td>88</td></tr>
+<tr class="a">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line contains a tab character.</td>
+<td>88</td></tr>
+<tr class="b">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line contains a tab character.</td>
+<td>89</td></tr>
+<tr class="a">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line contains a tab character.</td>
+<td>90</td></tr>
+<tr class="b">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line contains a tab character.</td>
+<td>91</td></tr>
+<tr class="a">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line contains a tab character.</td>
+<td>92</td></tr>
+<tr class="b">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line contains a tab character.</td>
+<td>94</td></tr>
+<tr class="a">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Missing a Javadoc comment.</td>
+<td>94</td></tr></table></div>
+<div class="section">
+<h3>de/sven_torben/cqrs/domain/EventApplier.java<a name="desven_torbencqrsdomainEventApplier.java"></a></h3><a name="de.sven_torben.cqrs.domain.EventApplier.java"></a>
+<table border="0" class="bodyTable">
+<tr class="b">
+<th>Violation</th>
+<th>Message</th>
+<th>Line</th></tr>
+<tr class="a">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Missing a Javadoc comment.</td>
+<td>8</td></tr>
+<tr class="b">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line contains a tab character.</td>
+<td>10</td></tr>
+<tr class="a">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Missing a Javadoc comment.</td>
+<td>10</td></tr>
+<tr class="b">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line contains a tab character.</td>
+<td>11</td></tr>
+<tr class="a">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line contains a tab character.</td>
+<td>13</td></tr>
+<tr class="b">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Missing a Javadoc comment.</td>
+<td>13</td></tr>
+<tr class="a">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Parameter root should be final.</td>
+<td>13</td></tr>
+<tr class="b">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Parameter event should be final.</td>
+<td>13</td></tr>
+<tr class="a">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line contains a tab character.</td>
+<td>14</td></tr>
+<tr class="b">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line is longer than 80 characters.</td>
+<td>15</td></tr>
+<tr class="a">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line contains a tab character.</td>
+<td>15</td></tr>
+<tr class="b">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line contains a tab character.</td>
+<td>16</td></tr>
+<tr class="a">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line contains a tab character.</td>
+<td>17</td></tr>
+<tr class="b">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line contains a tab character.</td>
+<td>18</td></tr>
+<tr class="a">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line contains a tab character.</td>
+<td>19</td></tr>
+<tr class="b">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line contains a tab character.</td>
+<td>20</td></tr>
+<tr class="a">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line contains a tab character.</td>
+<td>21</td></tr>
+<tr class="b">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line contains a tab character.</td>
+<td>22</td></tr>
+<tr class="a">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line contains a tab character.</td>
+<td>23</td></tr>
+<tr class="b">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line contains a tab character.</td>
+<td>24</td></tr>
+<tr class="a">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line contains a tab character.</td>
+<td>25</td></tr>
+<tr class="b">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line contains a tab character.</td>
+<td>26</td></tr>
+<tr class="a">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line contains a tab character.</td>
+<td>27</td></tr>
+<tr class="b">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line contains a tab character.</td>
+<td>28</td></tr>
+<tr class="a">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line contains a tab character.</td>
+<td>29</td></tr>
+<tr class="b">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line contains a tab character.</td>
+<td>30</td></tr>
+<tr class="a">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line contains a tab character.</td>
+<td>31</td></tr>
+<tr class="b">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line contains a tab character.</td>
+<td>33</td></tr></table></div>
+<div class="section">
+<h3>de/sven_torben/cqrs/domain/IAmAnAggregateRoot.java<a name="desven_torbencqrsdomainIAmAnAggregateRoot.java"></a></h3><a name="de.sven_torben.cqrs.domain.IAmAnAggregateRoot.java"></a>
+<table border="0" class="bodyTable">
+<tr class="a">
+<th>Violation</th>
+<th>Message</th>
+<th>Line</th></tr>
+<tr class="b">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Missing a Javadoc comment.</td>
+<td>7</td></tr>
+<tr class="a">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line contains a tab character.</td>
+<td>8</td></tr>
+<tr class="b">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Missing a Javadoc comment.</td>
+<td>8</td></tr>
+<tr class="a">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line contains a tab character.</td>
+<td>10</td></tr>
+<tr class="b">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Missing a Javadoc comment.</td>
+<td>10</td></tr>
+<tr class="a">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line contains a tab character.</td>
+<td>12</td></tr>
+<tr class="b">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Missing a Javadoc comment.</td>
+<td>12</td></tr>
+<tr class="a">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line contains a tab character.</td>
+<td>14</td></tr>
+<tr class="b">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Missing a Javadoc comment.</td>
+<td>14</td></tr></table></div>
+<div class="section">
+<h3>de/sven_torben/cqrs/domain/ICanBeIdentified.java<a name="desven_torbencqrsdomainICanBeIdentified.java"></a></h3><a name="de.sven_torben.cqrs.domain.ICanBeIdentified.java"></a>
+<table border="0" class="bodyTable">
+<tr class="a">
+<th>Violation</th>
+<th>Message</th>
+<th>Line</th></tr>
+<tr class="b">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Missing a Javadoc comment.</td>
+<td>5</td></tr>
+<tr class="a">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line contains a tab character.</td>
+<td>6</td></tr>
+<tr class="b">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Missing a Javadoc comment.</td>
+<td>6</td></tr>
+<tr class="a">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line contains a tab character.</td>
+<td>7</td></tr>
+<tr class="b">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Missing a Javadoc comment.</td>
+<td>7</td></tr></table></div>
+<div class="section">
+<h3>de/sven_torben/cqrs/domain/IStoreAggregates.java<a name="desven_torbencqrsdomainIStoreAggregates.java"></a></h3><a name="de.sven_torben.cqrs.domain.IStoreAggregates.java"></a>
+<table border="0" class="bodyTable">
+<tr class="a">
+<th>Violation</th>
+<th>Message</th>
+<th>Line</th></tr>
+<tr class="b">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Missing a Javadoc comment.</td>
+<td>7</td></tr>
+<tr class="a">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line contains a tab character.</td>
+<td>9</td></tr>
+<tr class="b">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Missing a Javadoc comment.</td>
+<td>9</td></tr>
+<tr class="a">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line contains a tab character.</td>
+<td>10</td></tr>
+<tr class="b">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Missing a Javadoc comment.</td>
+<td>10</td></tr>
+<tr class="a">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line has trailing spaces.</td>
+<td>11</td></tr>
+<tr class="b">
+<td><img alt="Errors" src="images/icon_error_sml.gif" /></td>
+<td>Line contains a tab character.</td>
+<td>11</td></tr></table></div></div>
       </div>
     </div>
     <div class="clear">
