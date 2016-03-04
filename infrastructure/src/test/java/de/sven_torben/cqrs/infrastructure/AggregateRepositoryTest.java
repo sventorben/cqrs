@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
 
@@ -114,13 +115,10 @@ public class AggregateRepositoryTest {
 	public void testStoringAggregateRoots() throws ConcurrencyException
 	{
 		AggregateRootMock root = new AggregateRootMock();
-		EventMockA a = new EventMockA();
-		EventMockB b = new EventMockB();
-		List<IAmAnEvent> events = new ArrayList<IAmAnEvent>();
-		events.add(a);
-		events.add(b);
 		root.doA();
 		root.doB();
+		
+		Collection<IAmAnEvent> events = root.getUncommittedEvents();
 	
 		try {
 			cut.store(null);

@@ -2,12 +2,15 @@ package de.sven_torben.cqrs.domain;
 
 import java.util.UUID;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 public abstract class Event implements IAmAnEvent {
 
 	public static final int DEFAULT_VERSION = -1;
 	
-	private int version;
 	private final UUID id;
+	private int version;
 	
 	public Event() {
 		this(UUID.randomUUID(), DEFAULT_VERSION);
@@ -36,4 +39,23 @@ public abstract class Event implements IAmAnEvent {
 		this.version = version;
 	}
 
+	@Override
+	public boolean equals(Object other) {
+		boolean equal = false;
+		if (other instanceof Event) {
+			Event that = (Event) other;
+			equal = that.canEqual(this) && EqualsBuilder.reflectionEquals(this, that);
+		}
+		return equal;
+	}
+	
+	@Override
+	public int hashCode() {
+		return HashCodeBuilder.reflectionHashCode(this);
+	}
+	
+	public boolean canEqual(Object other) {
+		return (other instanceof Event);
+	}
+	
 }
