@@ -1,9 +1,9 @@
 package de.sven_torben.cqrs.demo;
 
-import de.sven_torben.cqrs.domain.IAmAnEvent;
-import de.sven_torben.cqrs.infrastructure.ITransferEvents;
+import de.sven_torben.cqrs.domain.events.IAmAnEvent;
 import de.sven_torben.cqrs.infrastructure.InMemoryCommandBus;
-import de.sven_torben.cqrs.infrastructure.InMemoryEventStore;
+import de.sven_torben.cqrs.infrastructure.events.ITransferEvents;
+import de.sven_torben.cqrs.infrastructure.events.InMemoryEventStore;
 
 import java.util.List;
 import java.util.UUID;

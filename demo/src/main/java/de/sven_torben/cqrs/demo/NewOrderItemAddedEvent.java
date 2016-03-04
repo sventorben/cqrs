@@ -1,6 +1,6 @@
 package de.sven_torben.cqrs.demo;
 
-import de.sven_torben.cqrs.domain.Event;
+import de.sven_torben.cqrs.domain.events.Event;
 
 import java.util.UUID;
 

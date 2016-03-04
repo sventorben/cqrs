@@ -1,17 +1,17 @@
-package de.sven_torben.cqrs.domain;
+package de.sven_torben.cqrs.domain.events;
 
 import java.util.UUID;
 
-public class AggregateRootMock extends AggregateRoot {
+public class EventBasedAggregateRootMock extends EventBasedAggregateRoot {
 
   public boolean ahasBeenCalled;
   public boolean bhasBeenCalled;
 
-  public AggregateRootMock() {
+  public EventBasedAggregateRootMock() {
     super();
   }
 
-  public AggregateRootMock(final UUID id, int version) {
+  public EventBasedAggregateRootMock(final UUID id, int version) {
     super(id, version);
     ahasBeenCalled = false;
     bhasBeenCalled = false;

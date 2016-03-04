@@ -1,7 +1,7 @@
-package de.sven_torben.cqrs.infrastructure;
+package de.sven_torben.cqrs.infrastructure.events;
 
 import de.sven_torben.cqrs.domain.ConcurrencyException;
-import de.sven_torben.cqrs.domain.IAmAnEvent;
+import de.sven_torben.cqrs.domain.events.IAmAnEvent;
 
 import java.util.HashMap;
 import java.util.LinkedList;

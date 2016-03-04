@@ -1,10 +1,11 @@
-package de.sven_torben.cqrs.infrastructure;
+package de.sven_torben.cqrs.infrastructure.events;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import de.sven_torben.cqrs.domain.Event;
-import de.sven_torben.cqrs.domain.IAmAnEvent;
+import de.sven_torben.cqrs.domain.events.Event;
+import de.sven_torben.cqrs.domain.events.IAmAnEvent;
+import de.sven_torben.cqrs.infrastructure.events.InMemoryEventBus;
 
 import org.junit.Before;
 import org.junit.Test;

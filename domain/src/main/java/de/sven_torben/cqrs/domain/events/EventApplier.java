@@ -1,4 +1,6 @@
-package de.sven_torben.cqrs.domain;
+package de.sven_torben.cqrs.domain.events;
+
+import de.sven_torben.cqrs.domain.AggregateRoot;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;

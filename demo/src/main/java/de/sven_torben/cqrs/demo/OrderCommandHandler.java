@@ -1,15 +1,15 @@
 package de.sven_torben.cqrs.demo;
 
 import de.sven_torben.cqrs.domain.ConcurrencyException;
-import de.sven_torben.cqrs.infrastructure.AggregateRepository;
+import de.sven_torben.cqrs.domain.IStoreAggregates;
 
 import java.util.function.Consumer;
 
 public class OrderCommandHandler implements Consumer<AddNewOrderItemCommand> {
 
-  final AggregateRepository<Order> orders;
+  final IStoreAggregates<Order> orders;
 
-  public OrderCommandHandler(final AggregateRepository<Order> orders) {
+  public OrderCommandHandler(final IStoreAggregates<Order> orders) {
     this.orders = orders;
   }
 

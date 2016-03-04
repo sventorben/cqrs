@@ -1,6 +1,7 @@
-package de.sven_torben.cqrs.infrastructure;
+package de.sven_torben.cqrs.infrastructure.events;
 
-import de.sven_torben.cqrs.domain.IAmAnEvent;
+import de.sven_torben.cqrs.domain.events.IAmAnEvent;
+import de.sven_torben.cqrs.infrastructure.InMemoryBus;
 
 import java.util.List;
 import java.util.function.Consumer;

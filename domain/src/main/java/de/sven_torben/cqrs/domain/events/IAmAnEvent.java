@@ -1,4 +1,6 @@
-package de.sven_torben.cqrs.domain;
+package de.sven_torben.cqrs.domain.events;
+
+import de.sven_torben.cqrs.domain.IAmAMessage;
 
 import java.util.UUID;
 

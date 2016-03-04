@@ -1,4 +1,4 @@
-package de.sven_torben.cqrs.domain;
+package de.sven_torben.cqrs.domain.events;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -6,6 +6,8 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.CALLS_REAL_METHODS;
 import static org.mockito.Mockito.mock;
+
+import de.sven_torben.cqrs.domain.AggregateRoot;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -17,22 +19,22 @@ import java.util.Random;
 import java.util.UUID;
 
 @RunWith(MockitoJUnitRunner.class)
-public class AggregateRootTest {
+public class EventBasedAggregateRootTest {
 
-  private AggregateRootMock mock;
+  private EventBasedAggregateRootMock mock;
   private EventMockA eventA;
   private EventMockB eventB;
 
   @Before
   public void setUp() {
-    mock = new AggregateRootMock(UUID.randomUUID(), 1);
+    mock = new EventBasedAggregateRootMock(UUID.randomUUID(), 1);
     eventA = new EventMockA();
     eventB = new EventMockB();
   }
 
   @Test
   public void testConstructor() {
-    final AggregateRoot root = new AggregateRoot() {
+    final EventBasedAggregateRoot root = new EventBasedAggregateRoot() {
       @Override
       protected void handle(IAmAnEvent event) {
       }
@@ -67,10 +69,13 @@ public class AggregateRootTest {
   }
 
   @Test
-  public void testVersionSetterGetter() {
-    AggregateRoot root = mock(AggregateRoot.class, CALLS_REAL_METHODS);
+  public void testVersionGetter() {
     final int version = new Random().nextInt(1000);
-    root.setVersion(version);
+    EventBasedAggregateRoot root = new EventBasedAggregateRoot(UUID.randomUUID(), version) {
+      @Override
+      protected void handle(IAmAnEvent event) {
+      }
+    };
     assertEquals(version, root.getVersion());
   }
 

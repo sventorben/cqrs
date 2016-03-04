@@ -1,7 +1,9 @@
-package de.sven_torben.cqrs.domain;
+package de.sven_torben.cqrs.domain.events;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+
+import de.sven_torben.cqrs.domain.events.EventApplier;
 
 import org.junit.Test;
 
@@ -9,7 +11,7 @@ public class EventApplierTest {
 
   @Test
   public void test() {
-    AggregateRootMock mock = new AggregateRootMock();
+    EventBasedAggregateRootMock mock = new EventBasedAggregateRootMock();
 
     EventApplier.apply(mock, new EventMockA());
 

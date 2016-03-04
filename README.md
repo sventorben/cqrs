@@ -1,2 +1,2 @@
 # CQRS
-My personal CQRS playground
+A lightweight CQRS framework.

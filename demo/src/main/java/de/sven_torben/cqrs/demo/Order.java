@@ -1,12 +1,12 @@
 package de.sven_torben.cqrs.demo;
 
-import de.sven_torben.cqrs.domain.AggregateRoot;
-import de.sven_torben.cqrs.domain.IAmAnEvent;
+import de.sven_torben.cqrs.domain.events.EventBasedAggregateRoot;
+import de.sven_torben.cqrs.domain.events.IAmAnEvent;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Order extends AggregateRoot {
+public class Order extends EventBasedAggregateRoot {
 
   private final List<OrderItem> items = new ArrayList<OrderItem>();
 

@@ -1,13 +1,14 @@
-package de.sven_torben.cqrs.infrastructure;
+package de.sven_torben.cqrs.infrastructure.events;
 
 import de.sven_torben.cqrs.domain.ConcurrencyException;
-import de.sven_torben.cqrs.domain.IAmAnAggregateRoot;
-import de.sven_torben.cqrs.domain.IAmAnEvent;
 import de.sven_torben.cqrs.domain.IStoreAggregates;
+import de.sven_torben.cqrs.domain.events.IAmAnEvent;
+import de.sven_torben.cqrs.domain.events.IAmAnEventBasedAggregateRoot;
 
+import java.util.Objects;
 import java.util.UUID;
 
-public class AggregateRepository<RootT extends IAmAnAggregateRoot>
+public class EventSourcingRepository<RootT extends IAmAnEventBasedAggregateRoot>
     implements IStoreAggregates<RootT> {
 
   private final IStoreEvents eventStore;
@@ -21,22 +22,18 @@ public class AggregateRepository<RootT extends IAmAnAggregateRoot>
    * @param aggregateRootType
    *          The type of the aggregate roots which are stored by this repository.
    */
-  public AggregateRepository(final IStoreEvents eventStore, final Class<RootT> aggregateRootType) {
-    if (eventStore == null) {
-      throw new IllegalArgumentException("Argument 'eventStore' must not be a null reference.");
-    }
-    if (aggregateRootType == null) {
-      throw new IllegalArgumentException("Argument 'clazz' must not be a null reference.");
-    }
+  public EventSourcingRepository(final IStoreEvents eventStore,
+      final Class<RootT> aggregateRootType) {
+    Objects.requireNonNull(eventStore, "Argument 'eventStore' must not be a null reference.");
+    Objects.requireNonNull(aggregateRootType,
+        "Argument 'aggregateRootType' must not be a null reference.");
     this.eventStore = eventStore;
     this.genericInstanceCreator = new Generic<RootT>(aggregateRootType);
   }
 
   @Override
   public final void store(final RootT root) throws ConcurrencyException {
-    if (root == null) {
-      throw new IllegalArgumentException("Argument 'root' must not be a null reference.");
-    }
+    Objects.requireNonNull(root, "Argument 'root' must not be a null reference.");
     eventStore.save(root.getId(), root.getUncommittedEvents(), root.getVersion());
     root.markEventsAsCommitted();
   }
