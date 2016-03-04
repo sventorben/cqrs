@@ -2,9 +2,13 @@ package de.sven_torben.cqrs.domain;
 
 import java.util.UUID;
 
-public interface IStoreAggregates<TRoot extends IAmAnAggregateRoot> {
+public interface IStoreAggregates<RootT extends IAmAnAggregateRoot> {
 
-  void store(TRoot root) throws ConcurrencyException;
+  void store(RootT root) throws ConcurrencyException;
 
-  TRoot retrieveWithId(UUID id);
+  RootT retrieveWithId(UUID id) throws ConcurrencyException;
+
+  default boolean contains(UUID id) {
+    return retrieveWithId(id) != null;
+  }
 }

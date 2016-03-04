@@ -1,6 +1,7 @@
 package de.sven_torben.cqrs.infrastructure.events;
 
 import de.sven_torben.cqrs.domain.ConcurrencyException;
+import de.sven_torben.cqrs.domain.IAmAnAggregateRoot;
 import de.sven_torben.cqrs.domain.events.IAmAnEvent;
 
 import java.util.LinkedList;
@@ -20,13 +21,13 @@ final class EventDescriptorList extends LinkedList<EventDescriptor> {
     return streamId;
   }
 
-  public void ensureVersion(final int expectedVersion) throws ConcurrencyException {
+  public void ensureVersion(final long expectedVersion) {
 
-    if (expectedVersion == -1) {
+    if (expectedVersion == IAmAnAggregateRoot.DEFAULT_VERSION) {
       return;
     }
 
-    int currentVersion = getCurrentVersion();
+    long currentVersion = getCurrentVersion();
 
     if (currentVersion != expectedVersion) {
       throw new ConcurrencyException(currentVersion, expectedVersion);
@@ -35,21 +36,18 @@ final class EventDescriptorList extends LinkedList<EventDescriptor> {
 
   public synchronized void addDescriptorForEvent(final IAmAnEvent event)
       throws ConcurrencyException {
-    final int currentVersion = getCurrentVersion();
-    if (event.getVersion() != -1) {
-      throw new ConcurrencyException(event.getVersion(), -1);
+    if (event.getVersion() != IAmAnAggregateRoot.DEFAULT_VERSION) {
+      throw new ConcurrencyException(event.getVersion(), IAmAnAggregateRoot.DEFAULT_VERSION);
     }
-    event.setVersion(currentVersion + 1);
+    event.setVersion(getCurrentVersion() + 1L);
     this.add(new EventDescriptor(streamId, event));
   }
 
-  public int getCurrentVersion() {
-    final int size = this.size();
-    int currentVersion = 0;
-    if (size > 0) {
-      currentVersion = this.get(size - 1).getEventVersion();
+  public long getCurrentVersion() {
+    if (size() > 0) {
+      return getLast().getEventVersion();
     }
-    return currentVersion;
+    return IAmAnAggregateRoot.DEFAULT_VERSION;
   }
 
 }

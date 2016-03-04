@@ -4,8 +4,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
-import static org.mockito.Mockito.CALLS_REAL_METHODS;
-import static org.mockito.Mockito.mock;
 
 import de.sven_torben.cqrs.domain.AggregateRoot;
 
@@ -61,10 +59,10 @@ public class EventBasedAggregateRootTest {
   }
 
   @Test
-  public void testIdSetterGetter() {
-    AggregateRoot root = mock(AggregateRoot.class, CALLS_REAL_METHODS);
+  public void testIdGetter() {
     final UUID uuid = UUID.randomUUID();
-    root.setId(uuid);
+    AggregateRoot root = new AggregateRoot(uuid) {
+    };
     assertEquals(uuid, root.getId());
   }
 

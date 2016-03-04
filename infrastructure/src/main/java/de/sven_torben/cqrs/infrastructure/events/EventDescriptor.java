@@ -17,7 +17,7 @@ final class EventDescriptor {
     return streamId;
   }
 
-  public int getEventVersion() {
+  public long getEventVersion() {
     return eventData.getVersion();
   }
 

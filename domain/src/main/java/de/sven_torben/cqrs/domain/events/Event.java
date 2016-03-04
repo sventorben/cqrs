@@ -10,7 +10,7 @@ public abstract class Event implements IAmAnEvent {
   public static final int DEFAULT_VERSION = -1;
 
   private final UUID id;
-  private int version;
+  private long version;
 
   public Event() {
     this(UUID.randomUUID(), DEFAULT_VERSION);
@@ -30,12 +30,12 @@ public abstract class Event implements IAmAnEvent {
   }
 
   @Override
-  public int getVersion() {
+  public long getVersion() {
     return this.version;
   }
 
   @Override
-  public void setVersion(final int version) {
+  public void setVersion(final long version) {
     this.version = version;
   }
 

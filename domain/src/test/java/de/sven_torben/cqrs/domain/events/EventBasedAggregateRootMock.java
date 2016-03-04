@@ -11,7 +11,11 @@ public class EventBasedAggregateRootMock extends EventBasedAggregateRoot {
     super();
   }
 
-  public EventBasedAggregateRootMock(final UUID id, int version) {
+  public EventBasedAggregateRootMock(UUID id) {
+    super(id);
+  }
+
+  public EventBasedAggregateRootMock(UUID id, int version) {
     super(id, version);
     ahasBeenCalled = false;
     bhasBeenCalled = false;

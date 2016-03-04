@@ -1,13 +1,12 @@
 package de.sven_torben.cqrs.infrastructure.events;
 
-import de.sven_torben.cqrs.domain.ConcurrencyException;
 import de.sven_torben.cqrs.domain.events.IAmAnEvent;
 
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 public final class InMemoryEventStore implements IStoreEvents {
 
@@ -45,7 +44,7 @@ public final class InMemoryEventStore implements IStoreEvents {
 
   @Override
   public void save(final UUID streamId, final Iterable<IAmAnEvent> events,
-      final int expectedVersion) throws ConcurrencyException {
+      final long expectedVersion) {
 
     final EventDescriptorList descriptors = loadDescriptorsForStreamWithId(streamId);
     descriptors.ensureVersion(expectedVersion);
@@ -54,6 +53,20 @@ public final class InMemoryEventStore implements IStoreEvents {
       descriptors.addDescriptorForEvent(event);
       eventPublisher.send(event);
     }
+  }
+
+  @Override
+  public List<IAmAnEvent> getEventsForAggregate(final UUID streamId, final long lowerBoundVersion) {
+    return eventStreams.getOrDefault(streamId, new EventDescriptorList(streamId)).stream()
+        .map(ed -> ed.getEvent())
+        .filter(e -> e.getVersion() >= lowerBoundVersion)
+        .sorted(IAmAnEvent.BY_VERSION_COMPARATOR)
+        .collect(Collectors.toList());
+  }
+
+  @Override
+  public boolean contains(UUID id) {
+    return eventStreams.containsKey(id);
   }
 
   private synchronized EventDescriptorList loadDescriptorsForStreamWithId(final UUID streamId) {
@@ -65,16 +78,6 @@ public final class InMemoryEventStore implements IStoreEvents {
       descriptors = eventStreams.get(streamId);
     }
     return descriptors;
-  }
-
-  @Override
-  public List<IAmAnEvent> getEventsForAggregate(final UUID streamId) {
-
-    final List<IAmAnEvent> result = new LinkedList<IAmAnEvent>();
-    if (eventStreams.containsKey(streamId)) {
-      eventStreams.get(streamId).forEach(d -> result.add(d.getEvent()));
-    }
-    return result;
   }
 
 }

@@ -4,7 +4,7 @@ import java.util.UUID;
 
 public interface ICanBeIdentified {
 
-  UUID getId();
+  public static final UUID DEFAULT_ID = UUID.fromString("00000000-0000-0000-0000-000000000000");
 
-  void setId(UUID id);
+  UUID getId();
 }

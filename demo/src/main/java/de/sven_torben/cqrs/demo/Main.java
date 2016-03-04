@@ -21,7 +21,7 @@ public class Main {
         System.out.println(String.format("Event stored: type=[%s], id=[%s], version=[%s]",
             msg.getClass().getSimpleName(), msg.getId(), msg.getVersion()));
       }
-    }), Order.class);
+    }));
 
     final InMemoryCommandBus commandBus = new InMemoryCommandBus();
     commandBus.registerHandler(new OrderCommandHandler(repo));

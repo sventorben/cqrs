@@ -5,10 +5,15 @@ import de.sven_torben.cqrs.domain.events.IAmAnEvent;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class Order extends EventBasedAggregateRoot {
 
   private final List<OrderItem> items = new ArrayList<OrderItem>();
+
+  public Order(UUID orderId) {
+    super(orderId);
+  }
 
   @Override
   protected void handle(IAmAnEvent event) {

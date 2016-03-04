@@ -4,11 +4,8 @@ import java.util.UUID;
 
 public abstract class AggregateRoot implements IAmAnAggregateRoot {
 
-  public static final UUID DEFAULT_ID = UUID.fromString("00000000-0000-0000-0000-000000000000");
-  public static final int DEFAULT_VERSION = -1;
-
   private UUID id;
-  private int version;
+  private long version;
 
   protected AggregateRoot() {
     this(DEFAULT_ID);
@@ -18,7 +15,7 @@ public abstract class AggregateRoot implements IAmAnAggregateRoot {
     this(id, DEFAULT_VERSION);
   }
 
-  protected AggregateRoot(final UUID id, final int version) {
+  protected AggregateRoot(final UUID id, final long version) {
     this.id = id;
     this.version = version;
   }
@@ -29,16 +26,11 @@ public abstract class AggregateRoot implements IAmAnAggregateRoot {
   }
 
   @Override
-  public final void setId(final UUID id) {
-    this.id = id;
-  }
-
-  @Override
-  public final int getVersion() {
+  public final long getVersion() {
     return version;
   }
 
-  protected final void setVersion(int version) {
+  protected final void setVersion(long version) {
     this.version = version;
   }
 }

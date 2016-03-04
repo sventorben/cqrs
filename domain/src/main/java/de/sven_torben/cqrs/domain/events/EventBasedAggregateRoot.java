@@ -21,7 +21,7 @@ public abstract class EventBasedAggregateRoot extends AggregateRoot
     this(id, DEFAULT_VERSION);
   }
 
-  protected EventBasedAggregateRoot(final UUID id, final int version) {
+  protected EventBasedAggregateRoot(final UUID id, final long version) {
     super(id, version);
     uncommittedEvents = new ArrayList<IAmAnEvent>();
   }

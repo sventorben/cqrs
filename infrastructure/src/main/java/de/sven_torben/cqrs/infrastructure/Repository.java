@@ -1,6 +1,5 @@
 package de.sven_torben.cqrs.infrastructure;
 
-import de.sven_torben.cqrs.domain.ConcurrencyException;
 import de.sven_torben.cqrs.domain.IAmAnAggregateRoot;
 import de.sven_torben.cqrs.domain.IStoreAggregates;
 
@@ -19,7 +18,7 @@ public class Repository<RootT extends IAmAnAggregateRoot>
   }
 
   @Override
-  public final void store(final RootT root) throws ConcurrencyException {
+  public final void store(final RootT root) {
     Objects.requireNonNull(root, "Argument 'root' must not be a null reference.");
     storedAggregateRoots.put(root.getId(), root);
   }
@@ -27,5 +26,10 @@ public class Repository<RootT extends IAmAnAggregateRoot>
   @Override
   public final RootT retrieveWithId(final UUID aggregateRootId) {
     return storedAggregateRoots.get(aggregateRootId);
+  }
+
+  @Override
+  public boolean contains(UUID id) {
+    return storedAggregateRoots.containsKey(id);
   }
 }

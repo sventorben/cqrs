@@ -1,5 +1,8 @@
 package de.sven_torben.cqrs.domain;
 
 public interface IAmAnAggregateRoot extends ICanBeIdentified {
-  int getVersion();
+
+  public static final long DEFAULT_VERSION = -1L;
+
+  long getVersion();
 }
