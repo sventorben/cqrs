@@ -1,8 +1,8 @@
-package de.sven_torben.cqrs.domain.test;
+package de.sven_torben.cqrs.demo;
 
 import java.util.UUID;
 
-import de.sven_torben.cqrs.infrastructure.Event;
+import de.sven_torben.cqrs.domain.Event;
 
 public class NewOrderItemAddedEvent extends Event {
 

@@ -1,4 +1,4 @@
-package de.sven_torben.cqrs.infrastructure;
+package de.sven_torben.cqrs.domain;
 
 public class ConcurrencyException extends Exception {
 

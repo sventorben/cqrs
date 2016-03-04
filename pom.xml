@@ -14,6 +14,7 @@
 	<modules>
 		<module>infrastructure</module>
 		<module>domain</module>
+		<module>demo</module>
 	</modules>
 
 	<inceptionYear>

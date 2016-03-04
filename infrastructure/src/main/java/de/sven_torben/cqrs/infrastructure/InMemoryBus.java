@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
 
+import de.sven_torben.cqrs.domain.IAmAMessage;
 import net.jodah.typetools.TypeResolver;
 
 public abstract class InMemoryBus<TMessage extends IAmAMessage> implements

@@ -3,7 +3,7 @@ package de.sven_torben.cqrs.domain;
 import java.util.UUID;
 
 import de.sven_torben.cqrs.domain.AggregateRoot;
-import de.sven_torben.cqrs.infrastructure.IAmAnEvent;
+import de.sven_torben.cqrs.domain.IAmAnEvent;
 
 public class AggregateRootMock extends AggregateRoot {
 
@@ -23,15 +23,23 @@ public class AggregateRootMock extends AggregateRoot {
 	}
 	
 	@Override
-	protected void apply(IAmAnEvent event) {
+	protected void handle(IAmAnEvent event) {
 		throw new RuntimeException();
 	}
 
-	protected void apply(EventMockA event) {
+	protected void handle(EventMockA event) {
 		aHasBeenCalled = true;
 	}
 
-	protected void apply(EventMockB event) {
+	protected void handle(EventMockB event) {
 		bHasBeenCalled = true;
+	}
+
+	public void doA() {
+		apply(new EventMockA());
+	}
+
+	public void doB() {
+		apply(new EventMockB());
 	}
 }

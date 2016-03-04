@@ -3,6 +3,8 @@ package de.sven_torben.cqrs.infrastructure;
 import java.util.List;
 import java.util.function.Consumer;
 
+import de.sven_torben.cqrs.domain.IAmACommand;
+
 public final class InMemoryCommandBus extends InMemoryBus<IAmACommand>
 		implements ITransferCommands {
 

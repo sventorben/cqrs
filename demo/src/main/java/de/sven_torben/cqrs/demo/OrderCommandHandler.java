@@ -1,9 +1,9 @@
-package de.sven_torben.cqrs.domain.test;
+package de.sven_torben.cqrs.demo;
 
 import java.util.function.Consumer;
 
-import de.sven_torben.cqrs.domain.AggregateRepository;
-import de.sven_torben.cqrs.infrastructure.ConcurrencyException;
+import de.sven_torben.cqrs.infrastructure.AggregateRepository;
+import de.sven_torben.cqrs.domain.ConcurrencyException;
 
 public class OrderCommandHandler implements Consumer<AddNewOrderItemCommand> {
 

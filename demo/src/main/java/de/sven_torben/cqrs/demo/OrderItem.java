@@ -1,4 +1,4 @@
-package de.sven_torben.cqrs.domain.test;
+package de.sven_torben.cqrs.demo;
 
 public class OrderItem {
 

@@ -1,21 +1,16 @@
-package de.sven_torben.cqrs.domain.test;
+package de.sven_torben.cqrs.demo;
 
 import java.util.List;
 import java.util.UUID;
 
-import static org.junit.Assert.*;
-
-import org.junit.Test;
-
-import de.sven_torben.cqrs.infrastructure.IAmAnEvent;
+import de.sven_torben.cqrs.domain.IAmAnEvent;
 import de.sven_torben.cqrs.infrastructure.ITransferEvents;
 import de.sven_torben.cqrs.infrastructure.InMemoryCommandBus;
 import de.sven_torben.cqrs.infrastructure.InMemoryEventStore;
 
 public class Main {
 
-	@Test
-	public void test() {
+	public void run() {
 
 		final OrderRepository repo = new OrderRepository(
 				new InMemoryEventStore(new ITransferEvents() {
@@ -39,15 +34,15 @@ public class Main {
 
 		final Order order = repo.retrieveWithId(orderId);
 		final List<OrderItem> orderItems = order.getOrderItems();
-		assertEquals(2, orderItems.size());
-		assertTrue(orderItems.parallelStream().anyMatch(
-				x -> x.getName().equals("new item 1")));
-		assertTrue(orderItems.parallelStream().anyMatch(
-				x -> x.getName().equals("new item 2")));
+		
+		System.out.println(String.format("# of order items: %d", orderItems.size()));
+		orderItems.stream()
+			.map(item -> item.getName())
+			.forEach(name -> System.out.println(name));
 	}
 
 	public static void main(String[] args) {
-		new Main().test();
+		new Main().run();
 	}
 
 }

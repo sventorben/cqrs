@@ -8,8 +8,8 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import de.sven_torben.cqrs.infrastructure.Event;
-import de.sven_torben.cqrs.infrastructure.IAmAnEvent;
+import de.sven_torben.cqrs.domain.Event;
+import de.sven_torben.cqrs.domain.IAmAnEvent;
 import de.sven_torben.cqrs.infrastructure.InMemoryEventBus;
 
 public class InMemoryEventBusTest {

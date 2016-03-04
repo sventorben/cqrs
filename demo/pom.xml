@@ -9,9 +9,9 @@
 		<relativePath>../</relativePath>
 	</parent>
 
-	<artifactId>infrastructure</artifactId>
+	<artifactId>demo</artifactId>
 	<packaging>jar</packaging>
-	<name>CQRS - Infrastructure</name>
+	<name>CQRS - Demo</name>
 
 	<properties>
 		<main.basedir>${project.parent.basedir}</main.basedir>
@@ -37,20 +37,8 @@
 	<dependencies>
 		<dependency>
 			<groupId>de.sven_torben.cqrs</groupId>
-			<artifactId>domain</artifactId>
+			<artifactId>infrastructure</artifactId>
 			<version>${project.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>net.jodah</groupId>
-			<artifactId>typetools</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.mockito</groupId>
-			<artifactId>mockito-core</artifactId>
 		</dependency>
 	</dependencies>
 </project>

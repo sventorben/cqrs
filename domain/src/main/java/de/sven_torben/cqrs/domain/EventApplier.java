@@ -3,7 +3,7 @@ package de.sven_torben.cqrs.domain;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-import de.sven_torben.cqrs.infrastructure.IAmAnEvent;
+import de.sven_torben.cqrs.domain.IAmAnEvent;
 
 final class EventApplier {
 
@@ -12,7 +12,7 @@ final class EventApplier {
 
 	public static void apply(AggregateRoot root, IAmAnEvent event) {
 		try {
-			final Method m = root.getClass().getDeclaredMethod("apply",
+			final Method m = root.getClass().getDeclaredMethod("handle",
 					event.getClass());
 			m.setAccessible(true);
 			try {

@@ -8,6 +8,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import de.sven_torben.cqrs.domain.IAmACommand;
+
 public class InMemoryCommandBusTest {
 
 	private InMemoryCommandBus cut;

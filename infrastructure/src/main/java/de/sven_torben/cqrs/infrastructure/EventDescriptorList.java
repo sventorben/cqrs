@@ -3,6 +3,9 @@ package de.sven_torben.cqrs.infrastructure;
 import java.util.LinkedList;
 import java.util.UUID;
 
+import de.sven_torben.cqrs.domain.ConcurrencyException;
+import de.sven_torben.cqrs.domain.IAmAnEvent;
+
 final class EventDescriptorList extends LinkedList<EventDescriptor> {
 
 	private static final long serialVersionUID = 1L;

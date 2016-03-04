@@ -6,6 +6,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+import de.sven_torben.cqrs.domain.ConcurrencyException;
+import de.sven_torben.cqrs.domain.IAmAnEvent;
+import de.sven_torben.cqrs.domain.IStoreEvents;
+
 public final class InMemoryEventStore implements IStoreEvents {
 
 	private final ITransferEvents eventPublisher;

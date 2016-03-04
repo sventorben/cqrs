@@ -2,6 +2,8 @@ package de.sven_torben.cqrs.infrastructure;
 
 import java.util.UUID;
 
+import de.sven_torben.cqrs.domain.IAmAnEvent;
+
 final class EventDescriptor {
 
 	private final IAmAnEvent eventData;

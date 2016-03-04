@@ -15,7 +15,8 @@ import static org.mockito.Mockito.*;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import de.sven_torben.cqrs.domain.AggregateRoot;
-import de.sven_torben.cqrs.infrastructure.IAmAnEvent;
+import de.sven_torben.cqrs.domain.AggregateRootMock;
+import de.sven_torben.cqrs.domain.IAmAnEvent;
 
 @RunWith(MockitoJUnitRunner.class)
 public class AggregateRootTest {
@@ -36,7 +37,7 @@ public class AggregateRootTest {
 	public void testConstructor() {
 		final AggregateRoot root = new AggregateRoot() {
 			@Override
-			protected void apply(IAmAnEvent event) {
+			protected void handle(IAmAnEvent event) {
 			}
 		};
 
@@ -51,10 +52,10 @@ public class AggregateRootTest {
 
 		assertFalse(mock.aHasBeenCalled);
 		assertFalse(mock.bHasBeenCalled);
-		mock.applyEvent(eventA);
+		mock.apply(eventA);
 		assertTrue(mock.aHasBeenCalled);
 		assertFalse(mock.bHasBeenCalled);
-		mock.applyEvent(eventB);
+		mock.apply(eventB);
 		assertTrue(mock.aHasBeenCalled);
 		assertTrue(mock.bHasBeenCalled);
 
@@ -78,8 +79,8 @@ public class AggregateRootTest {
 	
 	@Test
 	public void testUncommittedChanges() {
-		mock.applyEvent(eventA);
-		mock.applyEvent(eventB);
+		mock.apply(eventA);
+		mock.apply(eventB);
 		
 		assertEquals(2, mock.getUncommittedEvents().size());
 		assertTrue(mock.getUncommittedEvents().contains(eventA));
@@ -92,8 +93,8 @@ public class AggregateRootTest {
 	@Test(expected=IllegalStateException.class)
 	public void testThatEventsCanOnlyOccureOnce()
 	{
-		mock.applyEvent(eventA);
-		mock.applyEvent(eventA);
+		mock.apply(eventA);
+		mock.apply(eventA);
 	}
 	
 	@Test

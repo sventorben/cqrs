@@ -1,10 +1,12 @@
-package de.sven_torben.cqrs.domain;
+package de.sven_torben.cqrs.infrastructure;
 
 import java.util.UUID;
 
-import de.sven_torben.cqrs.infrastructure.ConcurrencyException;
-import de.sven_torben.cqrs.infrastructure.IAmAnEvent;
-import de.sven_torben.cqrs.infrastructure.IStoreEvents;
+import de.sven_torben.cqrs.domain.ConcurrencyException;
+import de.sven_torben.cqrs.domain.IAmAnAggregateRoot;
+import de.sven_torben.cqrs.domain.IStoreAggregates;
+import de.sven_torben.cqrs.domain.IAmAnEvent;
+import de.sven_torben.cqrs.domain.IStoreEvents;
 
 public class AggregateRepository<TRoot extends IAmAnAggregateRoot> implements IStoreAggregates<TRoot> {
 
@@ -24,8 +26,7 @@ public class AggregateRepository<TRoot extends IAmAnAggregateRoot> implements IS
 	
 	@Override
 	public final void store(final TRoot root) throws ConcurrencyException {
-		if (root == null)
-		{
+		if (root == null) {
 			throw new IllegalArgumentException("Argument 'root' must not be a null reference.");
 		}
 		eventStore.save(root.getId(), root.getUncommittedEvents(), root.getVersion());

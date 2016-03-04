@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import de.sven_torben.cqrs.domain.AggregateRootMock;
 import de.sven_torben.cqrs.domain.EventApplier;
 
 public class EventApplierTest {

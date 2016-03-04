@@ -5,8 +5,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
 
-import de.sven_torben.cqrs.infrastructure.IAmAnEvent;
-
 public abstract class AggregateRoot implements IAmAnAggregateRoot {
 
 	public static final UUID DEFAULT_ID = UUID
@@ -50,8 +48,7 @@ public abstract class AggregateRoot implements IAmAnAggregateRoot {
 		return version;
 	}
 	
-	protected void setVersion(int version)
-	{
+	protected final void setVersion(int version) {
 		this.version = version;
 	}
 
@@ -69,16 +66,16 @@ public abstract class AggregateRoot implements IAmAnAggregateRoot {
 	public final void rebuildFromHistory(
 			final Iterable<? extends IAmAnEvent> history) {
 		for (IAmAnEvent event : history) {
-			applyEvent(event, false);
+			apply(event, false);
 			this.version = event.getVersion();
 		}
 	}
 
-	protected final void applyEvent(final IAmAnEvent event) {
-		applyEvent(event, true);
+	protected final void apply(final IAmAnEvent event) {
+		apply(event, true);
 	}
 
-	protected final void applyEvent(final IAmAnEvent event, final boolean isNew) {
+	protected final void apply(final IAmAnEvent event, final boolean isNew) {
 
 		if (isNew) {
 			if (!uncommittedEvents.contains(event))
@@ -91,6 +88,6 @@ public abstract class AggregateRoot implements IAmAnAggregateRoot {
 		EventApplier.apply(this, event);
 	}
 
-	protected abstract void apply(final IAmAnEvent event);
+	protected abstract void handle(final IAmAnEvent event);
 
 }
