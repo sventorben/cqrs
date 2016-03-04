@@ -12,23 +12,15 @@ final class EventApplier {
 
 	public static void apply(AggregateRoot root, IAmAnEvent event) {
 		try {
-			final Method m = root.getClass().getDeclaredMethod("handle",
-					event.getClass());
+			final Method m = root.getClass().getDeclaredMethod("handle", event.getClass());
 			m.setAccessible(true);
 			try {
 				m.invoke(root, event);
-			} catch (IllegalAccessException e) {
-				e.printStackTrace();
-			} catch (IllegalArgumentException e) {
-				e.printStackTrace();
-			} catch (InvocationTargetException e) {
+			} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 				e.printStackTrace();
 			}
-		} catch (NoSuchMethodException e) {
-			e.printStackTrace();
-		} catch (SecurityException e) {
+		} catch (NoSuchMethodException | SecurityException e) {
 			e.printStackTrace();
 		}
-
 	}
 }

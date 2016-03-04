@@ -30,8 +30,7 @@ public abstract class InMemoryBus<TMessage extends IAmAMessage> implements
 	{ 
 		final Class<?> clazz = TypeResolver.resolveRawArgument(Consumer.class, handler.getClass());
 		final String tMessageType = clazz.getName();
-		if (!routes.containsKey(tMessageType))
-		{
+		if (!routes.containsKey(tMessageType)) {
 			routes.put(tMessageType, new ArrayList<Consumer<TMessage>>());
 		}
 		routes.get(tMessageType).add((Consumer<TMessage>)handler);
@@ -39,8 +38,7 @@ public abstract class InMemoryBus<TMessage extends IAmAMessage> implements
 	
 	private <T extends TMessage> List<Consumer<TMessage>> resolveHandlersForMsg(final T msg) {
 		List<Consumer<TMessage>> handlers = routes.get(msg.getClass().getName());
-		if (handlers == null)
-		{
+		if (handlers == null) {
 			handlers = new ArrayList<Consumer<TMessage>>(0);
 		}
 		return handlers;

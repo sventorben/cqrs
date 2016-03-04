@@ -47,26 +47,19 @@ public class AggregateRepository<TRoot extends IAmAnAggregateRoot> implements IS
 			
 	}
 	
-    private static class Generic<T>
-    {
+    private static class Generic<T> {
 
         private Class<T> clazz;
 
-        public Generic(final Class<T> clazz)
-        {
+        public Generic(final Class<T> clazz) {
             this.clazz = clazz;
         }
 
-        public T getNewInstance()
-        {
+        public T getNewInstance() {
         	T instance;
-            try
-            {
+            try {
                 instance = clazz.newInstance();
-            }
-            catch (final Exception e)
-            {
-                e.printStackTrace();
+            } catch (final Exception e){
                 instance = null;
             }
             return instance;
