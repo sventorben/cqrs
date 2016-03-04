@@ -18,7 +18,6 @@ import de.sven_torben.cqrs.domain.EventMockA;
 import de.sven_torben.cqrs.domain.EventMockB;
 import de.sven_torben.cqrs.domain.IAmAnAggregateRoot;
 import de.sven_torben.cqrs.domain.IAmAnEvent;
-import de.sven_torben.cqrs.domain.IStoreEvents;
 
 import org.junit.Before;
 import org.junit.Test;

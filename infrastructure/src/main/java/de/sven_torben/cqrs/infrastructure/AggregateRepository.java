@@ -4,13 +4,11 @@ import de.sven_torben.cqrs.domain.ConcurrencyException;
 import de.sven_torben.cqrs.domain.IAmAnAggregateRoot;
 import de.sven_torben.cqrs.domain.IAmAnEvent;
 import de.sven_torben.cqrs.domain.IStoreAggregates;
-import de.sven_torben.cqrs.domain.IStoreEvents;
 
 import java.util.UUID;
 
 public class AggregateRepository<RootT extends IAmAnAggregateRoot>
-    implements
-    IStoreAggregates<RootT> {
+    implements IStoreAggregates<RootT> {
 
   private final IStoreEvents eventStore;
   private final Generic<RootT> genericInstanceCreator;

@@ -2,7 +2,6 @@ package de.sven_torben.cqrs.infrastructure;
 
 import de.sven_torben.cqrs.domain.ConcurrencyException;
 import de.sven_torben.cqrs.domain.IAmAnEvent;
-import de.sven_torben.cqrs.domain.IStoreEvents;
 
 import java.util.HashMap;
 import java.util.LinkedList;
