@@ -1,27 +1,25 @@
 package de.sven_torben.cqrs.domain;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import de.sven_torben.cqrs.domain.AggregateRootMock;
-import de.sven_torben.cqrs.domain.EventApplier;
-
 public class EventApplierTest {
 
-	@Test
-	public void test() {
-		AggregateRootMock mock = new AggregateRootMock();
+  @Test
+  public void test() {
+    AggregateRootMock mock = new AggregateRootMock();
 
-		EventApplier.apply(mock, new EventMockA());
+    EventApplier.apply(mock, new EventMockA());
 
-		assertTrue(mock.aHasBeenCalled);
-		assertFalse(mock.bHasBeenCalled);
+    assertTrue(mock.ahasBeenCalled);
+    assertFalse(mock.bhasBeenCalled);
 
-		EventApplier.apply(mock, new EventMockB());
-		
-		assertTrue(mock.bHasBeenCalled);
-		
-	}
+    EventApplier.apply(mock, new EventMockB());
+
+    assertTrue(mock.bhasBeenCalled);
+
+  }
 
 }

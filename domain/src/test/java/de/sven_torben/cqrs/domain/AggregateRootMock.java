@@ -2,44 +2,39 @@ package de.sven_torben.cqrs.domain;
 
 import java.util.UUID;
 
-import de.sven_torben.cqrs.domain.AggregateRoot;
-import de.sven_torben.cqrs.domain.IAmAnEvent;
-
 public class AggregateRootMock extends AggregateRoot {
 
-	public boolean aHasBeenCalled;
-	public boolean bHasBeenCalled;
+  public boolean ahasBeenCalled;
+  public boolean bhasBeenCalled;
 
-	public AggregateRootMock()
-	{
-		super();
-	}
-	
-	public AggregateRootMock(final UUID id, int version)
-	{
-		super(id, version);
-		aHasBeenCalled = false;
-		bHasBeenCalled = false;
-	}
-	
-	@Override
-	protected void handle(IAmAnEvent event) {
-		throw new RuntimeException();
-	}
+  public AggregateRootMock() {
+    super();
+  }
 
-	protected void handle(EventMockA event) {
-		aHasBeenCalled = true;
-	}
+  public AggregateRootMock(final UUID id, int version) {
+    super(id, version);
+    ahasBeenCalled = false;
+    bhasBeenCalled = false;
+  }
 
-	protected void handle(EventMockB event) {
-		bHasBeenCalled = true;
-	}
+  @Override
+  protected void handle(IAmAnEvent event) {
+    throw new RuntimeException();
+  }
 
-	public void doA() {
-		apply(new EventMockA());
-	}
+  protected void handle(EventMockA event) {
+    ahasBeenCalled = true;
+  }
 
-	public void doB() {
-		apply(new EventMockB());
-	}
+  protected void handle(EventMockB event) {
+    bhasBeenCalled = true;
+  }
+
+  public void doA() {
+    apply(new EventMockA());
+  }
+
+  public void doB() {
+    apply(new EventMockB());
+  }
 }

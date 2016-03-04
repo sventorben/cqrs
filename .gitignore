@@ -10,7 +10,9 @@ buildNumber.properties
 
 .project
 .classpath
+.checkstyle
 .settings/
 test-output/
 workspace/
 bin/
+

@@ -3,11 +3,11 @@ package de.sven_torben.cqrs.domain;
 import java.util.Collection;
 
 public interface IAmAnAggregateRoot extends ICanBeIdentified {
-	int getVersion();
+  int getVersion();
 
-	Collection<IAmAnEvent> getUncommittedEvents();
+  Collection<IAmAnEvent> getUncommittedEvents();
 
-	void markEventsAsCommitted();
+  void markEventsAsCommitted();
 
-	void rebuildFromHistory(Iterable<? extends IAmAnEvent> history);
+  void rebuildFromHistory(Iterable<? extends IAmAnEvent> history);
 }
