@@ -17,10 +17,10 @@ final class EventApplier {
       try {
         m.invoke(root, event);
       } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
-        e.printStackTrace();
+        throw new RuntimeException(e);
       }
     } catch (NoSuchMethodException | SecurityException e) {
-      e.printStackTrace();
+      throw new RuntimeException(e);
     }
   }
 }
