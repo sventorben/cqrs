@@ -14,7 +14,7 @@ public abstract class EventBasedAggregateRoot extends AggregateRoot
   private final List<IAmAnEvent> uncommittedEvents;
 
   protected EventBasedAggregateRoot() {
-    this(DEFAULT_ID);
+    this(UUID.randomUUID());
   }
 
   protected EventBasedAggregateRoot(final UUID id) {

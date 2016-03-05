@@ -8,7 +8,7 @@ public abstract class AggregateRoot implements IAmAnAggregateRoot {
   private long version;
 
   protected AggregateRoot() {
-    this(DEFAULT_ID);
+    this(UUID.randomUUID());
   }
 
   protected AggregateRoot(final UUID id) {

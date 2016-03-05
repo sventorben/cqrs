@@ -1,7 +1,6 @@
 package de.sven_torben.cqrs.infrastructure.events;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyLong;
@@ -24,7 +23,7 @@ import de.sven_torben.cqrs.domain.events.EventMockA;
 import de.sven_torben.cqrs.domain.events.EventMockB;
 import de.sven_torben.cqrs.domain.events.IAmAnEvent;
 import de.sven_torben.cqrs.domain.events.IAmAnEventBasedAggregateRoot;
-import de.sven_torben.cqrs.infrastructure.snapshots.ProducingSnapshotRepository;
+import de.sven_torben.cqrs.infrastructure.snapshots.EmptySnaphotRepository;
 
 import org.junit.Before;
 import org.junit.Rule;
@@ -50,7 +49,8 @@ public class EventSourcingRepositoryTest {
   public void setUp() {
     eventStoreMock = mock(IStoreEvents.class);
     cut = new EventSourcingRepository<EventBasedAggregateRootMock>(eventStoreMock,
-        new ProducingSnapshotRepository<>(EventBasedAggregateRootMock.class));
+        new EmptySnaphotRepository<EventBasedAggregateRootMock>()) {
+    };
   }
 
   @DataProvider
@@ -58,7 +58,7 @@ public class EventSourcingRepositoryTest {
     return new Object[][] {
         { null, null },
         { mock(IStoreEvents.class), null },
-        { null, new ProducingSnapshotRepository<>(EventBasedAggregateRootMock.class) },
+        { null, new EmptySnaphotRepository<EventBasedAggregateRootMock>() },
     };
   }
 
@@ -67,13 +67,14 @@ public class EventSourcingRepositoryTest {
   public void testInvalidConstructorParams(IStoreEvents eventStore,
       IStoreAggregates<IAmAnEventBasedAggregateRoot> snapshotRepository) {
     thrown.expect(NullPointerException.class);
-    new EventSourcingRepository<IAmAnEventBasedAggregateRoot>(eventStore, snapshotRepository);
+    new EventSourcingRepository<IAmAnEventBasedAggregateRoot>(eventStore, snapshotRepository) {
+    };
   }
 
   @Test
   public void testConstructor() {
-    new EventSourcingRepository<EventBasedAggregateRootMock>(eventStoreMock,
-        new ProducingSnapshotRepository<>(EventBasedAggregateRootMock.class));
+    new EventSourcingRepository<EventBasedAggregateRootMock>(eventStoreMock) {
+    };
   }
 
   @Test
@@ -81,9 +82,10 @@ public class EventSourcingRepositoryTest {
     ArrayList<IAmAnEvent> events = new ArrayList<IAmAnEvent>();
     events.add(new EventMockA());
     events.add(new EventMockB());
-    when(eventStoreMock.getEventsForAggregate(any(UUID.class), anyLong())).thenReturn(events);
-    UUID id = UUID.randomUUID();
 
+    when(eventStoreMock.getEventsForAggregate(any(UUID.class), anyLong())).thenReturn(events);
+
+    UUID id = UUID.randomUUID();
     EventBasedAggregateRootMock root = cut.retrieveWithId(id);
 
     assertEquals(id, root.getId());
@@ -95,14 +97,14 @@ public class EventSourcingRepositoryTest {
 
   @Test
   public void testRetrievalMustNotWorkForInterfaces() {
-    ArrayList<IAmAnEvent> events = new ArrayList<IAmAnEvent>();
-    events.add(new EventMockA());
-    events.add(new EventMockB());
-    when(eventStoreMock.getEventsForAggregate(any(UUID.class))).thenReturn(events);
-    EventSourcingRepository<IAmAnEventBasedAggregateRoot> cut =
-        new EventSourcingRepository<>(eventStoreMock,
-            new ProducingSnapshotRepository<>(IAmAnEventBasedAggregateRoot.class));
-    assertNull(cut.retrieveWithId(UUID.randomUUID()));
+    thrown.expect(AggregateRootInstantiationException.class);
+    thrown.expectMessage(IAmAnEventBasedAggregateRoot.class.getName());
+
+    when(eventStoreMock.getEventsForAggregate(any(UUID.class)))
+        .thenReturn(new ArrayList<IAmAnEvent>());
+
+    new EventSourcingRepository<IAmAnEventBasedAggregateRoot>(eventStoreMock) {
+    }.retrieveWithId(UUID.randomUUID());
   }
 
   @Test

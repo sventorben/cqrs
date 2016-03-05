@@ -38,7 +38,7 @@ public class EventBasedAggregateRootTest {
       }
     };
 
-    assertEquals(AggregateRoot.DEFAULT_ID, root.getId());
+    assertNotNull(root.getId());
     assertEquals(AggregateRoot.DEFAULT_VERSION, root.getVersion());
     assertNotNull(root.getUncommittedEvents());
     assertEquals(0, root.getUncommittedEvents().size());

@@ -14,9 +14,8 @@ public final class InMemoryEventStore implements IStoreEvents {
   private final Map<UUID, EventDescriptorList> eventStreams;
 
   /**
-   * Creates an instance of the in-memory event store which does not publish events to other bounded
-   * contexts. If you need to publish events, consider to use
-   * {@linkplain #InMemoryEventStore(ITransferEvents)} instead.
+   * Creates an instance of the in-memory event store which does not publish events. If you need to
+   * publish events, consider to use {@linkplain #InMemoryEventStore(ITransferEvents)} instead.
    */
   public InMemoryEventStore() {
     this(null);

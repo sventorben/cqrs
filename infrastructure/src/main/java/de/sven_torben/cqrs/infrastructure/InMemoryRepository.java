@@ -8,12 +8,12 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.UUID;
 
-public class Repository<RootT extends IAmAnAggregateRoot>
+public class InMemoryRepository<RootT extends IAmAnAggregateRoot>
     implements IStoreAggregates<RootT> {
 
   private final Map<UUID, RootT> storedAggregateRoots;
 
-  public Repository() {
+  public InMemoryRepository() {
     storedAggregateRoots = new HashMap<>();
   }
 
