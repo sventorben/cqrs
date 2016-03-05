@@ -16,7 +16,7 @@ public abstract class Event implements IAmAnEvent {
     this(UUID.randomUUID(), DEFAULT_VERSION);
   }
 
-  protected Event(final UUID id, final int version) {
+  protected Event(final UUID id, final long version) {
     if (id == null) {
       throw new IllegalArgumentException("Argument 'id' must not be a null reference.");
     }
