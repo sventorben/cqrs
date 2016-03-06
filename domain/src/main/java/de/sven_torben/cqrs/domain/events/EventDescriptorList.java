@@ -1,13 +1,11 @@
-package de.sven_torben.cqrs.infrastructure.events;
+package de.sven_torben.cqrs.domain.events;
 
-import de.sven_torben.cqrs.domain.ConcurrencyException;
 import de.sven_torben.cqrs.domain.IAmAnAggregateRoot;
-import de.sven_torben.cqrs.domain.events.IAmAnEvent;
 
 import java.util.LinkedList;
 import java.util.UUID;
 
-final class EventDescriptorList extends LinkedList<EventDescriptor> {
+public final class EventDescriptorList extends LinkedList<EventDescriptor> {
 
   private static final long serialVersionUID = 1L;
 
@@ -36,16 +34,12 @@ final class EventDescriptorList extends LinkedList<EventDescriptor> {
 
   public synchronized void addDescriptorForEvent(final IAmAnEvent event)
       throws ConcurrencyException {
-    if (event.getVersion() != IAmAnAggregateRoot.DEFAULT_VERSION) {
-      throw new ConcurrencyException(event.getVersion(), IAmAnAggregateRoot.DEFAULT_VERSION);
-    }
-    event.setVersion(getCurrentVersion() + 1L);
-    this.add(new EventDescriptor(streamId, event));
+    this.add(new EventDescriptor(streamId, getCurrentVersion() + 1L, event));
   }
 
   public long getCurrentVersion() {
     if (size() > 0) {
-      return getLast().getEventVersion();
+      return getLast().getVersion();
     }
     return IAmAnAggregateRoot.DEFAULT_VERSION;
   }

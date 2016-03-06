@@ -10,33 +10,21 @@ public abstract class Event implements IAmAnEvent {
   public static final int DEFAULT_VERSION = -1;
 
   private final UUID id;
-  private long version;
 
   public Event() {
-    this(UUID.randomUUID(), DEFAULT_VERSION);
+    this(UUID.randomUUID());
   }
 
-  protected Event(final UUID id, final long version) {
+  protected Event(final UUID id) {
     if (id == null) {
       throw new IllegalArgumentException("Argument 'id' must not be a null reference.");
     }
     this.id = id;
-    this.version = version;
   }
 
   @Override
   public UUID getId() {
     return id;
-  }
-
-  @Override
-  public long getVersion() {
-    return this.version;
-  }
-
-  @Override
-  public void setVersion(final long version) {
-    this.version = version;
   }
 
   @Override

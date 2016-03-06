@@ -1,9 +1,10 @@
 package de.sven_torben.cqrs.infrastructure.events;
 
+import de.sven_torben.cqrs.domain.events.EventDescriptor;
+import de.sven_torben.cqrs.domain.events.EventDescriptorList;
 import de.sven_torben.cqrs.domain.events.IAmAnEvent;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -55,17 +56,15 @@ public final class InMemoryEventStore implements IStoreEvents {
   }
 
   @Override
-  public List<IAmAnEvent> getEventsForAggregate(final UUID streamId, final long lowerBoundVersion) {
-    return eventStreams.getOrDefault(streamId, new EventDescriptorList(streamId)).stream()
-        .map(ed -> ed.getEvent())
-        .filter(e -> e.getVersion() >= lowerBoundVersion)
-        .sorted(IAmAnEvent.BY_VERSION_COMPARATOR)
-        .collect(Collectors.toList());
-  }
-
-  @Override
-  public boolean contains(UUID id) {
-    return eventStreams.containsKey(id);
+  public EventDescriptorList getEventsForAggregate(final UUID streamId,
+      final long lowerVersionExclusive) {
+    EventDescriptorList eventDescriptorList = new EventDescriptorList(streamId);
+    eventDescriptorList
+        .addAll(eventStreams.getOrDefault(streamId, new EventDescriptorList(streamId)).stream()
+            .filter(e -> e.getVersion() > lowerVersionExclusive)
+            .sorted(EventDescriptor.BY_VERSION_COMPARATOR)
+            .collect(Collectors.toList()));
+    return eventDescriptorList;
   }
 
   private synchronized EventDescriptorList loadDescriptorsForStreamWithId(final UUID streamId) {

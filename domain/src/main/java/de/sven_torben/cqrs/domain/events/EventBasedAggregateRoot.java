@@ -8,7 +8,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
 
-public abstract class EventBasedAggregateRoot extends AggregateRoot
+public class EventBasedAggregateRoot extends AggregateRoot
     implements IAmAnAggregateRoot, IAmAnEventBasedAggregateRoot {
 
   private final List<IAmAnEvent> uncommittedEvents;
@@ -37,11 +37,16 @@ public abstract class EventBasedAggregateRoot extends AggregateRoot
   }
 
   @Override
-  public final void rebuildFromHistory(final Iterable<? extends IAmAnEvent> history) {
-    for (IAmAnEvent event : history) {
-      apply(event, false);
-      setVersion(event.getVersion());
+  public final void rebuildFromHistory(final EventDescriptorList history) {
+    for (EventDescriptor eventDescriptor : history) {
+      apply(eventDescriptor.getEvent(), false);
+      setVersion(eventDescriptor.getVersion());
     }
+  }
+
+  @Override
+  public void accept(IAmAnEvent event) {
+    apply(event, false);
   }
 
   protected void apply(final IAmAnEvent event) {
@@ -57,8 +62,6 @@ public abstract class EventBasedAggregateRoot extends AggregateRoot
         uncommittedEvents.add(event);
       }
     }
-    EventApplier.apply(this, event);
+    apply(this, event);
   }
-
-  protected abstract void handle(final IAmAnEvent event);
 }

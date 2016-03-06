@@ -15,10 +15,12 @@ import com.tngtech.java.junit.dataprovider.DataProvider;
 import com.tngtech.java.junit.dataprovider.DataProviderRunner;
 import com.tngtech.java.junit.dataprovider.UseDataProvider;
 
-import de.sven_torben.cqrs.domain.ConcurrencyException;
 import de.sven_torben.cqrs.domain.IAmAnAggregateRoot;
 import de.sven_torben.cqrs.domain.IStoreAggregates;
+import de.sven_torben.cqrs.domain.events.ConcurrencyException;
 import de.sven_torben.cqrs.domain.events.EventBasedAggregateRootMock;
+import de.sven_torben.cqrs.domain.events.EventDescriptor;
+import de.sven_torben.cqrs.domain.events.EventDescriptorList;
 import de.sven_torben.cqrs.domain.events.EventMockA;
 import de.sven_torben.cqrs.domain.events.EventMockB;
 import de.sven_torben.cqrs.domain.events.IAmAnEvent;
@@ -32,7 +34,6 @@ import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.mockito.Matchers;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.UUID;
 
@@ -79,9 +80,10 @@ public class EventSourcingRepositoryTest {
 
   @Test
   public void testRetrieval() {
-    ArrayList<IAmAnEvent> events = new ArrayList<IAmAnEvent>();
-    events.add(new EventMockA());
-    events.add(new EventMockB());
+    UUID streamId = UUID.randomUUID();
+    EventDescriptorList events = new EventDescriptorList(streamId);
+    events.add(new EventDescriptor(streamId, 1L, new EventMockA()));
+    events.add(new EventDescriptor(streamId, 2L, new EventMockB()));
 
     when(eventStoreMock.getEventsForAggregate(any(UUID.class), anyLong())).thenReturn(events);
 
@@ -101,7 +103,7 @@ public class EventSourcingRepositoryTest {
     thrown.expectMessage(IAmAnEventBasedAggregateRoot.class.getName());
 
     when(eventStoreMock.getEventsForAggregate(any(UUID.class)))
-        .thenReturn(new ArrayList<IAmAnEvent>());
+        .thenReturn(new EventDescriptorList(UUID.randomUUID()));
 
     new EventSourcingRepository<IAmAnEventBasedAggregateRoot>(eventStoreMock) {
     }.retrieveWithId(UUID.randomUUID());
@@ -110,16 +112,18 @@ public class EventSourcingRepositoryTest {
   @Test
   public void testThatEventsDoNotGetCommittedWhenExceptionOccurs() {
 
-    thrown.expect(ConcurrencyException.class);
-
     EventBasedAggregateRootMock mock = new EventBasedAggregateRootMock();
     mock.doA();
     mock.doB();
 
-    doThrow(new ConcurrencyException(2, 1)).when(eventStoreMock).save(any(UUID.class),
-        Matchers.<Iterable<IAmAnEvent>>any(), anyLong());
+    doThrow(mock(ConcurrencyException.class)).when(eventStoreMock).save(any(UUID.class),
+        Matchers.<Iterable<IAmAnEvent>> any(), anyLong());
 
-    cut.store(mock);
+    try {
+      cut.store(mock);
+    } catch (ConcurrencyException e) {
+      // expected
+    }
 
     assertEquals(2, mock.getUncommittedEvents().size());
   }

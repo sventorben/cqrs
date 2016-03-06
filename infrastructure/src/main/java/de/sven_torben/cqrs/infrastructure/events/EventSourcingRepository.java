@@ -1,7 +1,7 @@
 package de.sven_torben.cqrs.infrastructure.events;
 
 import de.sven_torben.cqrs.domain.IStoreAggregates;
-import de.sven_torben.cqrs.domain.events.IAmAnEvent;
+import de.sven_torben.cqrs.domain.events.EventDescriptorList;
 import de.sven_torben.cqrs.domain.events.IAmAnEventBasedAggregateRoot;
 import de.sven_torben.cqrs.infrastructure.snapshots.EmptySnaphotRepository;
 
@@ -92,17 +92,12 @@ public abstract class EventSourcingRepository<RootT extends IAmAnEventBasedAggre
     }
     if (root != null) {
       long baseVersion = root.getVersion();
-      Iterable<IAmAnEvent> history =
+      EventDescriptorList history =
           eventStore.getEventsForAggregate(aggregateRootId, root.getVersion());
       root.rebuildFromHistory(history);
       saveSnapshot(root, baseVersion);
     }
     return root;
-  }
-
-  @Override
-  public boolean contains(UUID id) {
-    return eventStore.contains(id);
   }
 
   private void saveSnapshot(RootT root, long baseVersion) {
@@ -113,7 +108,7 @@ public abstract class EventSourcingRepository<RootT extends IAmAnEventBasedAggre
 
   private RootT createAggregateRoot(UUID id) {
     try {
-      Constructor<RootT> constructor = aggregateRootType.getConstructor(UUID.class);
+      Constructor<RootT> constructor = aggregateRootType.getDeclaredConstructor(UUID.class);
       constructor.setAccessible(true);
       return constructor.newInstance(id);
     } catch (NoSuchMethodException | SecurityException | InstantiationException

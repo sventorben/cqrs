@@ -8,6 +8,8 @@ import com.tngtech.java.junit.dataprovider.DataProvider;
 import com.tngtech.java.junit.dataprovider.DataProviderRunner;
 import com.tngtech.java.junit.dataprovider.UseDataProvider;
 
+import de.sven_torben.cqrs.domain.events.EventDescriptor;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -18,10 +20,8 @@ public class ByVersionComparatorTest {
 
   @DataProvider
   public static Object[][] testcases() {
-    IAmAnEvent lowVersion = new Event(UUID.randomUUID(), 10L) {
-    };
-    IAmAnEvent highVersion = new Event(UUID.randomUUID(), 99L) {
-    };
+    EventDescriptor lowVersion = new EventDescriptor(UUID.randomUUID(), 10L, new MockEvent());
+    EventDescriptor highVersion = new EventDescriptor(UUID.randomUUID(), 99L, new MockEvent());
     return new Object[][] {
         { lowVersion, highVersion, -1 },
         { highVersion, lowVersion, 1 },
@@ -31,8 +31,9 @@ public class ByVersionComparatorTest {
 
   @Test
   @UseDataProvider("testcases")
-  public void test(IAmAnEvent lhs, IAmAnEvent rhs, int expectedResult) {
-    assertThat(IAmAnEvent.BY_VERSION_COMPARATOR.compare(lhs, rhs), is(equalTo(expectedResult)));
+  public void test(EventDescriptor lhs, EventDescriptor rhs, int expectedResult) {
+    assertThat(EventDescriptor.BY_VERSION_COMPARATOR.compare(lhs, rhs),
+        is(equalTo(expectedResult)));
   }
 
 }

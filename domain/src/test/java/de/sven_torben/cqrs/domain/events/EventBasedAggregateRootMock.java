@@ -21,11 +21,6 @@ public class EventBasedAggregateRootMock extends EventBasedAggregateRoot {
     bhasBeenCalled = false;
   }
 
-  @Override
-  protected void handle(IAmAnEvent event) {
-    throw new RuntimeException();
-  }
-
   protected void handle(EventMockA event) {
     ahasBeenCalled = true;
   }

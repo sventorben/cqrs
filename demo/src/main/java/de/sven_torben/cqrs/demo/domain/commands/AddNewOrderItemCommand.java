@@ -1,4 +1,4 @@
-package de.sven_torben.cqrs.demo;
+package de.sven_torben.cqrs.demo.domain.commands;
 
 import de.sven_torben.cqrs.domain.IAmACommand;
 
@@ -7,15 +7,15 @@ import java.util.UUID;
 public class AddNewOrderItemCommand implements IAmACommand {
 
   private final UUID orderId;
-  private final String itemName;
+  private final String ean;
 
-  public AddNewOrderItemCommand(final UUID orderId, final String itemName) {
+  public AddNewOrderItemCommand(final UUID orderId, final String ean) {
     this.orderId = orderId;
-    this.itemName = itemName;
+    this.ean = ean;
   }
 
-  public String getItemName() {
-    return itemName;
+  public String getEan() {
+    return ean;
   }
 
   public UUID getOrderId() {

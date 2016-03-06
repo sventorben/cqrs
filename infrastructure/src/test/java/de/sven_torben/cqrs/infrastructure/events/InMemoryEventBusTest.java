@@ -3,9 +3,10 @@ package de.sven_torben.cqrs.infrastructure.events;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import de.sven_torben.cqrs.domain.events.Event;
+import de.sven_torben.cqrs.domain.events.EventMockA;
+import de.sven_torben.cqrs.domain.events.EventMockB;
 import de.sven_torben.cqrs.domain.events.IAmAnEvent;
-import de.sven_torben.cqrs.infrastructure.events.InMemoryEventBus;
+import de.sven_torben.cqrs.domain.events.MockEvent;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -37,9 +38,8 @@ public class InMemoryEventBusTest {
       throw new RuntimeException();
     });
 
-    cut.send(new Event() {
-    });
-    cut.send(new A());
+    cut.send(new MockEvent());
+    cut.send(new EventMockA());
   }
 
   @Test
@@ -47,16 +47,16 @@ public class InMemoryEventBusTest {
 
     final List<String> calledHandlers = new ArrayList<String>();
 
-    final Consumer<A> ca = new Consumer<InMemoryEventBusTest.A>() {
+    final Consumer<EventMockA> ca = new Consumer<EventMockA>() {
       @Override
-      public void accept(final A event) {
+      public void accept(final EventMockA event) {
         calledHandlers.add("A");
       }
     };
 
-    final Consumer<B> cb = new Consumer<InMemoryEventBusTest.B>() {
+    final Consumer<EventMockB> cb = new Consumer<EventMockB>() {
       @Override
-      public void accept(final B event) {
+      public void accept(final EventMockB event) {
         calledHandlers.add("B");
       }
     };
@@ -64,27 +64,21 @@ public class InMemoryEventBusTest {
     cut.registerHandler(ca);
     cut.registerHandler(cb);
 
-    cut.send((IAmAnEvent) new A());
+    cut.send((IAmAnEvent) new EventMockA());
     assertTrue(calledHandlers.contains("A"));
     assertFalse(calledHandlers.contains("B"));
 
     calledHandlers.clear();
 
-    cut.send(new A());
+    cut.send(new EventMockA());
     assertTrue(calledHandlers.contains("A"));
     assertFalse(calledHandlers.contains("B"));
 
     calledHandlers.clear();
 
-    cut.send(new B());
+    cut.send(new EventMockB());
     assertFalse(calledHandlers.contains("A"));
     assertTrue(calledHandlers.contains("B"));
-  }
-
-  public class A extends Event {
-  }
-
-  public class B extends Event {
   }
 
 }

@@ -12,7 +12,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import java.util.ArrayList;
 import java.util.Random;
 import java.util.UUID;
 
@@ -33,9 +32,6 @@ public class EventBasedAggregateRootTest {
   @Test
   public void testConstructor() {
     final EventBasedAggregateRoot root = new EventBasedAggregateRoot() {
-      @Override
-      protected void handle(IAmAnEvent event) {
-      }
     };
 
     assertNotNull(root.getId());
@@ -70,9 +66,6 @@ public class EventBasedAggregateRootTest {
   public void testVersionGetter() {
     final int version = new Random().nextInt(1000);
     EventBasedAggregateRoot root = new EventBasedAggregateRoot(UUID.randomUUID(), version) {
-      @Override
-      protected void handle(IAmAnEvent event) {
-      }
     };
     assertEquals(version, root.getVersion());
   }
@@ -98,9 +91,10 @@ public class EventBasedAggregateRootTest {
 
   @Test
   public void testRebuildFromHistory() {
-    ArrayList<IAmAnEvent> history = new ArrayList<IAmAnEvent>();
-    history.add(eventA);
-    history.add(eventB);
+    UUID streamId = UUID.randomUUID();
+    EventDescriptorList history = new EventDescriptorList(streamId);
+    history.add(new EventDescriptor(streamId, 1L, eventA));
+    history.add(new EventDescriptor(streamId, 2L, eventB));
     mock.rebuildFromHistory(history);
 
     assertEquals(0, mock.getUncommittedEvents().size());
