@@ -33,7 +33,7 @@ public final class ItemPopularity implements IConsumeEvents {
     System.out.println(StringUtils.rightPad("", 80, "-"));
     popularityByEan.entrySet().stream()
         .sorted((e1, e2) -> Long.compare(e2.getValue(), e1.getValue()))
-        .forEach(e -> System.out.println(
+        .forEachOrdered(e -> System.out.println(
             String.format("| %s | %s |", StringUtils.rightPad(e.getKey(), 30),
                 StringUtils.center(e.getValue().toString(), 6))));
     System.out.println();

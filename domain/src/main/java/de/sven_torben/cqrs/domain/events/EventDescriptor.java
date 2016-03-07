@@ -1,6 +1,10 @@
 package de.sven_torben.cqrs.domain.events;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 import java.util.Comparator;
+import java.util.Objects;
 import java.util.UUID;
 
 public final class EventDescriptor {
@@ -12,8 +16,10 @@ public final class EventDescriptor {
   private final long version;
   private final IAmAnEvent event;
 
-  public EventDescriptor(final UUID stremId, final long version, final IAmAnEvent event) {
-    this.streamId = stremId;
+  public EventDescriptor(final UUID streamId, final long version, final IAmAnEvent event) {
+    Objects.requireNonNull(streamId);
+    Objects.requireNonNull(event);
+    this.streamId = streamId;
     this.version = version;
     this.event = event;
   }
@@ -30,4 +36,13 @@ public final class EventDescriptor {
     return version;
   }
 
+  @Override
+  public boolean equals(Object that) {
+    return EqualsBuilder.reflectionEquals(this, that);
+  }
+
+  @Override
+  public int hashCode() {
+    return HashCodeBuilder.reflectionHashCode(this);
+  }
 }

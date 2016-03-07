@@ -3,12 +3,11 @@ package de.sven_torben.cqrs.domain.events;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.mockito.Mockito.mock;
 
 import com.tngtech.java.junit.dataprovider.DataProvider;
 import com.tngtech.java.junit.dataprovider.DataProviderRunner;
 import com.tngtech.java.junit.dataprovider.UseDataProvider;
-
-import de.sven_torben.cqrs.domain.events.EventDescriptor;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,12 +15,14 @@ import org.junit.runner.RunWith;
 import java.util.UUID;
 
 @RunWith(DataProviderRunner.class)
-public class ByVersionComparatorTest {
+public final class ByVersionComparatorTest {
 
   @DataProvider
   public static Object[][] testcases() {
-    EventDescriptor lowVersion = new EventDescriptor(UUID.randomUUID(), 10L, new MockEvent());
-    EventDescriptor highVersion = new EventDescriptor(UUID.randomUUID(), 99L, new MockEvent());
+    EventDescriptor lowVersion =
+        new EventDescriptor(UUID.randomUUID(), 10L, mock(IAmAnEvent.class));
+    EventDescriptor highVersion =
+        new EventDescriptor(UUID.randomUUID(), 99L, mock(IAmAnEvent.class));
     return new Object[][] {
         { lowVersion, highVersion, -1 },
         { highVersion, lowVersion, 1 },

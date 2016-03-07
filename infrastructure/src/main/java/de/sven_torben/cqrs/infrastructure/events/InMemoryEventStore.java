@@ -4,14 +4,14 @@ import de.sven_torben.cqrs.domain.events.EventDescriptor;
 import de.sven_torben.cqrs.domain.events.EventDescriptorList;
 import de.sven_torben.cqrs.domain.events.IAmAnEvent;
 
-import java.util.HashMap;
+import java.util.Collection;
 import java.util.Map;
 import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
-public final class InMemoryEventStore implements IStoreEvents {
+public final class InMemoryEventStore extends EventStore implements IStoreEvents {
 
-  private final ITransferEvents eventPublisher;
   private final Map<UUID, EventDescriptorList> eventStreams;
 
   /**
@@ -29,53 +29,39 @@ public final class InMemoryEventStore implements IStoreEvents {
    *          An event publisher which may send events to other bounded contexts when events are
    *          stored.
    */
-  public InMemoryEventStore(final ITransferEvents eventPublisher) {
-    eventStreams = new HashMap<UUID, EventDescriptorList>();
-    if (eventPublisher == null) {
-      this.eventPublisher = new ITransferEvents() {
-        @Override
-        public void send(IAmAnEvent msg) {
-        }
-      };
-    } else {
-      this.eventPublisher = eventPublisher;
-    }
+  public InMemoryEventStore(ITransferEvents eventPublisher) {
+    super(eventPublisher);
+    eventStreams = new ConcurrentHashMap<>();
   }
 
   @Override
-  public void save(final UUID streamId, final Iterable<IAmAnEvent> events,
-      final long expectedVersion) {
-
-    final EventDescriptorList descriptors = loadDescriptorsForStreamWithId(streamId);
-    descriptors.ensureVersion(expectedVersion);
-
-    for (IAmAnEvent event : events) {
-      descriptors.addDescriptorForEvent(event);
-      eventPublisher.send(event);
-    }
-  }
-
-  @Override
-  public EventDescriptorList getEventsForAggregate(final UUID streamId,
-      final long lowerVersionExclusive) {
-    EventDescriptorList eventDescriptorList = new EventDescriptorList(streamId);
+  public EventDescriptorList getEventsForAggregate(UUID streamId, long lowerVersionExclusive) {
+    EventDescriptorList eventDescriptorList =
+        new EventDescriptorList(streamId, lowerVersionExclusive);
     eventDescriptorList
-        .addAll(eventStreams.getOrDefault(streamId, new EventDescriptorList(streamId)).stream()
-            .filter(e -> e.getVersion() > lowerVersionExclusive)
+        .addAll(eventStreams.computeIfAbsent(streamId, (id) -> new EventDescriptorList(id))
+            .getDescriptors()
+            .stream()
+            .filter(ed -> ed.getVersion() > lowerVersionExclusive)
             .sorted(EventDescriptor.BY_VERSION_COMPARATOR)
+            .map(ed -> ed.getEvent())
             .collect(Collectors.toList()));
     return eventDescriptorList;
   }
 
-  private synchronized EventDescriptorList loadDescriptorsForStreamWithId(final UUID streamId) {
-    final EventDescriptorList descriptors;
-    if (!eventStreams.containsKey(streamId)) {
-      descriptors = new EventDescriptorList(streamId);
-      eventStreams.put(streamId, descriptors);
-    } else {
-      descriptors = eventStreams.get(streamId);
-    }
-    return descriptors;
+  @Override
+  protected void save(UUID streamId, Collection<IAmAnEvent> events) {
+    EventDescriptorList eventDescriptorList = loadDescriptorsFromStream(streamId);
+    eventDescriptorList.addAll(events);
+  }
+
+  @Override
+  protected long getCurrentStreamVersion(UUID streamId) {
+    return loadDescriptorsFromStream(streamId).getVersion();
+  }
+
+  private synchronized EventDescriptorList loadDescriptorsFromStream(UUID streamId) {
+    return eventStreams.computeIfAbsent(streamId, (id) -> new EventDescriptorList(id));
   }
 
 }

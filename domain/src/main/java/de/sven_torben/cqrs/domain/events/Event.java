@@ -3,6 +3,7 @@ package de.sven_torben.cqrs.domain.events;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
+import java.util.Objects;
 import java.util.UUID;
 
 public abstract class Event implements IAmAnEvent {
@@ -16,14 +17,12 @@ public abstract class Event implements IAmAnEvent {
   }
 
   protected Event(final UUID id) {
-    if (id == null) {
-      throw new IllegalArgumentException("Argument 'id' must not be a null reference.");
-    }
+    Objects.requireNonNull(id);
     this.id = id;
   }
 
   @Override
-  public UUID getId() {
+  public final UUID getId() {
     return id;
   }
 

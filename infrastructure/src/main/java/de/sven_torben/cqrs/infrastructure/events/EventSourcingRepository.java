@@ -58,9 +58,8 @@ public abstract class EventSourcingRepository<RootT extends IAmAnEventBasedAggre
    */
   public EventSourcingRepository(IStoreEvents eventStore,
       IStoreAggregates<RootT> snapshotRepository, long snapshotThreshold) {
-    Objects.requireNonNull(eventStore, "Argument 'eventStore' must not be a null reference.");
-    Objects.requireNonNull(snapshotRepository,
-        "Argument 'snapshotRepository' must not be a null reference.");
+    Objects.requireNonNull(eventStore);
+    Objects.requireNonNull(snapshotRepository);
     this.eventStore = eventStore;
     this.snapshotRepository = snapshotRepository;
     this.snapshotThreshold = snapshotThreshold;
@@ -78,7 +77,7 @@ public abstract class EventSourcingRepository<RootT extends IAmAnEventBasedAggre
 
   @Override
   public final void store(RootT root) {
-    Objects.requireNonNull(root, "Argument 'root' must not be a null reference.");
+    Objects.requireNonNull(root);
     eventStore.save(root.getId(), root.getUncommittedEvents(), root.getVersion());
     root.markEventsAsCommitted();
   }
@@ -90,13 +89,11 @@ public abstract class EventSourcingRepository<RootT extends IAmAnEventBasedAggre
     if (root == null) {
       root = createAggregateRoot(aggregateRootId);
     }
-    if (root != null) {
-      long baseVersion = root.getVersion();
-      EventDescriptorList history =
-          eventStore.getEventsForAggregate(aggregateRootId, root.getVersion());
-      root.rebuildFromHistory(history);
-      saveSnapshot(root, baseVersion);
-    }
+    long baseVersion = root.getVersion();
+    EventDescriptorList history =
+        eventStore.getEventsForAggregate(aggregateRootId, root.getVersion());
+    root.rebuildFromHistory(history);
+    saveSnapshot(root, baseVersion);
     return root;
   }
 

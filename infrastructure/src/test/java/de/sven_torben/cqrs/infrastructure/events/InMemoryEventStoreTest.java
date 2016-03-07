@@ -2,12 +2,15 @@ package de.sven_torben.cqrs.infrastructure.events;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.empty;
 
-import de.sven_torben.cqrs.domain.IAmAnAggregateRoot;
+import de.sven_torben.cqrs.domain.events.EventDescriptorList;
 import de.sven_torben.cqrs.domain.events.EventMockA;
 import de.sven_torben.cqrs.domain.events.EventMockB;
 import de.sven_torben.cqrs.domain.events.IAmAnEvent;
+import de.sven_torben.cqrs.domain.events.IAmAnEventBasedAggregateRoot;
 import de.sven_torben.cqrs.domain.events.MockEvent;
 
 import org.junit.Before;
@@ -18,6 +21,11 @@ import java.util.UUID;
 
 public class InMemoryEventStoreTest {
 
+  private static final IAmAnEvent[] EVENTS = new IAmAnEvent[] {
+      new EventMockB(), new EventMockA(), new EventMockB(), new MockEvent()
+  };
+  private static final UUID STREAM_ID = UUID.randomUUID();
+
   private InMemoryEventStore cut;
 
   @Before
@@ -26,15 +34,39 @@ public class InMemoryEventStoreTest {
   }
 
   @Test
-  public void testGetEventsForAggregate() {
+  public void testGetEventsForAggregateWithDefaultVersion() {
+    EventDescriptorList edl = new EventDescriptorList(STREAM_ID);
+    edl.addAll(Arrays.asList(EVENTS));
+
+    cut.save(STREAM_ID, Arrays.asList(EVENTS), IAmAnEventBasedAggregateRoot.DEFAULT_VERSION);
+
+    assertThat(cut.getEventsForAggregate(STREAM_ID), is(equalTo((edl))));
+  }
+
+  @Test
+  public void testGetEventsForAggregateWithNonDefaultVersion() {
+    final long version = 1L;
+
+    EventDescriptorList edl = new EventDescriptorList(STREAM_ID);
+    edl.addAll(Arrays.asList(EVENTS));
+
+    cut.save(STREAM_ID, Arrays.asList(EVENTS), IAmAnEventBasedAggregateRoot.DEFAULT_VERSION);
+
+    EventDescriptorList versionedList = new EventDescriptorList(STREAM_ID, version);
+    versionedList.addAll(Arrays.asList(Arrays.copyOfRange(EVENTS, 2, 4)));
+
+    assertThat(cut.getEventsForAggregate(STREAM_ID, version),
+        is(equalTo(versionedList)));
+  }
+
+  @Test
+  public void testUnknownStreamId() {
     UUID streamId = UUID.randomUUID();
-    IAmAnEvent[] events = new IAmAnEvent[] {
-        new EventMockB(), new EventMockA(), new EventMockB(), new MockEvent()
-    };
-    cut.save(streamId, Arrays.asList(events), IAmAnAggregateRoot.DEFAULT_VERSION);
-    assertThat(cut.getEventsForAggregate(streamId), is(equalTo((Arrays.asList(events)))));
-    assertThat(cut.getEventsForAggregate(streamId, 2L),
-        is(equalTo(Arrays.asList(Arrays.copyOfRange(events, 2, 4)))));
+    EventDescriptorList edl = cut.getEventsForAggregate(streamId);
+    assertThat(edl, is(notNullValue()));
+    assertThat(edl.getDescriptors(), is(empty()));
+    assertThat(edl.getStreamId(), is(equalTo(streamId)));
+    assertThat(edl.getVersion(), is(equalTo(IAmAnEventBasedAggregateRoot.DEFAULT_VERSION)));
   }
 
 }

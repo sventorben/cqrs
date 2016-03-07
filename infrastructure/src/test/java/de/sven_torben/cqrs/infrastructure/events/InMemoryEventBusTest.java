@@ -1,5 +1,7 @@
 package de.sven_torben.cqrs.infrastructure.events;
 
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -8,13 +10,17 @@ import de.sven_torben.cqrs.domain.events.EventMockB;
 import de.sven_torben.cqrs.domain.events.IAmAnEvent;
 import de.sven_torben.cqrs.domain.events.MockEvent;
 
+import org.apache.commons.lang3.mutable.MutableBoolean;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.runners.MockitoJUnitRunner;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
+@RunWith(MockitoJUnitRunner.class)
 public class InMemoryEventBusTest {
 
   private InMemoryEventBus cut;
@@ -25,21 +31,17 @@ public class InMemoryEventBusTest {
   }
 
   @Test
-  public void testNoHandlerShouldBeCalledIfUnspecificEvent() {
+  public void testHandlerShouldBeCalledIfUnspecificEvent() {
+    final MutableBoolean handled = new MutableBoolean(false);
     Consumer<IAmAnEvent> handler = new Consumer<IAmAnEvent>() {
       @Override
-      public void accept(final IAmAnEvent event) {
-        throw new RuntimeException();
+      public void accept(IAmAnEvent event) {
+        handled.setTrue();
       }
     };
-
     cut.registerHandler(handler);
-    cut.registerHandler((IAmAnEvent event) -> {
-      throw new RuntimeException();
-    });
-
     cut.send(new MockEvent());
-    cut.send(new EventMockA());
+    assertThat(handled.getValue(), is(true));
   }
 
   @Test

@@ -1,47 +1,65 @@
 package de.sven_torben.cqrs.domain.events;
 
-import de.sven_torben.cqrs.domain.IAmAnAggregateRoot;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.LinkedList;
+import java.util.Objects;
 import java.util.UUID;
 
-public final class EventDescriptorList extends LinkedList<EventDescriptor> {
-
-  private static final long serialVersionUID = 1L;
+public final class EventDescriptorList {
 
   private final UUID streamId;
+  private final long initialVersion;
+  private final LinkedList<EventDescriptor> descriptors;
 
-  public EventDescriptorList(final UUID streamId) {
+  public EventDescriptorList(UUID streamId) {
+    this(streamId, IAmAnEventBasedAggregateRoot.DEFAULT_VERSION);
+  }
+
+  public EventDescriptorList(UUID streamId, long initialVersion) {
+    Objects.requireNonNull(streamId);
     this.streamId = streamId;
+    this.initialVersion = initialVersion;
+    descriptors = new LinkedList<>();
   }
 
   public UUID getStreamId() {
     return streamId;
   }
 
-  public void ensureVersion(final long expectedVersion) {
-
-    if (expectedVersion == IAmAnAggregateRoot.DEFAULT_VERSION) {
-      return;
+  public long getVersion() {
+    if (descriptors.size() > 0) {
+      return descriptors.getLast().getVersion();
     }
-
-    long currentVersion = getCurrentVersion();
-
-    if (currentVersion != expectedVersion) {
-      throw new ConcurrencyException(currentVersion, expectedVersion);
-    }
+    return initialVersion;
   }
 
-  public synchronized void addDescriptorForEvent(final IAmAnEvent event)
-      throws ConcurrencyException {
-    this.add(new EventDescriptor(streamId, getCurrentVersion() + 1L, event));
+  public Collection<EventDescriptor> getDescriptors() {
+    return new ArrayList<>(descriptors);
   }
 
-  public long getCurrentVersion() {
-    if (size() > 0) {
-      return getLast().getVersion();
-    }
-    return IAmAnAggregateRoot.DEFAULT_VERSION;
+  public void add(IAmAnEvent event) {
+    addAll(Collections.singleton(event));
+  }
+
+  public synchronized void addAll(Collection<IAmAnEvent> events) {
+    Objects.requireNonNull(events);
+    events
+        .forEach(event -> descriptors.add(new EventDescriptor(streamId, getVersion() + 1L, event)));
+  }
+
+  @Override
+  public boolean equals(Object that) {
+    return EqualsBuilder.reflectionEquals(this, that);
+  }
+
+  @Override
+  public int hashCode() {
+    return HashCodeBuilder.reflectionHashCode(this);
   }
 
 }

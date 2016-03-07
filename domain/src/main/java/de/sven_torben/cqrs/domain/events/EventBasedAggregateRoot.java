@@ -6,12 +6,14 @@ import de.sven_torben.cqrs.domain.IAmAnAggregateRoot;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
-public class EventBasedAggregateRoot extends AggregateRoot
+public abstract class EventBasedAggregateRoot extends AggregateRoot
     implements IAmAnAggregateRoot, IAmAnEventBasedAggregateRoot {
 
   private final List<IAmAnEvent> uncommittedEvents;
+  private long version;
 
   protected EventBasedAggregateRoot() {
     this(UUID.randomUUID());
@@ -22,13 +24,19 @@ public class EventBasedAggregateRoot extends AggregateRoot
   }
 
   protected EventBasedAggregateRoot(final UUID id, final long version) {
-    super(id, version);
+    super(id);
+    this.version = version;
     uncommittedEvents = new ArrayList<IAmAnEvent>();
   }
 
   @Override
+  public long getVersion() {
+    return version;
+  }
+
+  @Override
   public final Collection<IAmAnEvent> getUncommittedEvents() {
-    return new ArrayList<IAmAnEvent>(uncommittedEvents);
+    return new ArrayList<>(uncommittedEvents);
   }
 
   @Override
@@ -38,9 +46,26 @@ public class EventBasedAggregateRoot extends AggregateRoot
 
   @Override
   public final void rebuildFromHistory(final EventDescriptorList history) {
-    for (EventDescriptor eventDescriptor : history) {
+    Objects.requireNonNull(history);
+    if (history.getDescriptors().isEmpty() && version != history.getVersion()) {
+      throw new IllegalStateException(
+          String.format("History version %d does not match expected version %d.",
+              history.getVersion(), version));
+    }
+    for (EventDescriptor eventDescriptor : history.getDescriptors()) {
+      applyHistoryEvent(eventDescriptor);
+    }
+  }
+
+  private void applyHistoryEvent(EventDescriptor eventDescriptor) {
+    long expectedEventVersion = version + 1L;
+    if (eventDescriptor.getVersion() == expectedEventVersion) {
       apply(eventDescriptor.getEvent(), false);
-      setVersion(eventDescriptor.getVersion());
+      version = eventDescriptor.getVersion();
+    } else {
+      throw new IllegalStateException(
+          String.format("Event version %d does not match expected version %d.",
+              eventDescriptor.getVersion(), expectedEventVersion));
     }
   }
 
@@ -64,4 +89,5 @@ public class EventBasedAggregateRoot extends AggregateRoot
     }
     apply(this, event);
   }
+
 }

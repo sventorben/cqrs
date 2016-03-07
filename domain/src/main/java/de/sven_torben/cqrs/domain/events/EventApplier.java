@@ -1,7 +1,10 @@
 package de.sven_torben.cqrs.domain.events;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.lang.invoke.MethodHandles;
 import java.lang.reflect.Method;
+import java.util.Objects;
 
 public final class EventApplier {
 
@@ -9,6 +12,9 @@ public final class EventApplier {
   }
 
   public static void apply(Object target, IAmAnEvent event, String methodName) {
+    Objects.requireNonNull(target);
+    Objects.requireNonNull(event);
+    Objects.requireNonNull(StringUtils.trimToNull(methodName));
     try {
       Method method = findHandleMethodInHierarchy(target, event, methodName);
       boolean accesible = method.isAccessible();
@@ -28,6 +34,9 @@ public final class EventApplier {
 
   private static Method findHandleMethodInHierarchy(Object target, IAmAnEvent event,
       String methodName) throws NoSuchMethodException, SecurityException {
+    Objects.requireNonNull(target);
+    Objects.requireNonNull(event);
+    Objects.requireNonNull(StringUtils.trimToNull(methodName));
     Method method = null;
     Class<?> clazz = event.getClass();
     while (method == null && !clazz.equals(Object.class)) {
@@ -43,13 +52,15 @@ public final class EventApplier {
     return method;
   }
 
-  private static Method findHandleMethod(Object obj, Class<?> clazz, String methodName)
+  private static Method findHandleMethod(Object target, Class<?> clazz, String methodName)
       throws NoSuchMethodException, SecurityException {
+    Objects.requireNonNull(target);
+    Objects.requireNonNull(StringUtils.trimToNull(methodName));
     Method method;
     try {
-      method = obj.getClass().getMethod(methodName, clazz);
+      method = target.getClass().getMethod(methodName, clazz);
     } catch (NoSuchMethodException | SecurityException e) {
-      method = obj.getClass().getDeclaredMethod(methodName, clazz);
+      method = target.getClass().getDeclaredMethod(methodName, clazz);
     }
     return method;
   }

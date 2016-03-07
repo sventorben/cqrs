@@ -40,7 +40,8 @@ public final class CustomerOverview implements IConsumeEvents {
     ordersByCustomer.entrySet().stream().sequential()
         .map(e -> new ImmutableTriple<>(e.getKey(), e.getValue().size(),
             StringUtils.join(e.getValue(), ',')))
-        .forEach(e -> System.out
+        .sorted((lhs, rhs) -> Long.compare(rhs.getMiddle(), lhs.getMiddle()))
+        .forEachOrdered(e -> System.out
             .println(String.format("| %s | %s | %s", StringUtils.rightPad(e.getLeft(), 15),
                 StringUtils.center(e.getMiddle().toString(), 7), e.getRight())));
     System.out.println();

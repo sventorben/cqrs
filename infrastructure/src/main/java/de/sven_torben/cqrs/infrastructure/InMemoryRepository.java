@@ -19,17 +19,12 @@ public class InMemoryRepository<RootT extends IAmAnAggregateRoot>
 
   @Override
   public final void store(final RootT root) {
-    Objects.requireNonNull(root, "Argument 'root' must not be a null reference.");
+    Objects.requireNonNull(root);
     storedAggregateRoots.put(root.getId(), root);
   }
 
   @Override
   public final RootT retrieveWithId(final UUID aggregateRootId) {
     return storedAggregateRoots.get(aggregateRootId);
-  }
-
-  @Override
-  public boolean contains(UUID id) {
-    return storedAggregateRoots.containsKey(id);
   }
 }

@@ -62,7 +62,7 @@ public class Order extends EventBasedAggregateRoot {
   }
 
   private boolean isValidEAN(String ean) {
-    Objects.requireNonNull(StringUtils.trimToNull(ean), "EAN is mandatory.");
+    Objects.requireNonNull(StringUtils.trimToNull(ean));
     return findByEan(ean).isPresent();
   }
 

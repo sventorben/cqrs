@@ -1,106 +1,80 @@
 package de.sven_torben.cqrs.infrastructure;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.containsInAnyOrder;
+
 import de.sven_torben.cqrs.domain.IAmACommand;
 
-import org.junit.Assert;
-import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
+import org.junit.runner.RunWith;
+import org.mockito.runners.MockitoJUnitRunner;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
-public class InMemoryCommandBusTest {
+@RunWith(MockitoJUnitRunner.class)
+public final class InMemoryCommandBusTest {
 
-  private InMemoryCommandBus cut;
+  private InMemoryCommandBus cut = new InMemoryCommandBus();
 
-  @Before
-  public void setUp() {
-    cut = new InMemoryCommandBus();
-  }
+  @Rule
+  public ExpectedException thrown = ExpectedException.none();
 
   @Test
-  public void testNoHandlerShouldBeCalledIfUnspecificCommand() {
-    Consumer<IAmACommand> handler = new Consumer<IAmACommand>() {
-      @Override
-      public void accept(final IAmACommand command) {
-        throw new RuntimeException();
-      }
-    };
-
-    cut.registerHandler(handler);
-    cut.registerHandler((IAmACommand command) -> {
-      throw new RuntimeException();
-    });
-
-    cut.send(new IAmACommand() {
-    });
-    cut.send(new A());
-  }
-
-  @Test(expected = IllegalStateException.class)
   public void testOnlyOneHandlerPerCommand() {
-    final Consumer<A> ca1 = new Consumer<InMemoryCommandBusTest.A>() {
-      @Override
-      public void accept(final A command) {
-      }
-    };
 
-    final Consumer<A> ca2 = new Consumer<InMemoryCommandBusTest.A>() {
-      @Override
-      public void accept(final A command) {
-      }
-    };
+    thrown.expect(IllegalStateException.class);
 
-    cut.registerHandler(ca1);
-    cut.registerHandler(ca2);
+    cut.registerHandler((A command) -> {
+    });
+    cut.registerHandler((A command) -> {
+    });
 
     cut.send(new A());
   }
 
   @Test
-  public void test() {
+  public void testCallHandler() {
 
-    final List<String> calledHandlers = new ArrayList<String>();
+    final List<Consumer<? extends IAmACommand>> calledHandlers = new ArrayList<>();
 
-    final Consumer<A> ca = new Consumer<InMemoryCommandBusTest.A>() {
+    Consumer<A> handlerA = new Consumer<A>() {
       @Override
-      public void accept(final A command) {
-        calledHandlers.add("A");
+      public void accept(A msg) {
+        calledHandlers.add(this);
       }
     };
-
-    final Consumer<B> cb = new Consumer<InMemoryCommandBusTest.B>() {
+    Consumer<B> handlerB = new Consumer<B>() {
       @Override
-      public void accept(final B command) {
-        calledHandlers.add("B");
+      public void accept(B msg) {
+        calledHandlers.add(this);
       }
     };
-
-    cut.registerHandler(ca);
-    cut.registerHandler(cb);
+    cut.registerHandler(handlerA);
+    cut.registerHandler(handlerB);
 
     cut.send((IAmACommand) new A());
-    Assert.assertTrue(calledHandlers.contains("A"));
-    Assert.assertFalse(calledHandlers.contains("B"));
+
+    assertThat(calledHandlers, containsInAnyOrder(handlerA));
 
     calledHandlers.clear();
 
     cut.send(new A());
-    Assert.assertTrue(calledHandlers.contains("A"));
-    Assert.assertFalse(calledHandlers.contains("B"));
+    assertThat(calledHandlers, containsInAnyOrder(handlerA));
 
     calledHandlers.clear();
 
     cut.send(new B());
-    Assert.assertFalse(calledHandlers.contains("A"));
-    Assert.assertTrue(calledHandlers.contains("B"));
+    assertThat(calledHandlers, containsInAnyOrder(handlerB));
   }
 
-  public class A implements IAmACommand {
+  private static final class A implements IAmACommand {
   }
 
-  public class B implements IAmACommand {
+  private static final class B implements IAmACommand {
   }
 
 }
