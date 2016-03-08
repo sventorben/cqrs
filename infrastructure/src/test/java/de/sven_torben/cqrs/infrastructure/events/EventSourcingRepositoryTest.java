@@ -18,7 +18,7 @@ import static org.mockito.Mockito.when;
 import de.sven_torben.cqrs.domain.IStoreAggregates;
 import de.sven_torben.cqrs.domain.events.ConcurrencyException;
 import de.sven_torben.cqrs.domain.events.EventBasedAggregateRoot;
-import de.sven_torben.cqrs.domain.events.EventDescriptorList;
+import de.sven_torben.cqrs.domain.events.EventStream;
 import de.sven_torben.cqrs.domain.events.EventMockA;
 import de.sven_torben.cqrs.domain.events.EventMockB;
 import de.sven_torben.cqrs.domain.events.IAmAnEvent;
@@ -63,7 +63,7 @@ public class EventSourcingRepositoryTest {
   @Test
   public void testRetrieval() {
     UUID streamId = UUID.randomUUID();
-    EventDescriptorList events = new EventDescriptorList(streamId);
+    EventStream events = new EventStream(streamId);
     EventMockA eventA = new EventMockA();
     EventMockB eventB = new EventMockB();
     events.add(eventA);
@@ -93,14 +93,14 @@ public class EventSourcingRepositoryTest {
 
     long snapshotVersion = 0L;
     MyRoot snapshot = new MyRoot(streamId);
-    EventDescriptorList snapshotEvents = new EventDescriptorList(streamId);
+    EventStream snapshotEvents = new EventStream(streamId);
     EventMockA eventA = new EventMockA();
     snapshotEvents.add(eventA);
     snapshot.rebuildFromHistory(snapshotEvents);
     snapshot.handledEvents = new ArrayList<>();
 
     EventMockB eventB = new EventMockB();
-    EventDescriptorList events = new EventDescriptorList(streamId, snapshotVersion);
+    EventStream events = new EventStream(streamId, snapshotVersion);
     events.add(eventB);
 
     when(snapShotRepoMock.retrieveWithId(streamId)).thenReturn(snapshot);
@@ -122,7 +122,7 @@ public class EventSourcingRepositoryTest {
     thrown.expectMessage(IAmAnEventBasedAggregateRoot.class.getName());
 
     when(eventStoreMock.getEventsForAggregate(any(UUID.class)))
-        .thenReturn(new EventDescriptorList(UUID.randomUUID()));
+        .thenReturn(new EventStream(UUID.randomUUID()));
 
     new EventSourcingRepository<IAmAnEventBasedAggregateRoot>(eventStoreMock) {
     }.retrieveWithId(UUID.randomUUID());
@@ -165,7 +165,7 @@ public class EventSourcingRepositoryTest {
   @Test
   public void testSnapshotCreation() {
     UUID rootId = UUID.randomUUID();
-    EventDescriptorList edl = new EventDescriptorList(rootId);
+    EventStream edl = new EventStream(rootId);
     edl.add(mock(IAmAnEvent.class));
     edl.add(mock(IAmAnEvent.class));
     when(eventStoreMock.getEventsForAggregate(rootId, IAmAnEventBasedAggregateRoot.DEFAULT_VERSION))

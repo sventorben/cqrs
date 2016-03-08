@@ -11,6 +11,17 @@ public final class EventApplier {
   private EventApplier() {
   }
 
+  /**
+   * Calls method wit name {@code methodName} on instance {@code target} and passes the given
+   * {@code event}.
+   *
+   * @param target
+   *          Object on which the method {@code methodName} should be called.
+   * @param event
+   *          Argument to pass to the method.
+   * @param methodName
+   *          The name of the method.
+   */
   public static void apply(Object target, IAmAnEvent event, String methodName) {
     Objects.requireNonNull(target);
     Objects.requireNonNull(event);

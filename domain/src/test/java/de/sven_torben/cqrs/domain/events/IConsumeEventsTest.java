@@ -22,14 +22,6 @@ public final class IConsumeEventsTest {
     IAmAnEvent event = mock(IAmAnEvent.class);
     doCallRealMethod().when(cut).accept(event);
     cut.accept(event);
-    verify(cut).apply(cut, event);
-  }
-
-  @Test
-  public void testApply() {
-    IAmAnEvent event = mock(IAmAnEvent.class);
-    doCallRealMethod().when(cut).apply(cut, event);
-    cut.apply(cut, event);
     verify(cut).consume(event);
   }
 

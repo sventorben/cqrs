@@ -14,5 +14,5 @@ public interface IAmAnEventBasedAggregateRoot extends IAmAnAggregateRoot, IHandl
 
   void markEventsAsCommitted();
 
-  void rebuildFromHistory(EventDescriptorList history);
+  void rebuildFromHistory(EventStream history);
 }

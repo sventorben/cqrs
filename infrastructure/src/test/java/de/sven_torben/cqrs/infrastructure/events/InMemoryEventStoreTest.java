@@ -6,7 +6,7 @@ import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.empty;
 
-import de.sven_torben.cqrs.domain.events.EventDescriptorList;
+import de.sven_torben.cqrs.domain.events.EventStream;
 import de.sven_torben.cqrs.domain.events.EventMockA;
 import de.sven_torben.cqrs.domain.events.EventMockB;
 import de.sven_torben.cqrs.domain.events.IAmAnEvent;
@@ -35,7 +35,7 @@ public class InMemoryEventStoreTest {
 
   @Test
   public void testGetEventsForAggregateWithDefaultVersion() {
-    EventDescriptorList edl = new EventDescriptorList(STREAM_ID);
+    EventStream edl = new EventStream(STREAM_ID);
     edl.addAll(Arrays.asList(EVENTS));
 
     cut.save(STREAM_ID, Arrays.asList(EVENTS), IAmAnEventBasedAggregateRoot.DEFAULT_VERSION);
@@ -47,12 +47,12 @@ public class InMemoryEventStoreTest {
   public void testGetEventsForAggregateWithNonDefaultVersion() {
     final long version = 1L;
 
-    EventDescriptorList edl = new EventDescriptorList(STREAM_ID);
+    EventStream edl = new EventStream(STREAM_ID);
     edl.addAll(Arrays.asList(EVENTS));
 
     cut.save(STREAM_ID, Arrays.asList(EVENTS), IAmAnEventBasedAggregateRoot.DEFAULT_VERSION);
 
-    EventDescriptorList versionedList = new EventDescriptorList(STREAM_ID, version);
+    EventStream versionedList = new EventStream(STREAM_ID, version);
     versionedList.addAll(Arrays.asList(Arrays.copyOfRange(EVENTS, 2, 4)));
 
     assertThat(cut.getEventsForAggregate(STREAM_ID, version),
@@ -62,9 +62,9 @@ public class InMemoryEventStoreTest {
   @Test
   public void testUnknownStreamId() {
     UUID streamId = UUID.randomUUID();
-    EventDescriptorList edl = cut.getEventsForAggregate(streamId);
+    EventStream edl = cut.getEventsForAggregate(streamId);
     assertThat(edl, is(notNullValue()));
-    assertThat(edl.getDescriptors(), is(empty()));
+    assertThat(edl.getEventMetadata(), is(empty()));
     assertThat(edl.getStreamId(), is(equalTo(streamId)));
     assertThat(edl.getVersion(), is(equalTo(IAmAnEventBasedAggregateRoot.DEFAULT_VERSION)));
   }

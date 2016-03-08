@@ -1,7 +1,7 @@
 package de.sven_torben.cqrs.infrastructure.events;
 
 import de.sven_torben.cqrs.domain.IStoreAggregates;
-import de.sven_torben.cqrs.domain.events.EventDescriptorList;
+import de.sven_torben.cqrs.domain.events.EventStream;
 import de.sven_torben.cqrs.domain.events.IAmAnEventBasedAggregateRoot;
 import de.sven_torben.cqrs.infrastructure.snapshots.EmptySnaphotRepository;
 
@@ -90,7 +90,7 @@ public abstract class EventSourcingRepository<RootT extends IAmAnEventBasedAggre
       root = createAggregateRoot(aggregateRootId);
     }
     long baseVersion = root.getVersion();
-    EventDescriptorList history =
+    EventStream history =
         eventStore.getEventsForAggregate(aggregateRootId, root.getVersion());
     root.rebuildFromHistory(history);
     saveSnapshot(root, baseVersion);

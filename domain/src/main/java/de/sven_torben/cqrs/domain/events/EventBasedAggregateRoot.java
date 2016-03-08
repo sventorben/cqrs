@@ -45,19 +45,19 @@ public abstract class EventBasedAggregateRoot extends AggregateRoot
   }
 
   @Override
-  public final void rebuildFromHistory(final EventDescriptorList history) {
+  public final void rebuildFromHistory(final EventStream history) {
     Objects.requireNonNull(history);
-    if (history.getDescriptors().isEmpty() && version != history.getVersion()) {
+    if (history.getEventMetadata().isEmpty() && version != history.getVersion()) {
       throw new IllegalStateException(
           String.format("History version %d does not match expected version %d.",
               history.getVersion(), version));
     }
-    for (EventDescriptor eventDescriptor : history.getDescriptors()) {
+    for (EventMetadata eventDescriptor : history.getEventMetadata()) {
       applyHistoryEvent(eventDescriptor);
     }
   }
 
-  private void applyHistoryEvent(EventDescriptor eventDescriptor) {
+  private void applyHistoryEvent(EventMetadata eventDescriptor) {
     long expectedEventVersion = version + 1L;
     if (eventDescriptor.getVersion() == expectedEventVersion) {
       apply(eventDescriptor.getEvent(), false);

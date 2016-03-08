@@ -4,7 +4,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
 import de.sven_torben.cqrs.domain.events.ConcurrencyException;
-import de.sven_torben.cqrs.domain.events.EventDescriptorList;
+import de.sven_torben.cqrs.domain.events.EventStream;
 import de.sven_torben.cqrs.domain.events.IAmAnEvent;
 import de.sven_torben.cqrs.domain.events.IAmAnEventBasedAggregateRoot;
 
@@ -42,7 +42,7 @@ public final class EventStoreTest {
     cut = new EventStore(eventPublisher) {
 
       @Override
-      public EventDescriptorList getEventsForAggregate(UUID streamId, long lowerVersionExclusive) {
+      public EventStream getEventsForAggregate(UUID streamId, long lowerVersionExclusive) {
         return null;
       }
 

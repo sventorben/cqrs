@@ -19,10 +19,10 @@ public final class ByVersionComparatorTest {
 
   @DataProvider
   public static Object[][] testcases() {
-    EventDescriptor lowVersion =
-        new EventDescriptor(UUID.randomUUID(), 10L, mock(IAmAnEvent.class));
-    EventDescriptor highVersion =
-        new EventDescriptor(UUID.randomUUID(), 99L, mock(IAmAnEvent.class));
+    EventMetadata lowVersion =
+        new EventMetadata(UUID.randomUUID(), 10L, mock(IAmAnEvent.class));
+    EventMetadata highVersion =
+        new EventMetadata(UUID.randomUUID(), 99L, mock(IAmAnEvent.class));
     return new Object[][] {
         { lowVersion, highVersion, -1 },
         { highVersion, lowVersion, 1 },
@@ -32,8 +32,8 @@ public final class ByVersionComparatorTest {
 
   @Test
   @UseDataProvider("testcases")
-  public void test(EventDescriptor lhs, EventDescriptor rhs, int expectedResult) {
-    assertThat(EventDescriptor.BY_VERSION_COMPARATOR.compare(lhs, rhs),
+  public void test(EventMetadata lhs, EventMetadata rhs, int expectedResult) {
+    assertThat(EventMetadata.BY_VERSION_COMPARATOR.compare(lhs, rhs),
         is(equalTo(expectedResult)));
   }
 

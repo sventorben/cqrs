@@ -111,14 +111,14 @@ public final class EventBasedAggregateRootTest {
 
     buildAggregateRootWithVersion(version);
 
-    new EventDescriptor(cut.getId(), version + offset, new MockEvent());
-    EventDescriptorList history = new EventDescriptorList(cut.getId(), version + offset);
+    new EventMetadata(cut.getId(), version + offset, new MockEvent());
+    EventStream history = new EventStream(cut.getId(), version + offset);
     history.add(mock(IAmAnEvent.class));
     cut.rebuildFromHistory(history);
   }
 
   private void buildAggregateRootWithVersion(long version) {
-    EventDescriptorList validHistory = new EventDescriptorList(cut.getId());
+    EventStream validHistory = new EventStream(cut.getId());
     for (int i = 0; i <= version; i++) {
       validHistory.add(mock(IAmAnEvent.class));
     }
@@ -137,7 +137,7 @@ public final class EventBasedAggregateRootTest {
 
     buildAggregateRootWithVersion(version);
 
-    EventDescriptorList history = new EventDescriptorList(cut.getId(), historyVersion);
+    EventStream history = new EventStream(cut.getId(), historyVersion);
     cut.rebuildFromHistory(history);
   }
 
@@ -147,7 +147,7 @@ public final class EventBasedAggregateRootTest {
 
     buildAggregateRootWithVersion(version);
 
-    EventDescriptorList history = new EventDescriptorList(cut.getId(), version);
+    EventStream history = new EventStream(cut.getId(), version);
     cut.rebuildFromHistory(history);
 
     assertThat(cut.getVersion(), is(equalTo(version)));

@@ -1,7 +1,7 @@
 package de.sven_torben.cqrs.infrastructure.events;
 
-import de.sven_torben.cqrs.domain.events.EventDescriptor;
-import de.sven_torben.cqrs.domain.events.EventDescriptorList;
+import de.sven_torben.cqrs.domain.events.EventMetadata;
+import de.sven_torben.cqrs.domain.events.EventStream;
 import de.sven_torben.cqrs.domain.events.IAmAnEvent;
 
 import java.util.Collection;
@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 
 public final class InMemoryEventStore extends EventStore implements IStoreEvents {
 
-  private final Map<UUID, EventDescriptorList> eventStreams;
+  private final Map<UUID, EventStream> eventStreams;
 
   /**
    * Creates an instance of the in-memory event store which does not publish events. If you need to
@@ -35,15 +35,15 @@ public final class InMemoryEventStore extends EventStore implements IStoreEvents
   }
 
   @Override
-  public EventDescriptorList getEventsForAggregate(UUID streamId, long lowerVersionExclusive) {
-    EventDescriptorList eventDescriptorList =
-        new EventDescriptorList(streamId, lowerVersionExclusive);
+  public EventStream getEventsForAggregate(UUID streamId, long lowerVersionExclusive) {
+    EventStream eventDescriptorList =
+        new EventStream(streamId, lowerVersionExclusive);
     eventDescriptorList
-        .addAll(eventStreams.computeIfAbsent(streamId, (id) -> new EventDescriptorList(id))
-            .getDescriptors()
+        .addAll(eventStreams.computeIfAbsent(streamId, (id) -> new EventStream(id))
+            .getEventMetadata()
             .stream()
             .filter(ed -> ed.getVersion() > lowerVersionExclusive)
-            .sorted(EventDescriptor.BY_VERSION_COMPARATOR)
+            .sorted(EventMetadata.BY_VERSION_COMPARATOR)
             .map(ed -> ed.getEvent())
             .collect(Collectors.toList()));
     return eventDescriptorList;
@@ -51,7 +51,7 @@ public final class InMemoryEventStore extends EventStore implements IStoreEvents
 
   @Override
   protected void save(UUID streamId, Collection<IAmAnEvent> events) {
-    EventDescriptorList eventDescriptorList = loadDescriptorsFromStream(streamId);
+    EventStream eventDescriptorList = loadDescriptorsFromStream(streamId);
     eventDescriptorList.addAll(events);
   }
 
@@ -60,8 +60,8 @@ public final class InMemoryEventStore extends EventStore implements IStoreEvents
     return loadDescriptorsFromStream(streamId).getVersion();
   }
 
-  private synchronized EventDescriptorList loadDescriptorsFromStream(UUID streamId) {
-    return eventStreams.computeIfAbsent(streamId, (id) -> new EventDescriptorList(id));
+  private synchronized EventStream loadDescriptorsFromStream(UUID streamId) {
+    return eventStreams.computeIfAbsent(streamId, (id) -> new EventStream(id));
   }
 
 }

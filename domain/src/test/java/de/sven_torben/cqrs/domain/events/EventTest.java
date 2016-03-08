@@ -6,11 +6,11 @@ import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.Assert.assertThat;
 
+import nl.jqno.equalsverifier.EqualsVerifier;
+
 import org.junit.Test;
 
 import java.util.UUID;
-
-import nl.jqno.equalsverifier.EqualsVerifier;
 
 public final class EventTest {
 
