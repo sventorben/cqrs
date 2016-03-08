@@ -18,9 +18,9 @@ import static org.mockito.Mockito.when;
 import de.sven_torben.cqrs.domain.IStoreAggregates;
 import de.sven_torben.cqrs.domain.events.ConcurrencyException;
 import de.sven_torben.cqrs.domain.events.EventBasedAggregateRoot;
-import de.sven_torben.cqrs.domain.events.EventStream;
 import de.sven_torben.cqrs.domain.events.EventMockA;
 import de.sven_torben.cqrs.domain.events.EventMockB;
+import de.sven_torben.cqrs.domain.events.EventStream;
 import de.sven_torben.cqrs.domain.events.IAmAnEvent;
 import de.sven_torben.cqrs.domain.events.IAmAnEventBasedAggregateRoot;
 
@@ -91,7 +91,6 @@ public class EventSourcingRepositoryTest {
 
     UUID streamId = UUID.randomUUID();
 
-    long snapshotVersion = 0L;
     MyRoot snapshot = new MyRoot(streamId);
     EventStream snapshotEvents = new EventStream(streamId);
     EventMockA eventA = new EventMockA();
@@ -99,6 +98,7 @@ public class EventSourcingRepositoryTest {
     snapshot.rebuildFromHistory(snapshotEvents);
     snapshot.handledEvents = new ArrayList<>();
 
+    long snapshotVersion = 0L;
     EventMockB eventB = new EventMockB();
     EventStream events = new EventStream(streamId, snapshotVersion);
     events.add(eventB);
@@ -136,7 +136,7 @@ public class EventSourcingRepositoryTest {
     mock.executeCommandB();
 
     doThrow(mock(ConcurrencyException.class)).when(eventStoreMock).save(any(UUID.class),
-        Matchers.<Collection<IAmAnEvent>> any(), anyLong());
+        Matchers.<Collection<IAmAnEvent>>any(), anyLong());
 
     try {
       cut.store(mock);

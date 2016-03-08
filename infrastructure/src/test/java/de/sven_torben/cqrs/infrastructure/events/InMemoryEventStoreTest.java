@@ -6,9 +6,9 @@ import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.empty;
 
-import de.sven_torben.cqrs.domain.events.EventStream;
 import de.sven_torben.cqrs.domain.events.EventMockA;
 import de.sven_torben.cqrs.domain.events.EventMockB;
+import de.sven_torben.cqrs.domain.events.EventStream;
 import de.sven_torben.cqrs.domain.events.IAmAnEvent;
 import de.sven_torben.cqrs.domain.events.IAmAnEventBasedAggregateRoot;
 import de.sven_torben.cqrs.domain.events.MockEvent;
