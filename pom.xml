@@ -6,7 +6,7 @@
 
 	<groupId>de.sven_torben.cqrs</groupId>
 	<artifactId>parent</artifactId>
-	<version>1.0-SNAPSHOT</version>
+	<version>0.0.1-SNAPSHOT</version>
 	<name>CQRS</name>
 	<packaging>pom</packaging>
 	<url>http://sventorben.github.io/cqrs</url>
