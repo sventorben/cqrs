@@ -6,6 +6,8 @@ import static org.hamcrest.CoreMatchers.sameInstance;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.mock;
 
+import nl.jqno.equalsverifier.EqualsVerifier;
+
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -15,26 +17,24 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import nl.jqno.equalsverifier.EqualsVerifier;
-
-public final class EventDescriptorListTest {
+public final class EventStreamTest {
 
   private static final long INITIAL_VERSION = 10;
   private static final UUID STREAM_ID = UUID.randomUUID();
 
-  private EventDescriptorList cut;
+  private EventStream cut;
 
   @Rule
   public ExpectedException thrown = ExpectedException.none();
 
   @Before
   public void setUp() {
-    cut = new EventDescriptorList(STREAM_ID, INITIAL_VERSION);
+    cut = new EventStream(STREAM_ID, INITIAL_VERSION);
   }
 
   @Test
   public void testConstructor() {
-    EventDescriptorList list = new EventDescriptorList(STREAM_ID);
+    EventStream list = new EventStream(STREAM_ID);
     assertThat(list.getStreamId(), is(equalTo(STREAM_ID)));
     assertThat(list.getVersion(), is(equalTo(IAmAnEventBasedAggregateRoot.DEFAULT_VERSION)));
   }
@@ -59,9 +59,9 @@ public final class EventDescriptorListTest {
 
     long expectedVersion = INITIAL_VERSION + 1L;
     assertThat(cut.getVersion(), is(equalTo(expectedVersion)));
-    assertThat(cut.getDescriptors().size(), is(equalTo(1)));
-    assertThat(cut.getDescriptors().iterator().next().getEvent(), is(sameInstance(event)));
-    assertThat(cut.getDescriptors().iterator().next().getVersion(),
+    assertThat(cut.getEventMetadata().size(), is(equalTo(1)));
+    assertThat(cut.getEventMetadata().iterator().next().getEvent(), is(sameInstance(event)));
+    assertThat(cut.getEventMetadata().iterator().next().getVersion(),
         is(equalTo(expectedVersion)));
   }
 
@@ -77,11 +77,11 @@ public final class EventDescriptorListTest {
 
     long expectedVersion = INITIAL_VERSION + numberOfEvents;
     assertThat(cut.getVersion(), is(equalTo(expectedVersion)));
-    assertThat(cut.getDescriptors().size(), is(equalTo(numberOfEvents)));
+    assertThat(cut.getEventMetadata().size(), is(equalTo(numberOfEvents)));
   }
 
   @Test
   public void testEqualsAndHashcode() {
-    EqualsVerifier.forClass(EventDescriptorList.class).verify();
+    EqualsVerifier.forClass(EventStream.class).verify();
   }
 }

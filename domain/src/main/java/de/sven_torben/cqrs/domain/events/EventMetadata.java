@@ -7,16 +7,16 @@ import java.util.Comparator;
 import java.util.Objects;
 import java.util.UUID;
 
-public final class EventDescriptor {
+public final class EventMetadata {
 
-  public static final Comparator<? super EventDescriptor> BY_VERSION_COMPARATOR =
+  public static final Comparator<? super EventMetadata> BY_VERSION_COMPARATOR =
       (e1, e2) -> Long.compare(e1.getVersion(), e2.getVersion());
 
   private final UUID streamId;
   private final long version;
   private final IAmAnEvent event;
 
-  public EventDescriptor(final UUID streamId, final long version, final IAmAnEvent event) {
+  EventMetadata(final UUID streamId, final long version, final IAmAnEvent event) {
     Objects.requireNonNull(streamId);
     Objects.requireNonNull(event);
     this.streamId = streamId;
