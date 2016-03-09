@@ -9,41 +9,84 @@ import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
+/**
+ * Convenience base class for aggregate root which support event sourcing.
+ */
 public abstract class EventBasedAggregateRoot extends AggregateRoot
     implements IAmAnAggregateRoot, IAmAnEventBasedAggregateRoot {
 
   private final List<IAmAnEvent> uncommittedEvents;
   private long version;
 
+  /**
+   * Creates a new aggregate root with a random identifier and default version (
+   * {@linkplain IAmAnEventBasedAggregateRoot#DEFAULT_VERSION}).
+   */
   protected EventBasedAggregateRoot() {
     this(UUID.randomUUID());
   }
 
+  /**
+   * Creates a new aggregate root with the given identifier and default version (
+   * {@linkplain IAmAnEventBasedAggregateRoot#DEFAULT_VERSION}).
+   *
+   * @param id
+   *          Identifier for this aggregate root.
+   */
   protected EventBasedAggregateRoot(final UUID id) {
     this(id, DEFAULT_VERSION);
   }
 
+  /**
+   * Creates a new aggregate root with the given identifier and version.
+   *
+   * @param id
+   *          Identifier for this aggregate root.
+   * @param version
+   *          Version for this aggregate root.
+   */
   protected EventBasedAggregateRoot(final UUID id, final long version) {
     super(id);
     this.version = version;
     uncommittedEvents = new ArrayList<IAmAnEvent>();
   }
 
+  /*
+   * (non-Javadoc)
+   *
+   * @see de.sven_torben.cqrs.domain.events.IAmAnEventBasedAggregateRoot#getVersion()
+   */
   @Override
   public long getVersion() {
     return version;
   }
 
+  /*
+   * (non-Javadoc)
+   *
+   * @see de.sven_torben.cqrs.domain.events.IAmAnEventBasedAggregateRoot#getUncommittedEvents()
+   */
   @Override
   public final Collection<IAmAnEvent> getUncommittedEvents() {
     return new ArrayList<>(uncommittedEvents);
   }
 
+  /*
+   * (non-Javadoc)
+   *
+   * @see de.sven_torben.cqrs.domain.events.IAmAnEventBasedAggregateRoot#markEventsAsCommitted()
+   */
   @Override
   public final void markEventsAsCommitted() {
     uncommittedEvents.clear();
   }
 
+  /*
+   * (non-Javadoc)
+   *
+   * @see de.sven_torben.cqrs.domain.events.IAmAnEventBasedAggregateRoot#rebuildFromHistory(de.
+   * sven_torben.cqrs.domain.events.EventStream)
+   */
   @Override
   public final void rebuildFromHistory(final EventStream history) {
     Objects.requireNonNull(history);
@@ -69,12 +112,29 @@ public abstract class EventBasedAggregateRoot extends AggregateRoot
     }
   }
 
+  /**
+   * Handles an <b>historic event</b>, i.e. (unless {@linkplain IHandleEvents#apply} has been
+   * overridden) dispatches the event to the most specific overload of
+   * {@linkplain #handle(IAmAnEvent)}. Historic events are always <b>committed</b>.
+   *
+   * @see #getUncommittedEvents()
+   */
   @Override
-  public void accept(IAmAnEvent event) {
+  public final void accept(IAmAnEvent event) {
     apply(event, false);
   }
 
-  protected void apply(final IAmAnEvent event) {
+  /**
+   * Applies a <b>new event</b>, i.e. (unless {@linkplain IHandleEvents#apply} has been overridden)
+   * dispatches the event to the most specific overload of {@linkplain #handle(IAmAnEvent)}. New
+   * events are always <b>uncommitted</b>.
+   *
+   * @throws IllegalStateException
+   *           If event has already been applied.
+   *
+   * @see #getUncommittedEvents()
+   */
+  protected final void apply(final IAmAnEvent event) {
     apply(event, true);
   }
 

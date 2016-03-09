@@ -28,6 +28,11 @@ public abstract class AggregateRoot implements IAmAnAggregateRoot {
     this.id = id;
   }
 
+  /*
+   * (non-Javadoc)
+   * 
+   * @see de.sven_torben.cqrs.domain.ICanBeIdentified#getId()
+   */
   @Override
   public final UUID getId() {
     return id;

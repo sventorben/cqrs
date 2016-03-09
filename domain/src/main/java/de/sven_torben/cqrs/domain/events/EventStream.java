@@ -10,6 +10,9 @@ import java.util.LinkedList;
 import java.util.Objects;
 import java.util.UUID;
 
+/**
+ * A uniquely identifiable stream of events.
+ */
 public final class EventStream {
 
   private final UUID streamId;
@@ -43,8 +46,6 @@ public final class EventStream {
   }
 
   /**
-   * Id which uniquely identifies this stream.
-   *
    * @return Unique identifier of this stream.
    */
   public UUID getStreamId() {
@@ -68,9 +69,7 @@ public final class EventStream {
   }
 
   /**
-   * Metadata of all events currently availably in this stream.
-   *
-   * @return Metadata of all events currently availably in this stream.
+   * @return metadata of all events currently availably in this stream.
    */
   public Collection<EventMetadata> getEventMetadata() {
     return new ArrayList<>(descriptors);
