@@ -9,7 +9,6 @@ import com.tngtech.java.junit.dataprovider.UseDataProvider;
 import de.sven_torben.cqrs.domain.IStoreAggregates;
 import de.sven_torben.cqrs.domain.events.EventBasedAggregateRoot;
 import de.sven_torben.cqrs.domain.events.IAmAnEventBasedAggregateRoot;
-import de.sven_torben.cqrs.infrastructure.snapshots.EmptySnaphotRepository;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -27,7 +26,7 @@ public class EventSourcingRepositoryConstructorTest {
     return new Object[][] {
         { null, null },
         { mock(IStoreEvents.class), null },
-        { null, new EmptySnaphotRepository<EventBasedAggregateRoot>() },
+        { null, new EmptyRepository<EventBasedAggregateRoot>() },
     };
   }
 

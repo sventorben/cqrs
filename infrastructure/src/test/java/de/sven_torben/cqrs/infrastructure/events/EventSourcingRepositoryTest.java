@@ -178,6 +178,9 @@ public class EventSourcingRepositoryTest {
   }
 
   private static final class MyRoot extends EventBasedAggregateRoot {
+
+    private static final long serialVersionUID = 1L;
+
     public List<IAmAnEvent> handledEvents = new ArrayList<>();
 
     public MyRoot() {

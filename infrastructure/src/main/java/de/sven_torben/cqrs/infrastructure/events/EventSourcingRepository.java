@@ -3,7 +3,6 @@ package de.sven_torben.cqrs.infrastructure.events;
 import de.sven_torben.cqrs.domain.IStoreAggregates;
 import de.sven_torben.cqrs.domain.events.EventStream;
 import de.sven_torben.cqrs.domain.events.IAmAnEventBasedAggregateRoot;
-import de.sven_torben.cqrs.infrastructure.snapshots.EmptySnaphotRepository;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -12,7 +11,13 @@ import java.util.Arrays;
 import java.util.Objects;
 import java.util.UUID;
 
-public abstract class EventSourcingRepository<RootT extends IAmAnEventBasedAggregateRoot>
+/**
+ * Repository which leverages the event sourcing pattern to store aggregate roots.
+ *
+ * @param <RootT>
+ *          The type of aggregate roots to be stored within this repository.
+ */
+public class EventSourcingRepository<RootT extends IAmAnEventBasedAggregateRoot>
     implements IStoreAggregates<RootT> {
 
   private static final long DEFAULT_SNAPSHOT_THRESHOLD = 10L;
@@ -30,7 +35,7 @@ public abstract class EventSourcingRepository<RootT extends IAmAnEventBasedAggre
    *          The event store which will be used to store events of the aggregate root.
    */
   public EventSourcingRepository(IStoreEvents eventStore) {
-    this(eventStore, new EmptySnaphotRepository<>());
+    this(eventStore, new EmptyRepository<>());
   }
 
   /**
@@ -75,6 +80,13 @@ public abstract class EventSourcingRepository<RootT extends IAmAnEventBasedAggre
         .findFirst().get();
   }
 
+  /**
+   * Stores all uncommitted events of the given aggregate root to the underlying event store and
+   * marks all events as committed.
+   *
+   * @param root
+   *          The aggregate root to be stored.
+   */
   @Override
   public final void store(RootT root) {
     Objects.requireNonNull(root);
@@ -82,6 +94,17 @@ public abstract class EventSourcingRepository<RootT extends IAmAnEventBasedAggre
     root.markEventsAsCommitted();
   }
 
+  /**
+   * Loads the latest snapshot of the aggregate root with given id and applies all historic events
+   * from the corresponding event stream to the aggregate root.
+   *
+   * @return The aggregate with the given id or a new instance of the aggregate type if no aggregate
+   *         with given id is present.
+   *
+   * @throws AggregateRootInstantiationException
+   *           If no aggregate with given id is present and a new instance of aggregate type cannot
+   *           be created.
+   */
   @Override
   public final RootT retrieveWithId(UUID aggregateRootId) {
 

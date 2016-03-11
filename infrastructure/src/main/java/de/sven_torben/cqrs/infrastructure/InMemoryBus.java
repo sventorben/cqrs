@@ -14,24 +14,47 @@ import java.util.Set;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
+/**
+ * Convenience base class for a message bus which transfers messages in memory.
+ *
+ * @param <MsgT>
+ *          Type of the message.
+ */
 public abstract class InMemoryBus<MsgT extends IAmAMessage> implements ITransferMessages<MsgT> {
 
   private final Map<Class<?>, List<Consumer<MsgT>>> routes =
       new HashMap<Class<?>, List<Consumer<MsgT>>>();
 
-  public InMemoryBus() {
+  protected InMemoryBus() {
   }
 
+  /*
+   * (non-Javadoc)
+   *
+   * @see de.sven_torben.cqrs.infrastructure.ITransferMessages#send(de.sven_torben.cqrs.domain.
+   * IAmAMessage)
+   */
   @Override
   public <T extends MsgT> void send(T msg) {
     final Set<Consumer<MsgT>> handlers = resolveHandlersForMsg(msg);
     handle(msg, handlers);
   }
 
+  /**
+   * Dispatches the given message to the given handlers.
+   * <p>
+   * It is up to the implementation on whether or how messages will be dispatched.
+   * </p>
+   *
+   * @param msg
+   *          The message to be handled.
+   * @param handlers
+   *          The handlers to dispatch the message to.
+   */
   protected abstract void handle(MsgT msg, Collection<Consumer<MsgT>> handlers);
 
   /**
-   * Registers a handler which will be notified of incoming messages.
+   * Registers a handler which will/may be notified of incoming messages.
    *
    * @param handler
    *          The handler which should be registered.

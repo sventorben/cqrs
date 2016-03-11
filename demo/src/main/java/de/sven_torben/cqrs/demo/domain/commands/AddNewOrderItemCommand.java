@@ -6,6 +6,8 @@ import java.util.UUID;
 
 public class AddNewOrderItemCommand implements IAmACommand {
 
+  private static final long serialVersionUID = 1L;
+
   private final UUID orderId;
   private final String ean;
 

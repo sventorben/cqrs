@@ -71,11 +71,14 @@ public final class InMemoryBusTest {
   }
 
   private static class BaseMsg implements IAmAMessage {
+    private static final long serialVersionUID = 1L;
   }
 
   private static final class DerivedMsg extends BaseMsg {
+    private static final long serialVersionUID = 1L;
   }
 
   private static final class OtherMsg extends BaseMsg {
+    private static final long serialVersionUID = 1L;
   }
 }

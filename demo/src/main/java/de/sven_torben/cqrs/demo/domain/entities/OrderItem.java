@@ -8,7 +8,7 @@ public class OrderItem {
     this.ean = ean;
   }
 
-  public String getEAN() {
+  public String getEan() {
     return ean;
   }
 

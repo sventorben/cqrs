@@ -1,6 +1,6 @@
 package de.sven_torben.cqrs.demo.readmodel;
 
-import de.sven_torben.cqrs.demo.domain.events.OrderCreatedEvent;
+import de.sven_torben.cqrs.demo.domain.events.OrderPlacedEvent;
 import de.sven_torben.cqrs.domain.events.IConsumeEvents;
 
 import org.apache.commons.lang3.StringUtils;
@@ -17,7 +17,13 @@ public final class CustomerOverview implements IConsumeEvents {
 
   private final Map<String, Set<UUID>> ordersByCustomer = new ConcurrentHashMap<>();
 
-  public void consume(OrderCreatedEvent event) {
+  /**
+   * Triggered when an order has been created.
+   *
+   * @param event
+   *          Event with metadata of the placed order.
+   */
+  public void consume(OrderPlacedEvent event) {
     ordersByCustomer.merge(event.getCustomerName(), Collections.singleton(event.getOrderId()),
         (associated, given) -> {
           Set<UUID> orderIds = new HashSet<>(associated);
@@ -26,6 +32,9 @@ public final class CustomerOverview implements IConsumeEvents {
         });
   }
 
+  /**
+   * Prints an overview of customers and their orders.
+   */
   public void print() {
     System.out.println("Customer Overview:");
     System.out.println(StringUtils.rightPad("", 80, "-"));

@@ -6,6 +6,12 @@ import java.lang.invoke.MethodHandles;
 import java.lang.reflect.Method;
 import java.util.Objects;
 
+/**
+ * Utility class to implement double dispatch pattern for event handling and consumption.
+ *
+ * @see IConsumeEvents
+ * @see IHandleEvents
+ */
 public final class EventApplier {
 
   private EventApplier() {

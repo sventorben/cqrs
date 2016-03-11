@@ -17,6 +17,8 @@ import java.util.UUID;
  */
 public abstract class Event implements IAmAnEvent {
 
+  private static final long serialVersionUID = 1L;
+
   public static final int DEFAULT_VERSION = -1;
 
   private final UUID id;

@@ -2,10 +2,10 @@ package de.sven_torben.cqrs.demo;
 
 import de.sven_torben.cqrs.demo.domain.commands.AddNewOrderItemCommand;
 import de.sven_torben.cqrs.demo.domain.commands.AddNewOrderItemCommandHandler;
-import de.sven_torben.cqrs.demo.domain.commands.CreateOrderCommand;
-import de.sven_torben.cqrs.demo.domain.commands.CreateOrderCommandHandler;
 import de.sven_torben.cqrs.demo.domain.commands.IncreaseOrderItemAmountCommand;
 import de.sven_torben.cqrs.demo.domain.commands.IncreaseOrderItemAmountCommandHandler;
+import de.sven_torben.cqrs.demo.domain.commands.PlaceOrderCommand;
+import de.sven_torben.cqrs.demo.domain.commands.PlaceOrderCommandHandler;
 import de.sven_torben.cqrs.demo.domain.entities.Orders;
 import de.sven_torben.cqrs.demo.infrastructure.OrderRepository;
 import de.sven_torben.cqrs.demo.readmodel.CustomerOverview;
@@ -53,7 +53,7 @@ public class Main {
   private void placeSomeOrders(String customer) {
     int numberOfOrders = RandomUtils.nextInt(2, 5);
     for (int i = 0; i < numberOfOrders; i++) {
-      CreateOrderCommand createOrderCommand = new CreateOrderCommand(customer);
+      PlaceOrderCommand createOrderCommand = new PlaceOrderCommand(customer);
       commandBus.send(createOrderCommand);
       addSomeOrderItems(customer, createOrderCommand.getOrderId());
     }
@@ -88,7 +88,7 @@ public class Main {
     InMemoryCommandBus commandBus = new InMemoryCommandBus();
 
     // register command handlers
-    commandBus.registerHandler(new CreateOrderCommandHandler(orders));
+    commandBus.registerHandler(new PlaceOrderCommandHandler(orders));
     commandBus.registerHandler(new AddNewOrderItemCommandHandler(orders));
     commandBus.registerHandler(new IncreaseOrderItemAmountCommandHandler(orders));
     this.commandBus = commandBus;

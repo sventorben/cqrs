@@ -72,9 +72,11 @@ public final class InMemoryCommandBusTest {
   }
 
   private static final class A implements IAmACommand {
+    private static final long serialVersionUID = 1L;
   }
 
   private static final class B implements IAmACommand {
+    private static final long serialVersionUID = 1L;
   }
 
 }

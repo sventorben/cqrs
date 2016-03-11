@@ -8,6 +8,8 @@ import java.util.UUID;
  */
 public abstract class AggregateRoot implements IAmAnAggregateRoot {
 
+  private static final long serialVersionUID = 1L;
+
   private UUID id;
 
   /**
@@ -30,7 +32,7 @@ public abstract class AggregateRoot implements IAmAnAggregateRoot {
 
   /*
    * (non-Javadoc)
-   * 
+   *
    * @see de.sven_torben.cqrs.domain.ICanBeIdentified#getId()
    */
   @Override

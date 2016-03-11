@@ -4,12 +4,14 @@ import de.sven_torben.cqrs.domain.IAmACommand;
 
 import java.util.UUID;
 
-public final class CreateOrderCommand implements IAmACommand {
+public final class PlaceOrderCommand implements IAmACommand {
+
+  private static final long serialVersionUID = 1L;
 
   private final String customerName;
   private UUID orderId;
 
-  public CreateOrderCommand(final String customerName) {
+  public PlaceOrderCommand(final String customerName) {
     this.orderId = UUID.randomUUID();
     this.customerName = customerName;
   }

@@ -10,6 +10,9 @@ import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
+/**
+ * An hashmap-baked event store which stores events in memory.
+ */
 public final class InMemoryEventStore extends EventStore implements IStoreEvents {
 
   private final Map<UUID, EventStream> eventStreams;
@@ -34,6 +37,13 @@ public final class InMemoryEventStore extends EventStore implements IStoreEvents
     eventStreams = new ConcurrentHashMap<>();
   }
 
+  /*
+   * (non-Javadoc)
+   *
+   * @see
+   * de.sven_torben.cqrs.infrastructure.events.IStoreEvents#getEventsForAggregate(java.util.UUID,
+   * long)
+   */
   @Override
   public EventStream getEventsForAggregate(UUID streamId, long lowerVersionExclusive) {
     EventStream eventDescriptorList =
@@ -49,12 +59,24 @@ public final class InMemoryEventStore extends EventStore implements IStoreEvents
     return eventDescriptorList;
   }
 
+  /*
+   * (non-Javadoc)
+   *
+   * @see de.sven_torben.cqrs.infrastructure.events.EventStore#save(java.util.UUID,
+   * java.util.Collection)
+   */
   @Override
   protected void save(UUID streamId, Collection<IAmAnEvent> events) {
     EventStream eventDescriptorList = loadDescriptorsFromStream(streamId);
     eventDescriptorList.addAll(events);
   }
 
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * de.sven_torben.cqrs.infrastructure.events.EventStore#getCurrentStreamVersion(java.util.UUID)
+   */
   @Override
   protected long getCurrentStreamVersion(UUID streamId) {
     return loadDescriptorsFromStream(streamId).getVersion();

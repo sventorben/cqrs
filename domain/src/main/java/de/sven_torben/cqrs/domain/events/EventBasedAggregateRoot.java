@@ -15,6 +15,8 @@ import java.util.UUID;
 public abstract class EventBasedAggregateRoot extends AggregateRoot
     implements IAmAnAggregateRoot, IAmAnEventBasedAggregateRoot {
 
+  private static final long serialVersionUID = 1L;
+
   private final List<IAmAnEvent> uncommittedEvents;
   private long version;
 

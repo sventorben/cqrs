@@ -22,6 +22,9 @@ public final class ItemPopularity implements IConsumeEvents {
         (associated, given) -> associated + given);
   }
 
+  /**
+   * Prints statistics of item popularity.
+   */
   public void print() {
     System.out.println("Item popularity:");
     System.out.println(StringUtils.rightPad("", 80, "-"));

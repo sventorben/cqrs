@@ -41,6 +41,8 @@ public final class EventTest {
   }
 
   public static final class MyEvent extends Event {
+    private static final long serialVersionUID = 1L;
+
     @Override
     public boolean canEqual(Object other) {
       return other instanceof MyEvent;

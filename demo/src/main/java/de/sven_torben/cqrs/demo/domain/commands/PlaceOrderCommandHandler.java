@@ -5,16 +5,16 @@ import de.sven_torben.cqrs.demo.domain.entities.Orders;
 
 import java.util.function.Consumer;
 
-public class CreateOrderCommandHandler implements Consumer<CreateOrderCommand> {
+public class PlaceOrderCommandHandler implements Consumer<PlaceOrderCommand> {
 
   final Orders orders;
 
-  public CreateOrderCommandHandler(Orders orders) {
+  public PlaceOrderCommandHandler(Orders orders) {
     this.orders = orders;
   }
 
   @Override
-  public void accept(CreateOrderCommand cmd) {
+  public void accept(PlaceOrderCommand cmd) {
     Order order = new Order(cmd.getOrderId(), cmd.getCustomerName());
     orders.update(order);
   }
