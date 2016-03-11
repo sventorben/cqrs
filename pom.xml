@@ -83,6 +83,8 @@
 
 		<!-- Build configuration -->
 		<main.basedir>${project.basedir}</main.basedir>
+		
+		<project.scm.id>github</project.scm.id>
 	</properties>
 
 	<build>
