@@ -11,7 +11,7 @@
 
 	<artifactId>infrastructure</artifactId>
 	<packaging>jar</packaging>
-	<name>CQRS - Infrastructure</name>
+	<name>${project.groupId}:${project.artifactId}</name>
 
 	<properties>
 		<main.basedir>${project.parent.basedir}</main.basedir>

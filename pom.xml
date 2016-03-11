@@ -7,8 +7,9 @@
 	<groupId>de.sven_torben.cqrs</groupId>
 	<artifactId>parent</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>CQRS</name>
 	<packaging>pom</packaging>
+	<name>${project.groupId}:${project.artifactId}</name>
+	<description>A lightweight Java CQRS framework.</description>
 	<url>http://sventorben.github.io/cqrs</url>
 
 	<modules>
@@ -53,7 +54,7 @@
 		<repository>
 			<id>bintray-sventorben-maven</id>
 			<name>sventorben-maven</name>
-			<url>https://api.bintray.com/maven/sventorben/maven/cqrs/;publish=1</url>
+			<url>https://api.bintray.com/maven/sventorben/maven/cqrs</url>
 		</repository>
 		<site>
 			<id>github-pages-site</id>
@@ -63,9 +64,10 @@
 	</distributionManagement>
 
 	<scm>
-		<url>https://github.com/sventorben/cqrs</url>
+		<url>git@github.com:sventorben/cqrs.git</url>
 		<connection>scm:git:git://github.com/sventorben/cqrs.git</connection>
 		<developerConnection>scm:git:git@github.com:sventorben/cqrs.git</developerConnection>
+		<tag>HEAD</tag>
 	</scm>
 
 	<licenses>
@@ -88,6 +90,15 @@
 	<build>
 		<pluginManagement>
 			<plugins>
+				<plugin>
+					<artifactId>maven-release-plugin</artifactId>
+					<version>2.5.3</version>
+					<configuration>
+						<useReleaseProfile>false</useReleaseProfile>
+						<releaseProfiles>release</releaseProfiles>
+						<autoVersionSubmodules>true</autoVersionSubmodules>
+					</configuration>
+				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
@@ -127,14 +138,6 @@
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-source-plugin</artifactId>
 					<version>3.0.0</version>
-					<executions>
-						<execution>
-							<id>attach-sources</id>
-							<goals>
-								<goal>jar</goal>
-							</goals>
-						</execution>
-					</executions>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
@@ -307,13 +310,6 @@
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-javadoc-plugin</artifactId>
 					<version>2.10.3</version>
-					<executions>
-						<execution>
-							<goals>
-								<goal>jar</goal>
-							</goals>
-						</execution>
-					</executions>
 				</plugin>
 			</plugins>
 		</pluginManagement>
@@ -325,10 +321,6 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-source-plugin</artifactId>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -426,5 +418,37 @@
 			</plugin>
 		</plugins>
 	</reporting>
+
+	<profiles>
+		<profile>
+			<id>release</id>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-source-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>attach-sources</id>
+								<goals>
+									<goal>jar</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<artifactId>maven-javadoc-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>attach-javadocs</id>
+								<goals>
+									<goal>jar</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 
 </project>

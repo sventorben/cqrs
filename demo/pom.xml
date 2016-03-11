@@ -11,7 +11,7 @@
 
 	<artifactId>demo</artifactId>
 	<packaging>jar</packaging>
-	<name>CQRS - Demo</name>
+	<name>${project.groupId}:${project.artifactId}</name>
 
 	<properties>
 		<main.basedir>${project.parent.basedir}</main.basedir>

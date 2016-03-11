@@ -11,7 +11,7 @@
 
 	<artifactId>domain</artifactId>
 	<packaging>jar</packaging>
-	<name>CQRS - Domain</name>
+	<name>${project.groupId}:${project.artifactId}</name>
 
 	<properties>
 		<main.basedir>${project.parent.basedir}</main.basedir>
