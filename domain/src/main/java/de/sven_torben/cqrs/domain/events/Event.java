@@ -65,7 +65,7 @@ public abstract class Event implements IAmAnEvent {
   }
 
   /**
-   * {@link http://www.artima.com/lejava/articles/equality.html}
+   * http://www.artima.com/lejava/articles/equality.html
    */
   public boolean canEqual(Object other) {
     return (other instanceof Event);

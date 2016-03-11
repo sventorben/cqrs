@@ -43,14 +43,14 @@ public interface IStoreEvents {
 
   /**
    * Returns all events of an event stream with a version number that is greater than
-   * {@link expectedVersion}.
+   * {@code expectedVersion}.
    *
    * @param streamId
    *          Identifier of the event stream.
    * @param lowerVersionExclusive
    *          The lower bound (exclusive) of the event's version.
-   * @return All events of event stream with given {@code streamId} and a <code>
-   *         {@link EventMetadata#getVersion() version} > expectedVersion</code>.
+   * @return All events of event stream with given {@code streamId} and a
+   *         {@link EventMetadata#getVersion() version} {@code > expectedVersion}.
    */
   EventStream getEventsForAggregate(UUID streamId, long lowerVersionExclusive);
 }
