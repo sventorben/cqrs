@@ -50,6 +50,11 @@
 	</issueManagement>
 
 	<distributionManagement>
+		<repository>
+			<id>bintray-sventorben-maven</id>
+			<name>sventorben-maven</name>
+			<url>https://api.bintray.com/maven/sventorben/maven/cqrs/;publish=1</url>
+		</repository>
 		<site>
 			<id>github-pages-site</id>
 			<name>Deployment through GitHub's site deployment plugin</name>
